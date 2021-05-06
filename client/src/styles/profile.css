@@ -1,0 +1,284 @@
+.profile-block {
+    margin: 15px 290px;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 5fr 12fr;
+    grid-template-rows: 620px 350px;
+    grid-gap: 15pt;
+    grid-template-areas: "short full" "short biodata";
+}
+
+.default-shadow {
+    border-radius: 3px;
+    box-shadow: 0 0 3px rgba(125, 124, 124, 0.3);
+}
+
+.profile-image-and-short-description {
+    grid-area: short;
+    background-color: white;
+    height: 400pt;
+    margin-left: 30px;
+}
+
+.avatar-profile {
+    height: 170pt;
+    width: inherit;
+}
+
+.avatar-profile img {
+    height: 170pt;
+    width: 170pt;
+    border-radius: 50%;
+}
+
+.short-description {
+    margin-top: 15pt;
+    width: 100%;
+    text-align: center;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.text-like-h3 {
+    color: rgb(164, 183, 186);
+    font-weight: 600;
+    font-size: 14pt;
+}
+
+.text-style-for-name {
+    color: black;
+    font-weight: 550;
+    font-size: 18pt;
+}
+
+.block-btn-short-description {
+    width: 100%;
+    display: inline-block;
+    height: 50pt;
+    margin-top: 6pt;
+}
+
+.profile-image-and-short-description {
+    grid-area: short;
+    padding-top: 24pt;
+}
+
+.fa-chevron-left {
+    font-size: 20pt;
+    margin: 9pt;
+    color: lightslategray;
+}
+
+
+.fa-chevron-left:hover, .btn-edit-details:hover {
+    color: lightskyblue
+}
+
+.avatar-profile img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 190pt;
+    width: 190pt;
+    border-radius: 50%;
+}
+
+.avatar-profile {
+    height: 220pt;
+    width: inherit;
+}
+
+.text-for-gender {
+    color: rgb(137, 142, 142);
+    font-weight: 550;
+    font-size: 14pt;
+}
+
+.goals-icon {
+    height: 14pt;
+    margin-right: 6px;
+}
+
+.text-style-for-name {
+    color: black;
+    font-weight: 550;
+    font-size: 20pt;
+}
+.text-style-title {
+    color: black;
+    font-weight: 550;
+    font-size: 18pt;
+}
+
+.text-for-target {
+    color: rgb(120, 120, 120);
+    font-style: italic;
+    font-weight: 550;
+    font-size: 16pt;
+}
+
+.button-short-description {
+    padding: 4pt 15pt;
+    background-color: #ececf1;
+    border-radius: 25pt;
+    text-align: center;
+    font-weight: 550;
+    color: grey;
+    cursor: pointer;
+}
+
+.button-short-description img {
+    padding-right: 5pt;
+    height: 11pt;
+    width: 11pt;
+    filter: invert(70%) sepia(0%) saturate(58%) hue-rotate(276deg) brightness(95%) contrast(89%);
+}
+
+.user-info-block {
+    background-color: white;
+    grid-area:"full";
+}
+
+.user-biodata-block {
+    background-color: white;
+    grid-area: "biodata";
+}
+
+.edit-content-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 80%;
+    height: 60px;
+    background-color: #daeeec;
+    font-size: 14px;
+    font-weight: 700;
+    color: rgb(60, 186, 181);
+    line-height: 1.2;
+    text-transform: uppercase;
+    border-radius: 5pt;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.save-btn {
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.save-content-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    height: 60px;
+    background-color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    border: 1px solid rgb(60, 186, 181);
+    color: rgb(60, 186, 181);
+    line-height: 1.2;
+    text-transform: uppercase;
+    border-radius: 5pt;
+}
+
+.hr-for-table {
+    grid-area: hrT;
+    margin-top: 5pt;
+    height: 1px;
+    background: rgb(211, 235, 238);
+    border: none;
+}
+
+.header-for-table {
+    grid-area: headerT;
+    color: rgb(167, 208, 213);
+    font-weight: 700;
+    font-size: 18pt;
+    height: 40pt;
+    width: max-content;
+    margin-top: 30pt;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.icon-for-table {
+    grid-area: iconT;
+    width: 40pt;
+    height: 40pt;
+}
+
+.icon-for-table img {
+    width: 20pt;
+    height: 20pt;
+    filter: invert(68%) sepia(55%) saturate(596%) hue-rotate(128deg) brightness(94%) contrast(75%);
+}
+
+.property-for-table {
+    width: 600px;
+    color: rgb(147, 146, 146);
+    font-weight: 530;
+    height: 40pt;
+}
+
+.user-info-table {
+    width: 90%;
+    margin-left: 25pt;
+}
+
+.user-info-table td {
+    height: 40pt;
+    font-size: 20pt;
+}
+
+.value-for-table {
+    font-weight: 600;
+    color: rgb(99, 99, 99);
+    float: left;
+    height: 40pt;
+}
+
+.biodata-block {
+    width: inherit;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+}
+
+.biodata-block-item {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: max-content;
+    text-align: center;
+    font-weight: 900;
+    padding-top: 10px;
+    
+}
+.text-style-for-count{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36pt;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin-top: 10px;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82, gold);
+}
+.style-for-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 125px;
+    height: 125px;
+    background-color: white;
+    border-radius: 50%;
+    color:rgb(124, 212, 206);
+}

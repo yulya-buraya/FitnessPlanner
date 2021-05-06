@@ -1,0 +1,321 @@
+.background {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background: #dfe6e9;
+}
+
+.text2:focus {
+    font-family: OpenSans-Regular;
+    outline: none !important;
+}
+
+.text2:hover {
+    font-family: OpenSans-Regular;
+    text-decoration: none;
+}
+
+input.input100:focus, input.input-info-forms:focus, .gender-block:hover {
+    font-family: OpenSans-Regular;
+    border: 1px solid #13d3d3 !important;
+    border-radius: 10pt;
+    box-shadow: 0 0 5px rgba(125, 124, 124, 0.3);
+}
+
+button {
+    outline: none !important;
+    border: none;
+    background: transparent;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.txt1 {
+    line-height: 1.4;
+    color: #999999;
+    font-weight: 500;
+    font-size: 13pt;
+}
+
+.txt2 {
+    line-height: 1.4;
+    color: #4272d7;
+    font-weight: 500;
+    font-size: 13pt;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.text-center {
+    font-family: OpenSans-Regular;
+    text-align: center;
+}
+
+.hov1:hover {
+    text-decoration: underline;
+}
+
+.limiter {
+    font-family: OpenSans-Regular;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.wrap-login100 {
+    width: 500px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 65px 50px 50px 50px;
+    -moz-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.container-for-form {
+    width: 750px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 65px 100px 50px 100px;
+    -moz-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.user-info-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.login100-form {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.user-form {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.login100-form-title {
+    font-family: OpenSans-Regular;
+    display: block;
+    font-size: 30px;
+    color: #555555;
+    line-height: 1.2;
+    text-align: center;
+    padding-bottom: 33px;
+}
+
+.wrapper {
+    width: 320px;
+}
+
+.wrap-input100 {
+    position: relative;
+    background-color: #fff;
+    margin-bottom: 20pt;
+    display: flex;
+    width: 100%;
+}
+
+.input100, .input-info-forms {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: transparent;
+    font-size: 15px;
+    color: #666666;
+    line-height: 1.2;
+    border-radius: 10pt;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0 0 1px rgba(125, 124, 124, 0.3);
+}
+
+.purpose-list {
+    padding-left: 40px;
+    outline: none;
+    height: 70px;
+    width: 120%;
+    font-size: 15px;
+    color: #666666;
+    line-height: 1.2;
+    border-radius: 10pt;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0 0 1px rgba(125, 124, 124, 0.3);
+}
+
+.purpose-list:focus {
+    font-family: OpenSans-Regular;
+    border: 1px solid #13d3d3 !important;
+    border-radius: 10pt;
+    box-shadow: 0 0 5px rgba(125, 124, 124, 0.3);
+}
+
+input.input100 {
+    height: 68px;
+    padding: 0 25px 0 25px;
+    margin-bottom: 20pt;
+    outline: none;
+}
+
+.container-login100-form-btn, .container-form-btn {
+    width: 100%;
+     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 15pt;
+}
+
+.login100-form-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    height: 60px;
+    background-color: #20B2AA;
+    font-size: 14px;
+    color: #fff;
+    line-height: 1.2;
+    text-transform: uppercase;
+    border-radius: 5pt;
+}
+
+.container-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 50%;
+    height: 60px;
+    font-weight: 700;
+    background-color: #20B2AA;
+    font-size: 14px;
+    color: #fff;
+    line-height: 1.2;
+    text-transform: uppercase;
+     border-radius: 5pt;
+}
+
+.gender-block {
+    position: relative;
+    width: 320px;
+    font-size: 15px;
+    color: #666666;
+    line-height: 1.2;
+    border-radius: 10pt;
+    background-color: #f3f9fa;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0 0 1px rgba(125, 124, 124, 0.3);
+    box-sizing: border-box;
+    margin-bottom: 35px;
+    margin-top: -12px;
+    padding: 16px 15px;
+}
+
+.gender-txt {
+    color: #525a59;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.login100-form-btn:hover {
+    background-color: #069a9a;
+}
+
+i.fa.active {
+    color: #13d3d3;
+}
+
+.icons {
+    height: 17px;
+    width: 17px;
+    position: absolute;
+    float: left;
+    margin-top: 25px;
+    margin-left: 15px;
+}
+
+.active-icon {
+    filter: invert(71%) sepia(77%) saturate(3454%) hue-rotate(135deg) brightness(107%) contrast(85%);
+}
+
+.padding-15 {
+    position: relative;
+}
+
+input.input-info-forms {
+    height: 68px;
+    padding: 0 25px 0 40px;
+    margin-bottom: 20pt;
+    outline: none;
+}
+
+i.fa {
+    margin-right: -46px;
+    width: 60px;
+    height: 60px;
+    line-height: 70px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    float: left;
+}
+
+i.fa+input {
+    padding-left: 46px;
+}
+
+.txt2 {
+    color: #6fd8d8;
+}
+
+.radio-gender-button {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    font-size: 17px;
+    line-height: 15px;
+    color: #666666;
+    padding: 0 20px;
+    font-weight: 600;
+    outline: none;
+    color: #7d8689;
+}
+
+input[type='radio']:after {
+    width: 14px;
+    height: 14px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: rgba(193, 195, 196, 0.796);
+    content: '';
+    display: inline-block;
+    visibility: visible;
+}
+
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #20B2AA;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+}
