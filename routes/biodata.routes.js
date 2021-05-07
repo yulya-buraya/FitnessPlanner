@@ -7,8 +7,9 @@ const config =require('config')
 router.post('/createBiodata', auth, async (req, res) => {
     try {
     const {firstname, lastname, age, gender, height, weight, purpose, activity} = req.body
-    console.log("Body:", req.body)
-      const userDetails = await UserInfo.findOne({ user: req.user.userId  })
+    const errors = validationResult(req)
+
+     const userDetails = await UserInfo.findOne({ user: req.user.userId})
       if (userDetails) {
         return res.status(400).json({ message: 'Для этого пользователя данные уже записаны!' })
       }
@@ -17,7 +18,7 @@ router.post('/createBiodata', auth, async (req, res) => {
       await userInfo.save()
       res.status(201).json({ message: 'Биоданные этого пользователя добавлены' })
     } catch (e) {
-      res.status(500).json({ message: e })
+      res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
     }     
 })
 

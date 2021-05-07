@@ -64,8 +64,8 @@ export const UserInfoForm = () => {
                 })
            
             message(data.message)
-            history.push(`/biodata/${auth.userId}`)
-        }
+/*             history.push(`/biodata/${auth.userId}`)
+ */        }
         catch (e) { }
     }
 

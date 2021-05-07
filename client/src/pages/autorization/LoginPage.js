@@ -33,7 +33,7 @@ export const LoginPage = () => {
     const loginHandler = async () => {
         try {
             const data = await request('/api/auth/login', 'POST', { ...form })
-            const fetched = await request(`/api/biodata`, "GET", null, {
+            const fetched = await request(`/api/biodata/`, "GET", null, {
                 Authorization: `Bearer ${data.token}`
             })
             auth.login(data.token, data.userId, data.role)

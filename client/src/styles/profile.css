@@ -3,7 +3,7 @@
     height: 100vh;
     display: grid;
     grid-template-columns: 5fr 12fr;
-    grid-template-rows: 620px 350px;
+    grid-template-rows: 650px 340px;
     grid-gap: 15pt;
     grid-template-areas: "short full" "short biodata";
 }

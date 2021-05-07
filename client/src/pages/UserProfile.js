@@ -13,11 +13,11 @@ export const UserProfile = () => {
     const { request } = useHttp()
     const getBiodata = useCallback(async () => {
         try {
-            const fetched = await request(`/api/biodata`, "GET", null, {
+            const fetched = await request(`/api/biodata/`, "GET", null, {
                 Authorization: `Bearer ${auth.token}`
             })
             setBiodata(fetched)
-            }
+        }
         catch (e) { }
     }, [auth.token, request])
     useEffect(() => {
@@ -25,10 +25,9 @@ export const UserProfile = () => {
     }, [getBiodata])
     return (
         <div className="profile-block">
-            {/* TODO: сделать вывод даннных в юзерпрофиль из бд, для каждого пользователя будет находится один запрос с данными */}
-         <ShortInfoBlock biodata={biodata} />
-            <FullInfoBlock  />
-            <BiodataBlock/>
+            {biodata && <ShortInfoBlock biodata={biodata} />}
+            {biodata && <FullInfoBlock biodata={biodata} />}
+            <BiodataBlock />
 
         </div>
     );

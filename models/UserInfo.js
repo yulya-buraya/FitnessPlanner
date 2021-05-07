@@ -1,10 +1,12 @@
 const { Schema, model, Types } = require('mongoose')
 
 const UserInfo = new Schema({
+ 
+    
     firstname:
     {
         type: String,
-        required: true
+        required: true,
     },
     lastname:
     {
@@ -15,7 +17,9 @@ const UserInfo = new Schema({
         [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'User'
+                ref: 'User', 
+                unique: true
+
             }
         ],
     age:
