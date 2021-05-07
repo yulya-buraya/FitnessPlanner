@@ -1,13 +1,12 @@
 const { Schema, model, Types } = require('mongoose')
 
 const UserInfo = new Schema({
-    firstName:
+    firstname:
     {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
-    lastName:
+    lastname:
     {
         type: String,
         required: true
@@ -24,6 +23,11 @@ const UserInfo = new Schema({
         type: Number,
         required: true
     },
+    gender:
+    {
+        type:String,
+        required:true
+    },
     height:
     {
         type: Number,
@@ -33,6 +37,16 @@ const UserInfo = new Schema({
     {
         type: Number,
         required: true
+    }, 
+    activity:
+    {
+        type:String,
+        required:true
+    },
+    purpose:
+    {
+        type:String,
+        required:true
     }
 })
 

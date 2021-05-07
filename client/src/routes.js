@@ -9,7 +9,7 @@ import { UserInfoForm } from './pages/autorization/UserInfoForm'
 import { UserProfile } from './pages/UserProfile'
 export const useRoutes = (isAuthenticated) => {
     if (isAuthenticated) {
-        return (
+             return (
             <Switch>
                 <Route path='/mealplanner' exact>
                     <MealPlannerPage />
@@ -20,7 +20,7 @@ export const useRoutes = (isAuthenticated) => {
                 <Route path='/workout'>
                     <WorkoutPage />
                 </Route>
-                <Route path='/userProfile'>
+                <Route path='/biodata/:id'>
                     <UserProfile />
                 </Route>
                 <Route path='/form'>

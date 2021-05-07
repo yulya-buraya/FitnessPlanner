@@ -90,6 +90,7 @@ router.post(
       )
 
       res.json({ token, userId: user.id, role: user.roles })
+   
 
     } catch (e) {
       res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })

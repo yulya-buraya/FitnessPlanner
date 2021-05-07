@@ -20,7 +20,7 @@ export const Navbar = (props) => {
             <NavLink className='navbar-item-name' to="/users">Пользователи</NavLink>
           </li>
           <li className="navbar-item">
-            <i class="fa fa-table"></i>
+            <i className="fa fa-table"></i>
             <NavLink className='navbar-item-name' to="/users">Таблица КБЖУ</NavLink></li>
           <li className="navbar-item">
             <img className="icons-navbar" src="image/cookbook.svg" />
@@ -55,7 +55,7 @@ export const Navbar = (props) => {
             <img className="icons-navbar" src="image/running-solid.svg" />
             <NavLink className='navbar-item-name' to="/workout">Тренировки</NavLink></li>
           <li className="navbar-item ">
-            <i class="fa fa-table"></i>
+            <i className="fa fa-table"></i>
             <NavLink className='navbar-item-name' to="/users">Таблица КБЖУ</NavLink></li>
           <li className="navbar-item ">
             <img className="icons-navbar" src="image/cookbook.svg" />
@@ -64,7 +64,7 @@ export const Navbar = (props) => {
             <img className="icon-dropbtn" src="image/user-solid.svg" />
             <NavLink to="#" className="dropbtn">Аккаунт<i className="fa fa-angle-down"></i></NavLink>
             <div className="dropdown-content">
-              <NavLink className='dropdown-item-name' to="/userProfile" >Личный кабинет</NavLink>
+              <NavLink className='dropdown-item-name' to={`/biodata/${auth.userId}`}>Личный кабинет</NavLink>
               <a className='dropdown-item-name' href="#" >Помощь</a>
               <a className='dropdown-item-name' href="/" onClick={logoutHandler}>Выход</a>
             </div>

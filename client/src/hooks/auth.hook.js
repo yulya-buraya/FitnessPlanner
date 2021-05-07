@@ -10,10 +10,11 @@ export const useAuth = () => {
         setToken(jwtToken)
         setUserId(id)
         setRole(roles)
-
+        
         localStorage.setItem(storageName, JSON.stringify({
           userId:id, token:jwtToken, role:roles   
         }))
+   
     }, [])
     const logout = useCallback(() => {
         setToken(null)
@@ -27,8 +28,7 @@ export const useAuth = () => {
         const data= JSON.parse(localStorage.getItem(storageName))
         if(data&& data.token&& data.role){
             login(data.token, data.userId, data.role)
-            
-          }
+        }
     },[login])
 
     return { login, logout, token, userId, role }

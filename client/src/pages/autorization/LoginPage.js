@@ -2,11 +2,12 @@ import React, { useEffect, useState, useContext } from 'react'
 import { useHttp } from '../../hooks/http.hook'
 import { useMessage } from '../../hooks/message.hook'
 import { AuthContext } from '../../context/AuthContext.js'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import '../../styles/login.css'
 
 
 export const LoginPage = () => {
+    const history = useHistory()
     const auth = useContext(AuthContext)
     const message = useMessage()
     const { loading, request, error, clearError } = useHttp()
@@ -29,12 +30,29 @@ export const LoginPage = () => {
     const changeHandler = event => {
         setForm({ ...form, [event.target.name]: event.target.value })
     }
-
     const loginHandler = async () => {
         try {
             const data = await request('/api/auth/login', 'POST', { ...form })
+            const fetched = await request(`/api/biodata`, "GET", null, {
+                Authorization: `Bearer ${data.token}`
+            })
             auth.login(data.token, data.userId, data.role)
-        } catch (e) { }
+            if (data.role == "admin") {
+                history.push("/")
+            }
+            else {
+
+                if (fetched.length == 0) {
+                    history.push("/form")
+                }
+                else {
+                    history.push("/")
+                }
+            }
+
+        }
+
+        catch (e) { }
     }
     const setClassForEmail = () => {
         setClassNameForEmail(classNameForEmail == null ? "active" : null)
