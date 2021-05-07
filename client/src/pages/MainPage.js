@@ -1,9 +1,9 @@
 import React from "react"
 
-export const MainPage=()=>{
+export const MainPage = () => {
     return (
-<div className="content">
-<h1>MainPage</h1>
-</div>
+        <div className="content">
+            <h1>MainPage</h1>
+        </div>
     );
 }

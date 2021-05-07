@@ -58,6 +58,7 @@ export const UserInfoForm = () => {
 
     const userInfoHandler = async () => {
         try {
+            console.log(form);
             const data = await request('/api/biodata/createBiodata', 'POST', { ...form },
                 {
                     Authorization: `Bearer ${auth.token}`
