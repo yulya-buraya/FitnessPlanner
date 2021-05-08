@@ -1,58 +1,127 @@
 import React from "react"
 import '../styles/profile.css'
 
-export const BiodataBlock = () => {
+export const BiodataBlock = ({ biodata }) => {
+
+    const amountOfFats = () => {
+        let fats = biodata[0].weight * 0.9
+        return fats.toFixed(1)
+    }
+    const amountOfProteins = () => {
+        let proteins = biodata[0].weight * 2
+        return proteins.toFixed(1)
+    }
+
+    const amountOfCarbohydrates = () => {
+        let carbohydrates = (AMR() - amountOfProteins() * 4 + amountOfFats() * 9) / 4
+        return carbohydrates.toFixed(1)
+    }
+    const AMR = () => {
+        let activityIndex, k, BMR
+
+        biodata[0].gender == "женский" ? k = 161 : k = -5
+
+        if (biodata[0].activity == "Нет физической нагрузки, сидячий образ жизни") {
+            activityIndex = 1.2
+        }
+        else if (biodata[0].activity == "Небольшие пробежки, пробежка 1-3 раза в неделю, низкая нагрузка") {
+            activityIndex = 1.375
+        }
+        else if (biodata[0].activity == "Занятия спортом 4-5 раз в неделю, средняя нагрузка") {
+            activityIndex = 1.55
+        }
+        else if (biodata[0].activity == "Занятия спортом 6-7 раз в неделю, высокая нагрузка") {
+            activityIndex = 1.725
+        }
+        else if (biodata[0].activity == "Занятия спортом 2 раза в день+силовые нагрузки, очень высокая нагрузка") {
+            activityIndex = 1.9
+        }
+
+        let countCalories = (10 * biodata[0].weight + 6.25 * biodata[0].height - 5 * biodata[0].age - k) * activityIndex
+
+        if (biodata[0].purpose == "Набор мышечной массы") {
+            BMR = countCalories + 0.2 * countCalories;
+        }
+        else if (biodata[0].purpose == "Поддержание формы") {
+            BMR = countCalories
+        }
+        else if (biodata[0].purpose == "Похудение") {
+            BMR = countCalories - 0.2 * countCalories
+            if (biodata[0].gender == "женский" && BMR < 1200) {
+                if (countCalories > 1200) {
+                    BMR = 1200
+                }
+                else {
+                    BMR = countCalories
+                }
+            }
+            else if (biodata[0].gender == "мужской" && BMR < 1400) {
+                if (countCalories > 1400) {
+                    BMR = 1400
+                }
+                else {
+                    BMR = countCalories
+                }
+            }
+            else {
+                BMR = countCalories - 0.2 * countCalories
+            }
+
+        }
+        return BMR.toFixed()
+    }
+
     return (
-              
-            <div className="user-biodata-block default-shadow">
-                <div className="header-for-table">ВАШ ИДЕАЛЬНЫЙ РАЦИОН ДОЛЖЕН СОДЕРЖАТЬ:</div>
-                <hr className="hr-for-table" />
-                <div className="biodata-block">
-                    <div className="biodata-block-item">
-                        <span className='text-style-title'>Каллории, </span>
-                        <br />
-                        <span className='text-style-title'>гр/сутки</span>
-                    </div>
-                    <div className="biodata-block-item">
-                        <span className='text-style-title'>Жиры, </span>
-                        <br />
-                        <span className='text-style-title'>гр/сутки</span>
-                    </div>
-                    <div className="biodata-block-item">
-                        <span className='text-style-title'>Белки, </span>
-                        <br />
-                        <span className='text-style-title'>гр/сутки</span>
-                    </div>
-                    <div className="biodata-block-item">
-                        <span className='text-style-title'>Углеводы, </span>
-                        <br />
-                        <span className='text-style-title'>гр/сутки</span>
 
-                    </div>
+        <div className="user-biodata-block default-shadow">
+            <div className="header-for-table">ВАШ ИДЕАЛЬНЫЙ РАЦИОН ДОЛЖЕН СОДЕРЖАТЬ:</div>
+            <hr className="hr-for-table" />
+            <div className="biodata-block">
+                <div className="biodata-block-item">
+                    <span className='text-style-title'>Каллории, </span>
+                    <br />
+                    <span className='text-style-title'>ккал/сутки</span>
                 </div>
-                <div className="biodata-block">
-                    <div className="biodata-block-item">
-                        <div className="text-style-for-count">
-                            <div className="style-for-content">700</div>
-                        </div>
+                <div className="biodata-block-item">
+                    <span className='text-style-title'>Жиры, </span>
+                    <br />
+                    <span className='text-style-title'>гр/сутки</span>
+                </div>
+                <div className="biodata-block-item">
+                    <span className='text-style-title'>Белки, </span>
+                    <br />
+                    <span className='text-style-title'>гр/сутки</span>
+                </div>
+                <div className="biodata-block-item">
+                    <span className='text-style-title'>Углеводы, </span>
+                    <br />
+                    <span className='text-style-title'>гр/сутки</span>
 
-                    </div>
-                    <div className="biodata-block-item">
-                        <div className="text-style-for-count">
-                            <div className="style-for-content">700</div>
-                        </div>
-                    </div>
-                    <div className="biodata-block-item">
-                        <div className="text-style-for-count">
-                            <div className="style-for-content">700</div>
-                        </div>
-
-                    </div>
-                    <div className="biodata-block-item">
-                        <div className="text-style-for-count">
-                            <div className="style-for-content">700</div></div>
-                    </div>
                 </div>
             </div>
+            <div className="biodata-block">
+                <div className="biodata-block-item">
+                    <div className="text-style-for-count">
+                        <div className="style-for-content">{AMR()}</div>
+                    </div>
+
+                </div>
+                <div className="biodata-block-item">
+                    <div className="text-style-for-count">
+                        <div className="style-for-content">{amountOfFats()}</div>
+                    </div>
+                </div>
+                <div className="biodata-block-item">
+                    <div className="text-style-for-count">
+                        <div className="style-for-content">{amountOfProteins()}</div>
+                    </div>
+
+                </div>
+                <div className="biodata-block-item">
+                    <div className="text-style-for-count">
+                        <div className="style-for-content">{amountOfCarbohydrates()}</div></div>
+                </div>
+            </div>
+        </div>
     );
 }

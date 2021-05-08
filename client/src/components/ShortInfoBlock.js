@@ -1,8 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import '../styles/profile.css'
+import { EditUserInfoForm } from "./forms/EditUserInfoForm"
 
 export const ShortInfoBlock = ({biodata}) => {
-    return (
+    const [isModalEditUserFormActive, setModalEditUserFormActive]=useState(false)
+     return (
             <div className="profile-image-and-short-description default-shadow">
             <div className="avatar-profile"> <img id="avatar-profile" src="/image/default_user.png" />
             </div>
@@ -19,10 +21,12 @@ export const ShortInfoBlock = ({biodata}) => {
             </div>
             <div className="edit-btn">
                 <button className="edit-content-btn default-shadow"
-                    id="editButton" >
+                    id="editButton"
+                    onClick={()=>{setModalEditUserFormActive(true)}} >
                     Редактировать
                     </button>
             </div>
+         <EditUserInfoForm active={isModalEditUserFormActive} setActive={setModalEditUserFormActive}/>
          </div>
     );
 }

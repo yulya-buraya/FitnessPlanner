@@ -3,11 +3,10 @@ import { useHttp } from '../../hooks/http.hook'
 import { useMessage } from '../../hooks/message.hook'
 import { useHistory } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext.js'
-
-
+import '../../styles/modalForm.css'
 import '../../styles/login.css'
 
-export const UserInfoForm = () => {
+export const EditUserInfoForm = ({ active, setActive }) => {
 
     const [classNameForName, setClassNameForName] = useState(null)
     const [classNameForSurname, setClassNameForSurname] = useState(null)
@@ -56,36 +55,32 @@ export const UserInfoForm = () => {
         setForm({ ...form, [event.target.name]: event.target.value })
     }
 
-    const userInfoHandler = async () => {
+    const cancelHandler = () => {
+        setActive(false)
+    }
+    const editUserInfoHandler = async () => {
         try {
-            console.log(form);
-            const data = await request('/api/biodata/createBiodata', 'POST', { ...form },
-                {
-                    Authorization: `Bearer ${auth.token}`
-                })
-           
-            message(data.message)
-           history.push(`/biodata/${auth.userId}`)
-      }
+
+        }
         catch (e) { }
     }
 
     return (
-        <div className="background">
+        <div className={active ? 'background-modal active' : 'background-modal'} onClick={() => setActive(false)} >
             <div className="container-for-form">
-                <span className="login100-form-title"> Ваши учётные данные</span>
+                <span className="login100-form-title"> Редактировать учётные данные</span>
                 <div className="user-info-form">
                     <div className="wrapper">
                         <div className="wrap-input100">
-                            <img className={`icons ${classNameForName}`} src="image/user-solid.svg" />
+                            <img className={`icons ${classNameForName}`} src="/image/user-solid.svg" />
                             <input className="input-info-forms" type="text" name="firstname" placeholder="Введите имя" id="firstname" value={form.firstname} onChange={changeHandler} onFocus={setClassForName} onBlur={setClassForName} />
                         </div>
                         <div className="wrap-input100 ">
-                            <img className={`icons ${classNameForSurname}`} src="image/user-solid.svg" />
+                            <img className={`icons ${classNameForSurname}`} src="/image/user-solid.svg" />
                             <input className="input-info-forms" type="text" name="lastname" placeholder="Введите фамилию" id="lastname" value={form.lastname} onChange={changeHandler} onFocus={setClassForSurname} onBlur={setClassForSurname} />
                         </div>
                         <div className="wrap-input100">
-                            <img className={`icons ${classNameForBirthDay}`} src="image/age.svg" />
+                            <img className={`icons ${classNameForBirthDay}`} src="/image/age.svg" />
                             <input className="input-info-forms" type="number" min="14" name="age" placeholder="Введите количество полных лет" id="age" value={form.age} onChange={changeHandler} onFocus={setClassForBirthDay} onBlur={setClassForBirthDay} />
                         </div>
 
@@ -95,29 +90,29 @@ export const UserInfoForm = () => {
                             <p className='gender-txt'>Выберите пол:</p>
                             <div className="radio-gender-button">
                                 <label>
-                                    <input name="gender" onChange={changeHandler} value='мужской' type="radio" onChecked={()=>{form.gender='мужской'}} />
+                                    <input name="gender" onChange={changeHandler} value='мужской' type="radio" onChecked={() => { form.gender = 'мужской' }} />
                                     <span>Мужской</span>
                                 </label>
                                 <label>
-                                    <input name="gender" onChange={changeHandler} value='женский' type="radio" onChecked={()=>{form.gender='женский'}} />
+                                    <input name="gender" onChange={changeHandler} value='женский' type="radio" onChecked={() => { form.gender = 'женский' }} />
                                     <span>Женский</span>
                                 </label>
                             </div>
                         </div>
 
                         <div className="wrap-input100">
-                            <img className={`icons ${classNameForHeight}`} src="image/height.svg" />
+                            <img className={`icons ${classNameForHeight}`} src="/image/height.svg" />
                             <input className="input-info-forms" type="text" name="height" placeholder="Введите ваш рост" id="height" value={form.height} onChange={changeHandler} onFocus={setClassForHeight} onBlur={setClassForHeight} />
                         </div>
                         <div className="wrap-input100 ">
-                            <img className={`icons ${classNameForWeight}`} src="image/weight-solid.svg" />
+                            <img className={`icons ${classNameForWeight}`} src="/image/weight-solid.svg" />
                             <input className="input-info-forms" type="text" name="weight" placeholder="Введите текущий вес" id="weight" value={form.weight} onChange={changeHandler} onFocus={setClassForWeight} onBlur={setClassForWeight} />
                         </div>
                     </div>
 
                 </div>
                 <div className="wrap-input100">
-                    <img className={`icons ${classNameForPurpose}`} src="image/flag.svg" />
+                    <img className={`icons ${classNameForPurpose}`} src="/image/flag.svg" />
                     <select className="purpose-list input-into-forms" name="purpose" value={form.purpose} onChange={changeHandler} onFocus={setClassForPurpose} onBlur={setClassForPurpose}>
                         <option value="" disabled selected>Выберите цель</option>
                         <option value="Похудение">Похудение</option>
@@ -126,7 +121,7 @@ export const UserInfoForm = () => {
                     </select>
                 </div>
                 <div className="wrap-input100">
-                    <img className={`icons ${classNameForActivity}`} src="image/activity.svg" />
+                    <img className={`icons ${classNameForActivity}`} src="/image/activity.svg" />
                     <select className="purpose-list input-into-forms" name="activity" value={form.activity} onChange={changeHandler} onFocus={setClassForActivity} onBlur={setClassForActivity}>
                         <option value="" disabled selected>Выберите уровень активности</option>
                         <option value="Нет физической нагрузки, сидячий образ жизни">Нет физической нагрузки, сидячий образ жизни</option>
@@ -138,10 +133,16 @@ export const UserInfoForm = () => {
                 </div>
                 <div className="container-form-btn">
                     <button className="container-btn"
-                        id="sendButton"
-                        onClick={userInfoHandler}
+                        id="cancelButton"
+                        onClick={cancelHandler}
                         disabled={loading} >
-                        Отправить
+                        Отменить
+                    </button>
+                    <button className="container-btn"
+                        id="sendButton"
+                        onClick={editUserInfoHandler}
+                        disabled={loading} >
+                        Изменить
                     </button>
                 </div>
 

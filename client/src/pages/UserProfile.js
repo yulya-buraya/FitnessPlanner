@@ -24,11 +24,10 @@ export const UserProfile = () => {
         getBiodata()
     }, [getBiodata])
     return (
-        <div className="profile-block">
+         <div className="profile-block">
             {biodata && <ShortInfoBlock biodata={biodata} />}
             {biodata && <FullInfoBlock biodata={biodata} />}
-            <BiodataBlock />
-
+            {biodata &&  <BiodataBlock biodata={biodata} />}
         </div>
-    );
+        );
 }
