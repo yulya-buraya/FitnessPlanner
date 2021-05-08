@@ -145,7 +145,6 @@ export const EditUserInfoForm = ({ active, setActive }) => {
                         Изменить
                     </button>
                 </div>
-
             </div>
         </div>
     )
