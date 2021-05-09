@@ -1,4 +1,4 @@
-import React, { useContext, useState, useCallback, useEffect } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { useHttp } from '../../src/hooks/http.hook'
 import { AuthContext } from '../../src/context/AuthContext.js'
 
@@ -8,26 +8,30 @@ import { ShortInfoBlock } from "../components/ShortInfoBlock"
 import '../styles/profile.css'
 
 export const UserProfile = () => {
+
     const [biodata, setBiodata] = useState(null)
     const auth = useContext(AuthContext)
     const { request } = useHttp()
+
     const getBiodata = useCallback(async () => {
         try {
-            const fetched = await request(`/api/biodata/`, "GET", null, {
+            const data = await request(`/api/biodata/`, "GET", null, {
                 Authorization: `Bearer ${auth.token}`
             })
-            setBiodata(fetched)
+            setBiodata(data[0])
+        } catch (e) {
         }
-        catch (e) { }
     }, [auth.token, request])
+
     useEffect(() => {
         getBiodata()
     }, [])
+
     return (
-         <div className="profile-block">
-            {biodata && <ShortInfoBlock biodata={biodata} />}
-            {biodata && <FullInfoBlock biodata={biodata} />}
-            {biodata &&  <BiodataBlock biodata={biodata} />}
+        <div className="profile-block">
+            {biodata && <ShortInfoBlock biodata={biodata} setBiodata={setBiodata}/>}
+            {biodata && <FullInfoBlock biodata={biodata}/>}
+            {biodata && <BiodataBlock biodata={biodata}/>}
         </div>
-        );
+    );
 }
