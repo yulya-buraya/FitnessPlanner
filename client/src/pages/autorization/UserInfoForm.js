@@ -99,7 +99,7 @@ export const UserInfoForm = () => {
                                     <span>Мужской</span>
                                 </label>
                                 <label>
-                                    <input name="gender" onChange={changeHandler} value='женский' type="radio" type="radio" checked={form.gender == 'мужской'?true:false} />
+                                    <input name="gender" onChange={changeHandler} value='женский' type="radio" type="radio" checked={form.gender == 'женский'?true:false} />
                                     <span>Женский</span>
                                 </label>
                             </div>

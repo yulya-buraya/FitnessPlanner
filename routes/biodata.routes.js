@@ -57,4 +57,13 @@ router.put('/:id', async(req,res)=>{
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
     }
 }) 
+router.get('/users', async (req, res) => {
+    try {
+        const biodatas = await UserInfo.find()
+        res.json(biodatas)
+    } catch (e) {
+        console.log(e)
+        res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+    }
+})
 module.exports = router
