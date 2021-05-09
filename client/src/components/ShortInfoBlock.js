@@ -24,12 +24,11 @@ export const ShortInfoBlock = ({ biodata }) => {
                         id="editButton"
                         onClick={() => {
                             setModalEditUserFormActive(true)
-                            console.log('edit button click');
                         }}>
                     Редактировать
                 </button>
             </div>
-            {isModalEditUserFormActive && <EditUserInfoForm active={isModalEditUserFormActive} setActive={setModalEditUserFormActive}/>}
+            {isModalEditUserFormActive && <EditUserInfoForm active={isModalEditUserFormActive} setActive={setModalEditUserFormActive} biodata={biodata[0]}/>}
         </div>
     );
 }

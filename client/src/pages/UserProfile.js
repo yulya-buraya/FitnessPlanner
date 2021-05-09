@@ -22,7 +22,7 @@ export const UserProfile = () => {
     }, [auth.token, request])
     useEffect(() => {
         getBiodata()
-    }, [getBiodata])
+    }, [])
     return (
          <div className="profile-block">
             {biodata && <ShortInfoBlock biodata={biodata} />}

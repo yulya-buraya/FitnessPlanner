@@ -95,11 +95,11 @@ export const UserInfoForm = () => {
                             <p className='gender-txt'>Выберите пол:</p>
                             <div className="radio-gender-button">
                                 <label>
-                                    <input name="gender" onChange={changeHandler} value='мужской' type="radio" onChecked={()=>{form.gender='мужской'}} />
+                                    <input name="gender" onChange={changeHandler} value='мужской' type="radio" type="radio" checked={form.gender == 'мужской'?true:false} />
                                     <span>Мужской</span>
                                 </label>
                                 <label>
-                                    <input name="gender" onChange={changeHandler} value='женский' type="radio" onChecked={()=>{form.gender='женский'}} />
+                                    <input name="gender" onChange={changeHandler} value='женский' type="radio" type="radio" checked={form.gender == 'мужской'?true:false} />
                                     <span>Женский</span>
                                 </label>
                             </div>
