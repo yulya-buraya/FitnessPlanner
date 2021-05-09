@@ -1,5 +1,6 @@
 const { Router } = require('express')
 const UserInfo = require('../models/UserInfo')
+const User = require('../models/User')
 const router = Router()
 const auth = require('./middleware/auth.middleware')
 const config = require('config')
@@ -37,7 +38,7 @@ router.get('/', auth, async (req, res) => {
 })
 router.get('/users', async (req, res) => {
     try {
-        const biodatas = await UserInfo.find()
+        const biodatas = await UserInfo.find().populate('user', 'email')
         res.status(200).json(biodatas)
     } catch (e) {
         console.log(e)
