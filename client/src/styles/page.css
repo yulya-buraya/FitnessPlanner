@@ -1,0 +1,78 @@
+.text-like-header {
+  color: rgb(154, 192, 198);
+  font-weight: 900;
+  font-size: 27pt;
+  height: 40pt;
+  width: max-content;
+  padding: 30pt 0pt 20pt;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.users-content-block {
+  height: max-content;
+  min-height: 500pt;
+  width: inherit;
+  padding: 0 30pt;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#users {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18pt;
+  border-collapse: collapse;
+  width: inherit;
+  border-radius: 5px;
+}
+
+#users td, #users th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+#users tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#users tr:hover {
+  background-color: #ddd;
+}
+
+#users th {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  background-color: rgb(80, 91, 91);
+  color: white;
+  word-wrap: break-word;
+}
+
+.delete-icons {
+  height: 27px;
+  filter: invert(81%) sepia(50%) saturate(4171%) hue-rotate(1deg) brightness(106%) contrast(105%);
+}
+
+.delete-icons:hover {
+  filter: invert(67%) sepia(61%) saturate(2689%) hue-rotate(325deg) brightness(100%) contrast(102%);
+}
+
+.text-align-center {
+  top:10%;
+  color: rgb(171, 165, 165);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25pt;
+}
+
+.not-found-icons {
+  top:7%;
+  height: 45%;
+  opacity: 0.8;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
