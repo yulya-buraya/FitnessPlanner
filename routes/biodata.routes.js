@@ -4,6 +4,7 @@ const router = Router()
 const auth = require('./middleware/auth.middleware')
 const config = require('config')
 
+
 router.post('/createBiodata', auth, async (req, res) => {
     try {
         const userDetails = await UserInfo.findOne({user: req.user.userId})
@@ -43,5 +44,17 @@ router.get('/:id', async (req, res) => {
     }
 
 })
+router.put('/:id', async(req,res)=>{
+    try{
+         const biodata = await UserInfo.findOneAndUpdate({_id:req.params.id}, {$set:req.body})
+        console.log('body', req.body)
 
+        await biodata.save()
+        res.json(biodata)
+    }
+    catch(e){
+        console.log('error', e)
+        res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+    }
+}) 
 module.exports = router

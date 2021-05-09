@@ -1,12 +1,9 @@
-import React, { useContext, useState, useCallback } from 'react'
+import React, { useState } from 'react'
 import { useHttp } from '../../hooks/http.hook'
-import { useMessage } from '../../hooks/message.hook'
-import { useHistory } from 'react-router-dom'
-import { AuthContext } from '../../context/AuthContext.js'
 import '../../styles/modalForm.css'
 import '../../styles/login.css'
 
-export const EditUserInfoForm = ({ active, setActive }) => {
+export const EditUserInfoForm = ({ active, setActive, biodata  }) => {
 
     const [classNameForName, setClassNameForName] = useState(null)
     const [classNameForSurname, setClassNameForSurname] = useState(null)
@@ -16,13 +13,10 @@ export const EditUserInfoForm = ({ active, setActive }) => {
     const [classNameForPurpose, setClassNameForPurpose] = useState(null)
     const [classNameForActivity, setClassNameForActivity] = useState(null)
     const { loading, request } = useHttp()
-    const message = useMessage()
-    const history = useHistory()
-    const auth = useContext(AuthContext)
 
 
     const [form, setForm] = useState({
-        firstname: '', lastname: '', age: '', gender: '', height: '', weight: '', purpose: '', activity: ''
+        firstname: biodata.firstname, lastname: biodata.lastname, age: biodata.age, gender: biodata.gender, height: biodata.height, weight: biodata.weight, purpose: biodata.purpose, activity: biodata.activity
     })
 
     const setClassForName = () => {
@@ -59,29 +53,32 @@ export const EditUserInfoForm = ({ active, setActive }) => {
         setActive(false)
     }
     const editUserInfoHandler = async () => {
+        console.log( "dsdsd", biodata._id)
         try {
-
+            
+      const data = await request(`/api/biodata/${biodata._id}`, 'PUT', { ...form })    
+            setActive(false)
         }
         catch (e) { }
     }
 
     return (
         <div className={active ? 'background-modal active' : 'background-modal'} onClick={() => setActive(false)} >
-            <div className="container-for-form">
-                <span className="login100-form-title"> Редактировать учётные данные</span>
+                <div className="container-for-form" onClick={e => e.stopPropagation()}>
+                <span className="login100-form-title"> Изменить учётные данные</span>
                 <div className="user-info-form">
                     <div className="wrapper">
                         <div className="wrap-input100">
                             <img className={`icons ${classNameForName}`} src="/image/user-solid.svg" />
-                            <input className="input-info-forms" type="text" name="firstname" placeholder="Введите имя" id="firstname" value={form.firstname} onChange={changeHandler} onFocus={setClassForName} onBlur={setClassForName} />
+                            <input className="input-info-forms" type="text" name="firstname"  id="firstname" value={form.firstname} onChange={changeHandler} onFocus={setClassForName} onBlur={setClassForName} />
                         </div>
                         <div className="wrap-input100 ">
                             <img className={`icons ${classNameForSurname}`} src="/image/user-solid.svg" />
-                            <input className="input-info-forms" type="text" name="lastname" placeholder="Введите фамилию" id="lastname" value={form.lastname} onChange={changeHandler} onFocus={setClassForSurname} onBlur={setClassForSurname} />
+                            <input className="input-info-forms" type="text" name="lastname"  id="lastname" value={form.lastname} onChange={changeHandler} onFocus={setClassForSurname} onBlur={setClassForSurname} />
                         </div>
                         <div className="wrap-input100">
                             <img className={`icons ${classNameForBirthDay}`} src="/image/age.svg" />
-                            <input className="input-info-forms" type="number" min="14" name="age" placeholder="Введите количество полных лет" id="age" value={form.age} onChange={changeHandler} onFocus={setClassForBirthDay} onBlur={setClassForBirthDay} />
+                            <input className="input-info-forms" type="number" min="14" name="age"  id="age" value={form.age} onChange={changeHandler} onFocus={setClassForBirthDay} onBlur={setClassForBirthDay} />
                         </div>
 
                     </div>
@@ -90,11 +87,11 @@ export const EditUserInfoForm = ({ active, setActive }) => {
                             <p className='gender-txt'>Выберите пол:</p>
                             <div className="radio-gender-button">
                                 <label>
-                                    <input name="gender" onChange={changeHandler} value='мужской' type="radio" onChecked={() => { form.gender = 'мужской' }} />
+                                    <input name="gender" onChange={changeHandler} value='мужской' type="radio" checked={form.gender == 'мужской'?true:false} />
                                     <span>Мужской</span>
                                 </label>
                                 <label>
-                                    <input name="gender" onChange={changeHandler} value='женский' type="radio" onChecked={() => { form.gender = 'женский' }} />
+                                    <input name="gender" onChange={changeHandler} value='женский' type="radio" checked={form.gender == 'женский'?true:false}  />
                                     <span>Женский</span>
                                 </label>
                             </div>
@@ -114,7 +111,7 @@ export const EditUserInfoForm = ({ active, setActive }) => {
                 <div className="wrap-input100">
                     <img className={`icons ${classNameForPurpose}`} src="/image/flag.svg" />
                     <select className="purpose-list input-into-forms" name="purpose" value={form.purpose} onChange={changeHandler} onFocus={setClassForPurpose} onBlur={setClassForPurpose}>
-                        <option value="" disabled selected>Выберите цель</option>
+                        <option value="">Выберите цель</option>
                         <option value="Похудение">Похудение</option>
                         <option value="Поддержание формы">Поддержание формы</option>
                         <option value="Набор мышечной массы">Набор мышечной массы</option>
@@ -123,7 +120,7 @@ export const EditUserInfoForm = ({ active, setActive }) => {
                 <div className="wrap-input100">
                     <img className={`icons ${classNameForActivity}`} src="/image/activity.svg" />
                     <select className="purpose-list input-into-forms" name="activity" value={form.activity} onChange={changeHandler} onFocus={setClassForActivity} onBlur={setClassForActivity}>
-                        <option value="" disabled selected>Выберите уровень активности</option>
+                        <option value="">Выберите уровень активности</option>
                         <option value="Нет физической нагрузки, сидячий образ жизни">Нет физической нагрузки, сидячий образ жизни</option>
                         <option value="Небольшие пробежки, пробежка 1-3 раза в неделю, низкая нагрузка">Небольшие пробежки, пробежка 1-3 раза в неделю, низкая нагрузка</option>
                         <option value="Занятия спортом 4-5 раз в неделю, средняя нагрузка">Занятия спортом 4-5 раз в неделю, средняя нагрузка</option>
@@ -145,7 +142,6 @@ export const EditUserInfoForm = ({ active, setActive }) => {
                         Изменить
                     </button>
                 </div>
-
             </div>
         </div>
     )
