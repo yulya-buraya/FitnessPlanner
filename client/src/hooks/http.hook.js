@@ -1,37 +1,36 @@
-import {useState, useCallback} from 'react'
-
-
+import { useCallback, useState } from 'react'
 
 export const useHttp = () => {
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(null)
 
-  const request = useCallback(async (url, method = 'GET', body = null, headers = {}) => {
-    setLoading(true)
-    try {
-      if (body) {
-        body = JSON.stringify(body)
-        headers['Content-Type'] = 'application/json'
-      }
+    const request = useCallback(async (url, method = 'GET', body = null, headers = {}) => {
+        console.log('вызов колбэка')
+        setLoading(true)
+        try {
+            if (body) {
+                body = JSON.stringify(body)
+                headers['Content-Type'] = 'application/json'
+            }
 
-      const response = await fetch(url, {method, body, headers})
-      const data = await response.json()
+            const response = await fetch(url, { method, body, headers })
+            const data = await response.json()
 
-      if (!response.ok) {
-        throw new Error(data.message || 'Что-то пошло не так')
-      }
+            if (!response.ok) {
+                throw new Error(data.message || 'Что-то пошло не так')
+            }
 
-      setLoading(false)
+            setLoading(false)
 
-      return data
-    } catch (e) {
-      setLoading(false)
-      setError(e.message)
-      throw e
-    }
-  }, [])
+            return data
+        } catch (e) {
+            setLoading(false)
+            setError(e.message)
+            throw e
+        }
+    }, [])
 
-  const clearError = useCallback(() => setError(null), [])
+    const clearError = useCallback(() => setError(null), [])
 
-  return { loading, request, error, clearError }
+    return { loading, request, error, clearError }
 }

@@ -25,8 +25,7 @@ export const UserPage = () => {
     return (
         <div className="content">
             <div className="text-like-header">Пользователи</div>
-            {!loading && users && <UserList users={users} />}
-            {console.log(users)}
+            {!loading && users && <UserList users={users} setUsers={setUsers} />}
         </div>
     );
 }
