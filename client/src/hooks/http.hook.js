@@ -4,10 +4,11 @@ export const useHttp = () => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
 
+
     const request = useCallback(async (url, method = 'GET', body = null, headers = {}) => {
         console.log('вызов колбэка')
-        setLoading(true)
-        try {
+/*         setLoading(true)
+ */        try {
             if (body) {
                 body = JSON.stringify(body)
                 headers['Content-Type'] = 'application/json'
@@ -20,12 +21,12 @@ export const useHttp = () => {
                 throw new Error(data.message || 'Что-то пошло не так')
             }
 
-            setLoading(false)
-
+/*             setLoading(false)
+ */
             return data
         } catch (e) {
-            setLoading(false)
-            setError(e.message)
+/*             setLoading(false)
+ */            setError(e.message)
             throw e
         }
     }, [])
