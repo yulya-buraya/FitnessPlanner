@@ -6,7 +6,6 @@ import { BiodataBlock } from "../components/BiodataBlock"
 import { FullInfoBlock } from "../components/FullInfoBlock"
 import { ShortInfoBlock } from "../components/ShortInfoBlock"
 import '../styles/profile.css'
-import { Loader } from '../components/Loader'
 
 export const UserProfile = () => {
 
@@ -27,9 +26,9 @@ export const UserProfile = () => {
     useEffect(() => {
         getBiodata()
     }, [])
-    if(loading){
-        return <Loader/>
-    }
+    /*if (loading) {
+    return <Loader/>
+}*/
 
     return (
         <div className="profile-block">
