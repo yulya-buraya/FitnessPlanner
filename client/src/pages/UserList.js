@@ -1,8 +1,7 @@
 import React, { useState } from "react"
 import { DeleteUserForm } from "../components/forms/DeleteUserForm"
 import { useHttp } from "../hooks/http.hook";
-/* import { useHttp } from '../hooks/http.hook'
- */
+
 export const UserList = ({ users, setUsers }) => {
 
     const { request } = useHttp()
