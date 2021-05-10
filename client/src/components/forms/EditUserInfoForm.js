@@ -60,7 +60,6 @@ export const EditUserInfoForm = ({ active, setActive, biodata, setBiodata }) => 
         setActive(false)
     }
     const editUserInfoHandler = async () => {
-        console.log("dsdsd", biodata._id)
         try {
             const data = await request(`/api/biodata/${biodata._id}`, 'PUT', { ...form })
             setBiodata({ ...biodata, ...form })
