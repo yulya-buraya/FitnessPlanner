@@ -6,12 +6,13 @@ import { BiodataBlock } from "../components/BiodataBlock"
 import { FullInfoBlock } from "../components/FullInfoBlock"
 import { ShortInfoBlock } from "../components/ShortInfoBlock"
 import '../styles/profile.css'
+import { Loader } from '../components/Loader'
 
 export const UserProfile = () => {
 
     const [biodata, setBiodata] = useState(null)
     const auth = useContext(AuthContext)
-    const { request } = useHttp()
+    const { request, loading } = useHttp()
 
     const getBiodata = useCallback(async () => {
         try {
@@ -26,12 +27,15 @@ export const UserProfile = () => {
     useEffect(() => {
         getBiodata()
     }, [])
+    if(loading){
+        return <Loader/>
+    }
 
     return (
         <div className="profile-block">
-            {biodata && <ShortInfoBlock biodata={biodata} setBiodata={setBiodata}/>}
-            {biodata && <FullInfoBlock biodata={biodata}/>}
-            {biodata && <BiodataBlock biodata={biodata}/>}
+            {!loading && biodata && <ShortInfoBlock biodata={biodata} setBiodata={setBiodata}/>}
+            {!loading && biodata && <FullInfoBlock biodata={biodata}/>}
+            {!loading && biodata && <BiodataBlock biodata={biodata}/>}
         </div>
     );
 }
