@@ -1,7 +1,7 @@
 import React from "react"
 
 export const UserList = ({ users }) => {
-   /*  if (!users.lenght) {
+ if (users.lenght==0) {
         return (
             <>
                 <img className="not-found-icons" src="image/not-found.jpg" />
@@ -9,8 +9,7 @@ export const UserList = ({ users }) => {
             </>
         )
 
-    } */
-
+    } 
     return (
         <div className='users-content-block'>
             <table id="users">
@@ -31,17 +30,17 @@ export const UserList = ({ users }) => {
                         
                         <tr key ={user._id}>
                             <td>{index + 1}</td>
-                            <td>hjhjkhjk</td>
+                            <td>{user.user[0].email}</td>
                             <td>{user.firstname} {user.lastname}</td>
-                            <td>21</td>
-                            <td>183</td>
-                            <td>75</td>
-                            <td>Тренировку 1-3 раза в неделю, небольшая нагрузка</td>
-                            <td>Набор мышечной массы</td>
+                            <td>{user.age}</td>
+                            <td>{user.height}</td>
+                            <td>{user.weight}</td>
+                            <td>{user.activity}</td>
+                            <td>{user.purpose}</td>
                             <td>
                                 <img className="delete-icons" src="image/trash-bin.svg" onClick={() => { console.log("vfffsfsf") }} />
                             </td>
-                        
+                        {console.log(user)}
                         </tr>
                     )
                 })}

@@ -3,6 +3,7 @@ import { useState, useCallback, useEffect } from 'react'
 const storageName= 'userdata'
 export const useAuth = () => {
     const [token, setToken] = useState(null)
+    const [ready, setReady]= useState(false)
     const [userId, setUserId] = useState(null)
     const [role, setRole] = useState(null)
 
@@ -28,8 +29,9 @@ export const useAuth = () => {
         const data= JSON.parse(localStorage.getItem(storageName))
         if(data&& data.token&& data.role){
             login(data.token, data.userId, data.role)
+            setReady(true)
         }
     },[login])
 
-    return { login, logout, token, userId, role }
+    return { login, logout, token, userId, role,ready }
 }
