@@ -7,26 +7,29 @@ import { Loader } from "../components/Loader"
 export const UserPage = () => {
     const [users, setUsers] = useState([])
     const { request, loading } = useHttp()
-    const fetchUsers = useCallback(async () => {
+    const getUsers = useCallback(async () => {
         try {
+            console.log('вызов гет юзерс')
             const data = await request('/api/biodata/users', 'GET', null)
             setUsers(data)
         } catch (e) {
 
         }
-    }, [request])
+    }, [])
 
     useEffect(() => {
-        fetchUsers()
+        getUsers()
+        console.log('useEffect')
     }, [])
+
     if (loading) {
         return <Loader />
     }
+
     return (
         <div className="content">
             <div className="text-like-header">Пользователи</div>
-            {!loading && users && <UserList users={users} />}
-            {console.log(users)}
+            {!loading && users && <UserList users={users} setUsers={setUsers}/>}
         </div>
     );
 }

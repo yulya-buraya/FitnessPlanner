@@ -19,35 +19,35 @@ export const BiodataBlock = ({ biodata }) => {
     const AMR = () => {
         let activityIndex, k, BMR
 
-        biodata.gender == "женский" ? k = 161 : k = -5
+        biodata.gender === "женский" ? k = 161 : k = -5
 
-        if (biodata.activity == "Нет физической нагрузки, сидячий образ жизни") {
+        if (biodata.activity === "Нет физической нагрузки, сидячий образ жизни") {
             activityIndex = 1.2
         }
-        else if (biodata.activity == "Небольшие пробежки, пробежка 1-3 раза в неделю, низкая нагрузка") {
+        else if (biodata.activity === "Небольшие пробежки, пробежка 1-3 раза в неделю, низкая нагрузка") {
             activityIndex = 1.375
         }
-        else if (biodata.activity == "Занятия спортом 4-5 раз в неделю, средняя нагрузка") {
+        else if (biodata.activity === "Занятия спортом 4-5 раз в неделю, средняя нагрузка") {
             activityIndex = 1.55
         }
-        else if (biodata.activity == "Занятия спортом 6-7 раз в неделю, высокая нагрузка") {
+        else if (biodata.activity === "Занятия спортом 6-7 раз в неделю, высокая нагрузка") {
             activityIndex = 1.725
         }
-        else if (biodata.activity == "Занятия спортом 2 раза в день+силовые нагрузки, очень высокая нагрузка") {
+        else if (biodata.activity === "Занятия спортом 2 раза в день+силовые нагрузки, очень высокая нагрузка") {
             activityIndex = 1.9
         }
 
         let countCalories = (10 * biodata.weight + 6.25 * biodata.height - 5 * biodata.age - k) * activityIndex
 
-        if (biodata.purpose == "Набор мышечной массы") {
+        if (biodata.purpose === "Набор мышечной массы") {
             BMR = countCalories + 0.2 * countCalories;
         }
-        else if (biodata.purpose == "Поддержание формы") {
+        else if (biodata.purpose === "Поддержание формы") {
             BMR = countCalories
         }
-        else if (biodata.purpose == "Похудение") {
+        else if (biodata.purpose === "Похудение") {
             BMR = countCalories - 0.2 * countCalories
-            if (biodata.gender == "женский" && BMR < 1200) {
+            if (biodata.gender === "женский" && BMR < 1200) {
                 if (countCalories > 1200) {
                     BMR = 1200
                 }
@@ -55,7 +55,7 @@ export const BiodataBlock = ({ biodata }) => {
                     BMR = countCalories
                 }
             }
-            else if (biodata.gender == "мужской" && BMR < 1400) {
+            else if (biodata.gender === "мужской" && BMR < 1400) {
                 if (countCalories > 1400) {
                     BMR = 1400
                 }
