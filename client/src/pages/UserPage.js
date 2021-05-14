@@ -25,6 +25,9 @@ export const UserPage = () => {
     return (
         <div className="content">
             <div className="text-like-header">Пользователи</div>
+            <hr className="hr-for-table" />
+            <br />
+            <br />
             {!loading && users && <UserList users={users} setUsers={setUsers} />}
         </div>
     );

@@ -162,7 +162,10 @@
     margin-right: auto;
     cursor: pointer;
 }
+.edit-content-btn:hover{
+    background-color: #d4f8f4; 
 
+}
 .save-btn {
     display: flex;
     margin-top: 30px;
@@ -196,7 +199,8 @@
 
 .header-for-table {
     grid-area: headerT;
-    color: rgb(167, 208, 213);
+    color: rgb(118, 164, 171);
+    text-transform: uppercase;
     font-weight: 700;
     font-size: 18pt;
     height: 40pt;

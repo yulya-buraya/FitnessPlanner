@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react'
-import { useHttp } from '../../src/hooks/http.hook'
-import { AuthContext } from '../../src/context/AuthContext.js'
+import { useHttp } from '../hooks/http.hook'
+import { AuthContext } from '../context/AuthContext.js'
 
 import { BiodataBlock } from "../components/BiodataBlock"
 import { FullInfoBlock } from "../components/FullInfoBlock"

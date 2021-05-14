@@ -63,10 +63,10 @@ export const UserInfoForm = () => {
                 {
                     Authorization: `Bearer ${auth.token}`
                 })
-           
+
             message(data.message)
-           history.push(`/biodata/${auth.userId}`)
-      }
+            history.push(`/biodata/${auth.userId}`)
+        }
         catch (e) { }
     }
 
@@ -95,11 +95,11 @@ export const UserInfoForm = () => {
                             <p className='gender-txt'>Выберите пол:</p>
                             <div className="radio-gender-button">
                                 <label>
-                                    <input name="gender" onChange={changeHandler} value='мужской' type="radio" type="radio" checked={form.gender == 'мужской'?true:false} />
+                                    <input name="gender" onChange={changeHandler} value='мужской' type="radio" type="radio" checked={form.gender == 'мужской' ? true : false} />
                                     <span>Мужской</span>
                                 </label>
                                 <label>
-                                    <input name="gender" onChange={changeHandler} value='женский' type="radio" type="radio" checked={form.gender == 'женский'?true:false} />
+                                    <input name="gender" onChange={changeHandler} value='женский' type="radio" type="radio" checked={form.gender == 'женский' ? true : false} />
                                     <span>Женский</span>
                                 </label>
                             </div>

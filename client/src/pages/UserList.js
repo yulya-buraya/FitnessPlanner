@@ -18,7 +18,7 @@ export const UserList = ({ users, setUsers }) => {
         setForm(<DeleteUserForm setForm={setForm} user={user} deleteUser={deleteUser}/>)
     }
 
-    if (!users.lenght == null) {
+    if (!users.length) {
         return (
             <>
                 <img className="not-found-icons" src="image/not-found.jpg"/>
@@ -26,7 +26,6 @@ export const UserList = ({ users, setUsers }) => {
             </>
         )
     }
-
     return (
         <div className='users-content-block'>
             <table id="users">

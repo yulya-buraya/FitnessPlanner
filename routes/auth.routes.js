@@ -15,7 +15,7 @@ router.post(
     check('email', 'Некорректный email').isEmail(),
     check('password', 'Минимальная длина пароля 6 символов')
       .isLength({ min: 6 })
- 
+
   ],
   async (req, res) => {
     try {
@@ -36,7 +36,7 @@ router.post(
       if (candidate) {
         return res.status(400).json({ message: 'Такой пользователь уже существует' })
       }
-      else if(password!==confirmPassword){
+      else if (password !== confirmPassword) {
         return res.status(400).json({ message: 'Введённые пароли не совпадают. Попробуйте ещё раз.' })
       }
 
@@ -90,12 +90,12 @@ router.post(
       )
 
       res.json({ token, userId: user.id, role: user.roles })
-   
+
 
     } catch (e) {
       res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
     }
   })
 
- 
+
 module.exports = router

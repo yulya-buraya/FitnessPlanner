@@ -3,11 +3,14 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import { LoginPage } from './pages/autorization/LoginPage'
 import { MealPlannerPage } from './pages/MealPlannerPage'
 import { MainPage } from './pages/MainPage'
-import { WorkoutPage } from './pages/WorkoutPage'
+import { WorkoutPage } from './components/TrainingPlanning/WorkoutPage'
 import { RegisterPage } from './pages/autorization/RegisterPage'
 import { UserInfoForm } from './pages/autorization/UserInfoForm'
 import { UserProfile } from './pages/UserProfile'
 import {UserPage} from './pages/UserPage'
+import { UserWorkoutsPage } from './components/TrainingPlanning/workoutComponents/UserWorkoutsPage'
+import { WorkoutTrainingPage } from './components/TrainingPlanning/WorkoutTrainingPage'
+import { ExercisesPage } from './components/TrainingPlanning/ExercisesPage'
 export const useRoutes = (isAuthenticated, role) => {
     if (isAuthenticated&&role) {
         if(role.includes("admin")){
@@ -25,6 +28,9 @@ export const useRoutes = (isAuthenticated, role) => {
                     <Route path='/workout'>
                         <WorkoutPage />
                     </Route>
+                    <Route path='/exercises'>
+                     <ExercisesPage/>
+                    </Route>
                     <Redirect to="/index" />
                 </Switch>
             )  
@@ -33,7 +39,8 @@ export const useRoutes = (isAuthenticated, role) => {
             return (
                 <Switch>
                    <Route path='/mealplanner' exact>
-                        <MealPlannerPage />
+              {/*           <MealPlannerPage /> */}
+              <WorkoutTrainingPage/>
                     </Route>
                     <Route path='/index' exact>
                         <MainPage />
@@ -44,6 +51,12 @@ export const useRoutes = (isAuthenticated, role) => {
                     <Route path='/biodata/:id'>
                         <UserProfile />
                     </Route>
+                    <Route path='/userWorkouts/:id'>
+                        <UserWorkoutsPage/>
+                    </Route>
+      {/*               <Route path='/program'>
+  
+                    </Route> */}
                     <Route path='/form'>
                         <UserInfoForm />
                     </Route>
