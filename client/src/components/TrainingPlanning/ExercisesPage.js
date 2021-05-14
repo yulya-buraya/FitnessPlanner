@@ -1,10 +1,9 @@
-import React, {useEffect, useState, useCallback} from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import "../../styles/training.css"
-import {useHttp} from '../../hooks/http.hook'
+import { useHttp } from '../../hooks/http.hook'
 import { ExerciseListBlock } from "./workoutComponents/ExerciseListBlock"
 import { SubmenuContent } from "./workoutComponents/SubmenuContent"
-import { Loader } from "../Loader"
-
+/*import { Loader } from "../Loader"*/
 
 
 export const ExercisesPage = () => {
@@ -19,19 +18,21 @@ export const ExercisesPage = () => {
         }
     }, [request])
 
-useEffect(()=>{
-    fetchExercises()
-},[])
-if(loading){
-    return <Loader/>
-}
+    useEffect(async () => {
+        await fetchExercises()
+    }, [])
+
+    if (loading) {
+        /*return <Loader/>*/
+    }
+
     return (
         <div className="submenu-content">
-         <SubmenuContent/>
-         <div className="header-for-table">Упражнения</div>
-         <br/> 
-         {!loading&& exercises&&   <ExerciseListBlock exercises={exercises} setExercises={setExercises}/>}
-       
+            <SubmenuContent setExercises={setExercises}/>
+            <div className="header-for-table">Упражнения</div>
+            <br/>
+            {!loading && exercises && <ExerciseListBlock exercises={exercises} setExercises={setExercises}/>}
+
         </div>
 
 
