@@ -561,6 +561,7 @@ label {
  }
 
 .title-exercise{
+    text-align: center;
     font-size: 24pt;
     font-weight: 800;
     color: rgb(75, 79, 79);

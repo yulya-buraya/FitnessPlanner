@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useContext } from "react"
+import React, { useEffect, useState, useCallback } from "react"
 import { useHttp } from '../../src/hooks/http.hook'
 import "../styles/page.css"
 import { UserList } from "./UserList"

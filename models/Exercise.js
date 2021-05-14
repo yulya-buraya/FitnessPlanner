@@ -20,8 +20,7 @@ const Exercise = new Schema({
     },
     inventory:
     {
-        type: String,
-        required: true
+        type: String
     },
     level: {
         type: String,
