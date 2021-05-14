@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import '../../styles/modalForm.css'
 import '../../styles/login.css'
 
-export const AddExerciseForm = ({ setActive, active }) => {
+export const AddExerciseForm = ({ setActive, active, exercise, setExercise }) => {
 
     const [isClassNameForExerciseName, setClassNameForExerciseName] = useState(null)
     const [isClassNameForMuscule, setClassNameForMuscule] = useState(null)
@@ -18,7 +18,7 @@ export const AddExerciseForm = ({ setActive, active }) => {
     const history = useHistory()
 
     const [form, setForm] = useState({
-        name: '', muscule: '', level: '', link: '', inventory: ''
+        name: exercise.name, muscule: exercise.muscule, level: exercise.level, link: exercise.link, inventory: exercise.inventory
     })
 
     const setClassForExerciseName = () => {
@@ -45,12 +45,12 @@ export const AddExerciseForm = ({ setActive, active }) => {
     const cancelHandler = () => {
         setActive(false)
     }
-    const addExerciseHandler = async () => {
+    const editExerciseHandler = async () => {
         try {
                 const data = await request('/api/exercise/create', 'POST', { ...form })
                 message(data.message) 
+                setExercise({...exercise, ...form})
                 setActive(false) 
-            history.push('/exercises') 
         } catch (e) {
         }
     }
@@ -96,9 +96,9 @@ export const AddExerciseForm = ({ setActive, active }) => {
                     </button>
                         <button className="container-btn"
                             id="sendButton"
-                            onClick={addExerciseHandler}
+                            onClick={editExerciseHandler}
                             disabled={loading} >
-                             Добавить
+                             Изменить
                     </button>
                     </div>
                 </div>

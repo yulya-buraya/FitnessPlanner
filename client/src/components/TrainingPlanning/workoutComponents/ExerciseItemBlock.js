@@ -1,10 +1,10 @@
 import React from "react"
 import "../../../styles/training.css"
-import { ActionButtonBlock } from "./ActionButtonBlock"
-export const ExerciseItemBlock = () => {
+import { ActionButtonBlock } from "./ActionButtonBlockExercise"
+export const ExerciseItemBlock = ({exercise}) => {
     return (
-        <div className="exercise-item">
-               <iframe className="exercise-video" src="https://www.youtube.com/embed/-p0PA9Zt8zk"
+        <div className="exercise-item" key={exercise._id}>
+               <iframe className="exercise-video" src={exercise.link}
                 frameBorder="0"
                 allow="autoplay; encrypted-media;"
                 allowFullScreen
@@ -12,13 +12,13 @@ export const ExerciseItemBlock = () => {
             </iframe>
        
             <div className="info-exercise">
-                <p className="title-exercise">Гиперэкстензия (наклоны через козла)</p>
+                <p className="title-exercise">{exercise.name}</p>
                 <hr className="hr-exercise"/>
-                <p className="exercise-description"><span className="important-text-exercise"> Инвентарь: </span><span className="value-exercise-field">козёл спортивный</span></p>
-                <p className="exercise-description"><span className="important-text-exercise"> Основные мышцы: </span> <span className="value-exercise-field">разгибатели спины  </span> </p>
-                <p className="exercise-description"><span className="important-text-exercise"> Сложность выполнения: </span><span className="value-exercise-field">средняя</span></p>
+                <p className="exercise-description"><span className="important-text-exercise"> Инвентарь: </span><span className="value-exercise-field">{exercise.inventory}</span></p>
+                <p className="exercise-description"><span className="important-text-exercise"> Основные мышцы: </span> <span className="value-exercise-field">{exercise.muscule} </span> </p>
+                <p className="exercise-description"><span className="important-text-exercise"> Сложность выполнения: </span><span className="value-exercise-field">{exercise.level}</span></p>
                 </div>
-           <ActionButtonBlock/>
+           <ActionButtonBlock exercise={exercise}/>
         </div>
     );
 }

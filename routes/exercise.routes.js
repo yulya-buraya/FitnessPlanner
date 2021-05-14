@@ -5,11 +5,11 @@ const Exercise = require('../models/Exercise')
 
 router.post('/create',  async (req, res) => {
     try {
-/*         const exercise = await Exercise.findOne({req.name})
+        const newExercise = await Exercise.findOne({name:req.body.name})
 
-        if (exercise)   {
+        if (newExercise)   {
             return res.status(400).json({ message: 'Такое упражнение уже есть!' })
-        } */
+        }
         const exercise = new Exercise(
             {...req.body}
         )
@@ -22,9 +22,9 @@ router.post('/create',  async (req, res) => {
     }
 })
 
- router.get('/',  async (req, res) => {
+ router.get('/exercises',  async (req, res) => {
     try {
-        const exercises = await Exercise.findOne()
+        const exercises = await Exercise.find()
         res.json(exercises)
     } catch (e) {
         res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
