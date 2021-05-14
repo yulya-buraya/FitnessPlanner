@@ -1,12 +1,14 @@
 .text-like-header {
-  color: rgb(154, 192, 198);
-  font-weight: 900;
-  font-size: 27pt;
+  color: rgb(118, 164, 171);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 20pt;
   height: 40pt;
   width: max-content;
   padding: 30pt 0pt 20pt;
   margin-left: auto;
   margin-right: auto;
+  
 }
 
 .users-content-block {
@@ -73,9 +75,16 @@
 
 .not-found-icons {
   top:7%;
-  height: 45%;
+  height: 40%;
   opacity: 0.8;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+}
+.not-foung-block{
+  width: inherit;
+  height: 100vh;
+  background-color: white;
+  border-radius: 10px;
+  border:1px solid rgba(225, 222, 222, 0.714);
 }

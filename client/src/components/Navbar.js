@@ -27,7 +27,7 @@ export const Navbar = (props) => {
             <NavLink className='navbar-item-name' to="/users">Рецепты</NavLink></li>
           <li className="navbar-item">
             <img className="icons-navbar" src="/image/dumbbell-solid.svg" />
-            <NavLink className='navbar-item-name' to="/workout">Упражнения</NavLink></li>
+            <NavLink className='navbar-item-name' to="/exercises">Упражнения</NavLink></li>
           <li className="navbar-item">
             <img className="icons-navbar" src="/image/utensils-solid.svg" />
             <NavLink className='navbar-item-name' to="/mealplanner">Питание</NavLink></li>
