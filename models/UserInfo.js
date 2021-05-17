@@ -1,8 +1,6 @@
 const { Schema, model, Types } = require('mongoose')
 
 const UserInfo = new Schema({
- 
-    
     firstname:
     {
         type: String,
