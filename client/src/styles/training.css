@@ -341,6 +341,7 @@ label {
 .dayline {
     max-width: inherit;
     margin: 8px auto;
+
 }
 
 .dayline-body {
@@ -351,7 +352,7 @@ label {
 
 .dayline-body:after {
     content: '';
-    width: 4px1;
+    width: 4px;
     height: 95%;
     background-color: rgb(136, 220, 214);
     position: absolute;

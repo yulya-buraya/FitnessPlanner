@@ -6,7 +6,6 @@ export const useHttp = () => {
 
 
     const request = useCallback(async (url, method = 'GET', body = null, headers = {}) => {
-        console.log('вызов колбэка')
         setLoading(true)
          try {
             if (body) {

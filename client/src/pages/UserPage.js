@@ -2,7 +2,6 @@ import React, { useEffect, useState, useCallback } from "react"
 import { useHttp } from '../../src/hooks/http.hook'
 import "../styles/page.css"
 import { UserList } from "./UserList"
-import { Loader } from "../components/Loader"
 
 export const UserPage = () => {
     const [users, setUsers] = useState([])
@@ -19,9 +18,7 @@ export const UserPage = () => {
     useEffect(() => {
         fetchUsers()
     }, [])
-    if (loading) {
-        return <Loader />
-    }
+
     return (
         <div className="content">
             <div className="text-like-header">Пользователи</div>

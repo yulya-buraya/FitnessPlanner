@@ -23,7 +23,6 @@
     "font-awesome": "^4.7.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.4",
-    "react-loadingg": "^1.7.2",
     "react-redux": "^7.2.4"
   },
   "devDependencies": {
