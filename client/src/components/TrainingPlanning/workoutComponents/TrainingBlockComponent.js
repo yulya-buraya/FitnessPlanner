@@ -5,7 +5,7 @@ export const TrainingBlockComponent = () => {
     return (
         <div className="training-item">
             <iframe className="training-video" src="https://www.youtube.com/embed/-p0PA9Zt8zk"
-                frameborder="0"
+                frameBorder="0"
                 allow="autoplay; encrypted-media;"
                 allowFullScreen
                 title="YouTube video player">

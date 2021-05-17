@@ -1,5 +1,6 @@
 .background {
     width: 100vw;
+    position: fixed;
     height: 100vh;
     display: flex;
     flex-wrap: wrap;
@@ -7,7 +8,6 @@
     align-items: center;
     background: #dfe6e9;
 }
-
 
 .text2:focus {
     font-family: OpenSans-Regular;
@@ -67,6 +67,18 @@ button:hover {
     margin: 0 auto;
 }
 
+.wrap-login100-exercise {
+    width: 600px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 65px 50px 50px 50px;
+    -moz-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
 .wrap-login100 {
     width: 500px;
     background: #fff;
@@ -79,8 +91,16 @@ button:hover {
     -ms-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
 }
 
+.container-for-day-form {
+    min-width: 600px;
+    background: #fff;
+    border-radius: 10px;
+    overflow-y: hidden;
+    padding: 65px 100px 50px 100px;
+}
+
 .container-for-form {
-    width: 750px;
+    width: 850px;
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
@@ -94,11 +114,71 @@ button:hover {
 .user-info-form {
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.exercises-count-day {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 14px;
 }
 
 .login100-form {
     width: 85%;
     margin: 0 auto;
+}
+
+.days-form {
+    width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    max-height: 700px;
+    overflow-y: auto;
+    margin: 0 auto;
+}
+
+.count-exercise {
+    width: 50px;
+    height: 20x;
+    border-radius: 10px;
+    border: none;
+    margin-right: 2px;
+    padding-left:20px;
+    box-shadow: 0 0 1px rgba(87, 86, 86, 0.823);
+}
+.parameters-exercise {
+    width: 120px;
+    height: 20x;
+    border-radius: 10px;
+    border: none;
+    margin-right: 2px;
+    padding-left:20px;
+    box-shadow: 0 0 1px rgba(87, 86, 86, 0.823);
+}
+
+.day-content {
+    background-color: lightcyan;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    width: 350px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.823);
+}
+
+.day-content:nth-child(2n) {
+    background-color: beige;
+}
+
+.day-content:nth-child(3n) {
+    background-color: rgb(240, 220, 245);
+}
+
+.day-content:nth-child(4n) {
+    background-color: rgb(220, 245, 220);
 }
 
 .user-form {
@@ -110,6 +190,7 @@ button:hover {
     font-family: OpenSans-Regular;
     display: block;
     font-size: 30px;
+    font-weight: 650;
     color: #555555;
     line-height: 1.2;
     text-align: center;
@@ -128,6 +209,21 @@ button:hover {
     width: 100%;
 }
 
+.exercises-list-input {
+    width: 99%;
+    margin-bottom: 14px;
+  
+}
+.exercises-list-input input{
+    width: 95%;
+    outline: none;
+    height: 20px;
+    border:none;
+    margin:0 auto;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.823);
+    border-radius: 10px;
+    padding:0 10px;    
+}
 .input100, .input-info-forms {
     justify-content: center;
     align-items: center;
@@ -141,8 +237,61 @@ button:hover {
     box-shadow: 0 0 1px rgba(125, 124, 124, 0.3);
 }
 
-.purpose-list,
-.level-list {
+input[type="file"] {
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    width: 100%;
+    height: 62px;
+    box-shadow: 0 0 5px rgba(125, 124, 124, 0.3);
+}
+
+.file-label {
+    border-radius: 10px;
+    color: #24405f;
+    font-weight: 600;
+    font-size: 13pt;
+    height: 60px;
+    width: 100%;
+    overflow: hidden;
+    background-color: rgba(141, 227, 231, 0.579);
+    border: 1px solid rgb(169, 167, 167);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-overflow: ellipsis;
+    margin-bottom: 26.66666px;
+    box-shadow: 0 0 5px rgba(125, 124, 124, 0.3);
+}
+
+.exercises-list option {
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.exercises-list {
+    position: relative;
+}
+
+.background-label {
+    border-radius: 10px;
+    color: #fffeef;
+    border: 1px solid rgb(169, 167, 167);
+    font-weight: 600;
+    font-size: 13pt;
+    height: 60px;
+    width: 100%;
+    overflow: hidden;
+    background-color: rgb(87, 139, 145);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-overflow: ellipsis;
+    margin-bottom: 26.66666px;
+}
+
+.purpose-list, .level-list, .place-list, .gender-list {
     padding-left: 40px;
     outline: none;
     height: 70px;
@@ -153,6 +302,7 @@ button:hover {
     border-radius: 10pt;
     border: 1px solid #e6e6e6;
     box-shadow: 0 0 1px rgba(125, 124, 124, 0.3);
+    margin-bottom: 26px;
 }
 
 .purpose-list:focus {
@@ -171,11 +321,12 @@ input.input100 {
 
 .container-login100-form-btn, .container-form-btn {
     width: 100%;
-     display: flex;
+    display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     margin-bottom: 15pt;
 }
+
 .login100-form-btn {
     display: flex;
     justify-content: center;
@@ -194,7 +345,7 @@ input.input100 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin:20px 10px 0;
+    margin: 20px 0px 0;
     width: 45%;
     height: 60px;
     font-weight: 700;
@@ -203,11 +354,11 @@ input.input100 {
     color: #fff;
     line-height: 1.2;
     text-transform: uppercase;
-     border-radius: 5pt;
- 
+    border-radius: 5pt;
 }
-.container-btn:hover{
-    background-color: #159690;  
+
+.container-btn:hover {
+    background-color: #159690;
 }
 
 .gender-block {

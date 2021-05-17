@@ -31,5 +31,27 @@ router.get('/exercises', async (req, res) => {
     }
 
 })
+router.delete('/delete', async (req, res) => {
+    try {
+        let { id } = req.body
+        await Exercise.deleteOne({ _id: id })
+        res.status(200).json({ message: 'Упражнение успешно удалено' })
+    } catch (e) {
+        console.log(e.message);
+        res.status(400).json({ message: 'Что-то пошло не так' })
+    }
+})
+router.put('/:id', async (req, res) => {
+    try {
+        console.log(req.body)
+        const exercise = await Exercise.findOneAndUpdate({_id:req.params.id},{ $set: req.body })
+        console.log(exercise)
+        await exercise.save()
+    res.status(200).json({ message: 'Упражнение успешно изменено' }) 
+    } catch (e) {
+        console.log('error', e)
+        res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+    }
+})
 
 module.exports = router

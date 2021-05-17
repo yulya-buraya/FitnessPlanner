@@ -50,7 +50,6 @@ export const AddExerciseForm = ({ setActive, active, setExercises }) => {
         try {
             const data = await request('/api/exercise/create', 'POST', { ...form })
             message(data.message)
-            console.log(data);
             setExercises(prev => {
                 const exercises = [...prev];
                 exercises.push(data.exercise);
@@ -64,7 +63,7 @@ export const AddExerciseForm = ({ setActive, active, setExercises }) => {
 
     return (
         <div className={active ? 'background-modal active' : 'background-modal'} onClick={() => setActive(false)}>
-            <div className="wrap-login100" onClick={e => e.stopPropagation()}>
+            <div className="wrap-login100-exercise" onClick={e => e.stopPropagation()}>
                 <div className="login100-form">
                     <span className="login100-form-title">
                         Добавить новое упражнение

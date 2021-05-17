@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { useHttp } from '../../hooks/http.hook'
 import { useMessage } from '../../hooks/message.hook'
-import { useHistory } from 'react-router-dom'
 import '../../styles/modalForm.css'
 import '../../styles/login.css'
 
-export const AddExerciseForm = ({ setActive, active, exercise, setExercise }) => {
+export const EditExerciseForm = ({ setActive, exercise, setExercises }) => {
 
     const [isClassNameForExerciseName, setClassNameForExerciseName] = useState(null)
     const [isClassNameForMuscule, setClassNameForMuscule] = useState(null)
@@ -15,7 +14,6 @@ export const AddExerciseForm = ({ setActive, active, exercise, setExercise }) =>
     const { loading, request } = useHttp()
     const message = useMessage()
 
-    const history = useHistory()
 
     const [form, setForm] = useState({
         name: exercise.name, muscule: exercise.muscule, level: exercise.level, link: exercise.link, inventory: exercise.inventory
@@ -43,24 +41,33 @@ export const AddExerciseForm = ({ setActive, active, exercise, setExercise }) =>
     }
 
     const cancelHandler = () => {
-        setActive(false)
+        setActive(null)
     }
     const editExerciseHandler = async () => {
         try {
-                const data = await request('/api/exercise/create', 'POST', { ...form })
-                message(data.message) 
-                setExercise({...exercise, ...form})
-                setActive(false) 
-        } catch (e) {
-        }
+
+
+            const data = await request(`/api/exercise/${exercise._id}`, 'PUT', { ...form })
+
+            setExercises(prev => {
+                const exercises = [...prev];
+                if (exercises.indexOf(exercise) >= 0) {
+                    exercises.splice(exercises.indexOf(exercise), 1, form);
+                }
+                return exercises
+            })
+
+            setActive(null)
+
+        } catch (e) { }
     }
 
     return (
-        <div className={active ? 'background-modal active' : 'background-modal'} onClick={() => setActive(false)}>
-            <div className="wrap-login100" onClick={e => e.stopPropagation()}>
+        <div className='background-modal active' onClick={cancelHandler}>
+            <div className="wrap-login100-exercise" onClick={e => e.stopPropagation()}>
                 <div className="login100-form">
                     <span className="login100-form-title">
-                        Добавить новое упражнение
+                        Редактировать упражнение
                                 </span>
                     <div className="wrap-input100">
                         <img className={`icons-exercise-form ${isClassNameForExerciseName}`} src="/image/exercises.svg" />
@@ -70,7 +77,7 @@ export const AddExerciseForm = ({ setActive, active, exercise, setExercise }) =>
                         <img className={`icons ${isClassNameForMuscule}`} src="/image/muscules.svg" />
                         <input className="input-info-forms" type="text" name="muscule" placeholder="Введите группу активных мышц" id="muscule" value={form.muscule} onChange={changeHandler} onFocus={setClassForMuscule} onBlur={setClassForMuscule} />
                     </div>
-                            <div className="wrap-input100">
+                    <div className="wrap-input100">
                         <img className={`icons ${isClassNameForLink}`} src="/image/link.svg" />
                         <input className="input-info-forms" type="text" name="link" placeholder="Введите ссылку на видео технику" id="link" value={form.link} onChange={changeHandler} onFocus={setClassForLink} onBlur={setClassForLink} />
                     </div>
@@ -92,13 +99,13 @@ export const AddExerciseForm = ({ setActive, active, exercise, setExercise }) =>
                             id="cancelButton"
                             onClick={cancelHandler}
                             disabled={loading} >
-                           Отменить
+                            Отменить
                     </button>
                         <button className="container-btn"
                             id="sendButton"
                             onClick={editExerciseHandler}
                             disabled={loading} >
-                             Изменить
+                            Изменить
                     </button>
                     </div>
                 </div>

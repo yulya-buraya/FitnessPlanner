@@ -54,6 +54,9 @@ export const useRoutes = (isAuthenticated, role) => {
                     <Route path='/userWorkouts/:id'>
                         <UserWorkoutsPage/>
                     </Route>
+                    <Route path='/exercises'>
+                     <ExercisesPage/>
+                    </Route>
       {/*               <Route path='/program'>
   
                     </Route> */}

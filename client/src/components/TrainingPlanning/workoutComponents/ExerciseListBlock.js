@@ -11,10 +11,12 @@ export const ExerciseListBlock = ({exercises,setExercises}) => {
             </div>
         )
     }
+    const role=JSON.parse(localStorage.getItem("userdata")).role[0]
+
     return (
         <div className="list-exercise">
-                {exercises.map((exercise)=>{
-                    return   <ExerciseItemBlock exercise={exercise} />
+                {exercises.map((exercise, index)=>{
+                    return   <ExerciseItemBlock exercise={exercise}  setExercises={setExercises} role={role}/>
                 })}
    
 

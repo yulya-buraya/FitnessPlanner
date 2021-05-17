@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import "../../../styles/training.css"
 import { AddExerciseForm } from "../../forms/AddExerciseForm";
 
-export const SubmenuContent = ({setExercises}) => {
+export const SubmenuContentExercise = ({setExercises}) => {
     const [isModalFormActive, setModalFormActive] = useState(false)
 
     return (

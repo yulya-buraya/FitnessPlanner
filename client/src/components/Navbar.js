@@ -60,6 +60,9 @@ export const Navbar = (props) => {
           <li className="navbar-item ">
             <img className="icons-navbar" src="/image/cookbook.svg" />
             <NavLink className='navbar-item-name' to="/users">Рецепты</NavLink></li>
+            <li className="navbar-item">
+            <img className="icons-navbar" src="/image/dumbbell-solid.svg" />
+            <NavLink className='navbar-item-name' to="/exercises">Упражнения</NavLink></li>
           <li className="dropdown ">
             <img className="icon-dropbtn" src="/image/user-solid.svg" />
             <NavLink to="#" className="dropbtn">Аккаунт<i className="fa fa-angle-down"></i></NavLink>

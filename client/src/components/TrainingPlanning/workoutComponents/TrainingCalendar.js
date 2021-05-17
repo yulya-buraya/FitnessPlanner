@@ -8,7 +8,7 @@ export const TrainingCalendar = () => {
     return (
         <div className="training-calendar-block">
             <div className="dayline">
-                <div class="dayline-body">
+                <div className="dayline-body">
 
                     <DayBlockComponent />
                     <DayBlockComponent />
