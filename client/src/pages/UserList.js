@@ -20,10 +20,10 @@ export const UserList = ({ users, setUsers }) => {
 
     if (!users.length) {
         return (
-            <>
-                <img className="not-found-icons" src="image/not-found.jpg"/>
-                <p className="text-align-center">Данные не найдены!</p>
-            </>
+            <div className="not-foung-block">
+            <img className="not-found-icons" src="image/not-found.jpg"/>
+            <p className="text-align-center">Данные не найдены!</p>
+        </div>
         )
     }
     return (

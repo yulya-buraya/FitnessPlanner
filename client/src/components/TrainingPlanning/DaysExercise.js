@@ -7,6 +7,7 @@ export const DaysExercise = ({ i, days }) => {
     const [exercises, setExercises] = useState([])
     const [params, setParams] = useState("");
     const { request } = useHttp()
+    
 
     const onChange = (e) => setCount(Math.max(0, e.target.value | 0));
 

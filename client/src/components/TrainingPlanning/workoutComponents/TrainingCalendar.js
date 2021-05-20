@@ -1,17 +1,17 @@
 import React from "react"
-import { NavLink } from "react-router-dom"
 import "../../../styles/training.css"
 import { DayBlockComponent } from "./DayBlockComponent"
 
 
-export const TrainingCalendar = () => {
+export const TrainingCalendar = ({ workout, setWorkout }) => {
     return (
         <div className="training-calendar-block">
             <div className="dayline">
                 <div className="dayline-body">
 
-                    <DayBlockComponent />
-                    <DayBlockComponent />
+                    {workout.days.map((day) => {
+                        return <DayBlockComponent day={day} />
+                    })}
 
                 </div>
 

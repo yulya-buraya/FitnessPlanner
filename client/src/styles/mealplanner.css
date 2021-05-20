@@ -1,0 +1,203 @@
+.ingredients-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+    max-height: 700px;
+    overflow-y: auto;
+    margin: 10px auto;
+}
+
+.instructions-form {
+    max-height: 700px;
+    overflow-y: auto;
+    margin: 10px auto;
+}
+
+.ingredients-content {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0px;
+    border: none;
+}
+
+.ingredient-input {
+    border-radius: 10px;
+    padding: 0 20px;
+    outline: none;
+    border: 1px solid rgb(201, 200, 200);
+    color: rgb(121, 133, 133);
+    font-size: 12pt;
+}
+
+.ingredient-input:nth-child(3n) {
+    border: 1px solid rgb(185, 236, 191);
+}
+
+.ingredient-input:nth-child(2n) {
+    border: 1px solid rgb(190, 233, 176);
+    background-color: rgba(223, 222, 178, 0.306);
+}
+
+.ingredient-input:nth-child(4n) {
+    border: 1px solid rgb(154, 231, 229);
+    background-color: rgba(154, 231, 228, 0.306);
+}
+
+.ingredient-name {
+    width: 270px;
+    padding-left: 55px;
+    background-color: rgba(138, 220, 147, 0.878);
+}
+
+.icon-ingredient {
+    height: 17px;
+    width: 17px;
+    position: absolute;
+    float: left;
+    margin-top: 25px;
+    margin-left: 15px;
+}
+
+.instructions-input {
+    width: 96%;
+    height: 190px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgb(248, 247, 241);
+    outline: none;
+    border: 1px solid rgb(218, 211, 211);
+    font-size: 14pt;
+    resize: none;
+}
+
+.step-text {
+    color: rgb(106, 105, 105);
+    font-size: 16pt;
+    font-weight: 900;
+}
+
+.list-recipes {
+    position: relative;
+    width: 100%;
+    height: max-content;
+}
+
+.recipe-item {
+    display: inline-block;
+    min-height: 580px;
+    width: 545px;
+    box-shadow: 0px 1px 3px rgba(32, 75, 146, 0.15);
+    border-radius: 10px;
+    background-color: white;
+    margin: 0 25px 25px 0;
+}
+
+.recipe-item:nth-child(3n) {
+    margin-right: 0px;
+}
+
+.recipe-image {
+    overflow: hidden;
+    width: inherit;
+    height: 40  0px;
+    background-color: #818585;
+    border-radius: 10px 10px 0px 0px;
+    cursor: pointer;
+}
+
+.recipe-image img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.recipe-item:hover {
+    outline: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .3), -23px 0 20px -23px rgba(0, 0, 0, .8), 23px 0 20px -23px rgba(0, 0, 0, .8), 0 0 40px rgba(0, 0, 0, .1) inset;
+}
+
+.short-info-recipe {
+    text-align: center;
+    width: inherit;
+    min-height: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 40px 40px;
+}
+
+.text-style-for-name-recipe {
+    color: rgb(91, 94, 98);
+    font-weight: 700;
+    font-size: 22pt;
+    text-align: left;
+    padding: 0 40px;
+}
+.icon-recipe {
+    height: 60px;
+    filter: invert(70%) sepia(0%) saturate(58%) hue-rotate(276deg) brightness(95%) contrast(89%);
+}
+.recipe-short-value{
+    width: max-content;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    color: rgb(91, 94, 98);
+    font-weight: 800;
+
+}
+ .short-info-recipe-for-admin {
+     padding: 10px;
+     width: 800px;
+} 
+.recipe-item-for-admin {
+    display: flex;
+    height: 350px;
+    width: 100%;
+    box-shadow: 0px 1px 3px rgba(32, 75, 146, 0.15);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.recipe-image-for-admin {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 1px 3px rgba(46, 48, 50, 0.701);
+    margin:15px;
+}
+.header-plan-recipe{
+    text-align: center;
+    color:rgb(104, 108, 110);
+    font-weight: 600;
+
+}
+.table-info-recipe{
+    width: 100%;
+    text-align: center;
+}
+.table-info-recipe th{
+   font-size: 16pt;
+   width: 150px;
+}
+.info-recipe-block{
+    width: 85%;
+    margin: 0 60px;
+    display: flex;
+    justify-content: space-between;
+}
+.value-recipe{
+    color: rgb(19, 169, 161);
+    font-weight: 700;
+    font-size: 18pt;
+}
+.text-subtitle-recipe {
+    font-weight: 700;
+    font-size: 16pt;
+    color: rgb(98, 95, 95);
+}

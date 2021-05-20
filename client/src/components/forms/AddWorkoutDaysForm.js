@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import { useHttp } from '../../hooks/http.hook'
+import { useMessage } from '../../hooks/message.hook'
 import '../../styles/modalForm.css'
 import '../../styles/login.css'
 import { DaysExercise } from '../TrainingPlanning/DaysExercise'
@@ -8,16 +9,22 @@ export const AddWorkoutDaysForm = ({ setActive, form }) => {
 
     const { loading, request } = useHttp()
     const days = useRef([]);
+    const message = useMessage()
 
     const cancelHandler = () => {
         setActive(null)
     }
 
     const addWorkoutDaysHandler = async () => {
-        console.log({ ...form, days: days.current });
-        /*const data = await request('/api/exercise/create', 'POST', { ...form, days: days.current })
-        message(data.message)
-        setActive(false)*/
+        try {
+            const data = await request('/api/workout/create', 'POST', { ...form, days: days.current })
+            message(data.message)
+            console.log("добавлено")
+        } catch (e) {
+            console.log(e)
+        }
+     
+        setActive(null)
     }
 
     return (
@@ -29,7 +36,7 @@ export const AddWorkoutDaysForm = ({ setActive, form }) => {
                                 </span>
                     <div className="days-form">
                         {[...Array(parseInt(form.count))].map((n, i) => {
-                            days.current.push({ params: "", exercises: [] });
+                            days.current.push({number:i+1, params: "", exercises: [] });
                             return (
                                 <div className="day-content">
                                     <DaysExercise i={i} days={days}/>
@@ -50,8 +57,7 @@ export const AddWorkoutDaysForm = ({ setActive, form }) => {
                                 disabled={loading}>
                             Добавить
                         </button>
-                    </div>
-
+                    </div>     
                 </div>
             </div>
         </div>
