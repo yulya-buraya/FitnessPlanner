@@ -1,7 +1,7 @@
 import React from "react"
 import "../../../styles/training.css"
 
-export const TrainingBlockComponent = () => {
+export const TrainingBlockComponent = ({exercise}) => {
     return (
         <div className="training-item">
             <iframe className="training-video" src="https://www.youtube.com/embed/-p0PA9Zt8zk"
@@ -10,7 +10,7 @@ export const TrainingBlockComponent = () => {
                 allowFullScreen
                 title="YouTube video player">
             </iframe>
-            <p className="video-name">Разминка</p>
+            <p className="video-name">{exercise}</p>
         </div>
     );
 }

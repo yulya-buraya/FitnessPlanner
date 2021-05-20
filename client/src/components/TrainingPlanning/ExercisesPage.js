@@ -28,7 +28,7 @@ export const ExercisesPage = () => {
 
     return (
         <div className="submenu-content">
-            <SubmenuContentExercise setExercises={setExercises} />
+            <SubmenuContentExercise setExercises={setExercises} exercises={exercises} />
             <div className="header-for-table">Упражнения</div>
             <br />
             {!loading && exercises && <ExerciseListBlock exercises={exercises} setExercises={setExercises} />}

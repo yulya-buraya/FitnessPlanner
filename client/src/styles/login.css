@@ -55,6 +55,7 @@ button:hover {
 .text-center {
     font-family: OpenSans-Regular;
     text-align: center;
+    margin-top: 15px;
 }
 
 .hov1:hover {
@@ -67,7 +68,8 @@ button:hover {
     margin: 0 auto;
 }
 
-.wrap-login100-exercise {
+.wrap-login100-exercise,
+.wrap-login100-food {
     width: 600px;
     background: #fff;
     border-radius: 10px;
@@ -143,7 +145,7 @@ button:hover {
 
 .count-exercise {
     width: 50px;
-    height: 20x;
+    height: 25px;
     border-radius: 10px;
     border: none;
     margin-right: 2px;
@@ -152,7 +154,7 @@ button:hover {
 }
 .parameters-exercise {
     width: 120px;
-    height: 20x;
+    height: 25px;
     border-radius: 10px;
     border: none;
     margin-right: 2px;
@@ -276,14 +278,14 @@ input[type="file"] {
 
 .background-label {
     border-radius: 10px;
-    color: #fffeef;
-    border: 1px solid rgb(169, 167, 167);
+    color: #2d5f4b;
+    border: 1px solid rgba(161, 162, 155, 0.374);
     font-weight: 600;
     font-size: 13pt;
     height: 60px;
     width: 100%;
     overflow: hidden;
-    background-color: rgb(87, 139, 145);
+    background-color: rgba(146, 230, 217, 0.401);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -315,7 +317,7 @@ input[type="file"] {
 input.input100 {
     height: 68px;
     padding: 0 25px 0 25px;
-    margin-bottom: 20pt;
+    margin-bottom: 15pt;
     outline: none;
 }
 
@@ -324,7 +326,6 @@ input.input100 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-bottom: 15pt;
 }
 
 .login100-form-btn {
@@ -413,7 +414,7 @@ i.fa.active {
 input.input-info-forms {
     height: 68px;
     padding: 0 25px 0 40px;
-    margin-bottom: 20pt;
+    margin-bottom: 15pt;
     outline: none;
 }
 

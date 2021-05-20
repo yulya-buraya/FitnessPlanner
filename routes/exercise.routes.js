@@ -3,6 +3,7 @@ const router = Router()
 const Exercise = require('../models/Exercise')
 
 
+
 router.post('/create', async (req, res) => {
     try {
         const newExercise = await Exercise.findOne({ name: req.body.name })
@@ -30,6 +31,17 @@ router.get('/exercises', async (req, res) => {
         res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
     }
 
+})
+router.get('/:name', async(req, res)=>{
+    try{
+        let { name } = req.body
+        const exercise = await Exercise.findOne({ name: name })
+        res.json(exercise)
+    }
+    catch(e){
+        console.log('error', e)
+        res.status(500).json({ message: 'Что-то пошло не так' })
+    }
 })
 router.delete('/delete', async (req, res) => {
     try {

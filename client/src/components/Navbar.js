@@ -21,10 +21,10 @@ export const Navbar = (props) => {
           </li>
           <li className="navbar-item">
             <i className="fa fa-table"></i>
-            <NavLink className='navbar-item-name' to="/users">Таблица КБЖУ</NavLink></li>
+            <NavLink className='navbar-item-name' to="/food">Таблица КБЖУ</NavLink></li>
           <li className="navbar-item">
             <img className="icons-navbar" src="/image/cookbook.svg" />
-            <NavLink className='navbar-item-name' to="/users">Рецепты</NavLink></li>
+            <NavLink className='navbar-item-name' to="/recipes">Рецепты</NavLink></li>
           <li className="navbar-item">
             <img className="icons-navbar" src="/image/dumbbell-solid.svg" />
             <NavLink className='navbar-item-name' to="/exercises">Упражнения</NavLink></li>
@@ -32,8 +32,8 @@ export const Navbar = (props) => {
             <img className="icons-navbar" src="/image/utensils-solid.svg" />
             <NavLink className='navbar-item-name' to="/mealplanner">Питание</NavLink></li>
           <li className="navbar-item">
-            <img className="icons-navbar" src="/image/running-solid.svg" />
-            <NavLink className='navbar-item-name' to="/workout">Тренировки</NavLink></li>
+            <img className="icons-navbar training-icon-padding" src="/image/running-solid.svg" />
+            <NavLink className='navbar-item-name' to="/workouts">Тренировки</NavLink></li>
           <li className="dropdown">
             <img className="icon-dropbtn" src="/image/user-solid.svg" />
             <NavLink to="#" className="dropbtn">Аккаунт<i className="fa fa-angle-down"></i></NavLink>
@@ -53,15 +53,15 @@ export const Navbar = (props) => {
             <NavLink className='navbar-item-name ' to="/mealplanner">Питание</NavLink></li>
           <li className="navbar-item">
             <img className="icons-navbar" src="/image/running-solid.svg" />
-            <NavLink className='navbar-item-name' to="/workout">Тренировки</NavLink></li>
+            <NavLink className='navbar-item-name' to="/workouts">Тренировки</NavLink></li>
           <li className="navbar-item ">
             <i className="fa fa-table"></i>
-            <NavLink className='navbar-item-name' to="/users">Таблица КБЖУ</NavLink></li>
+            <NavLink className='navbar-item-name' to="/food">Таблица КБЖУ</NavLink></li>
           <li className="navbar-item ">
             <img className="icons-navbar" src="/image/cookbook.svg" />
-            <NavLink className='navbar-item-name' to="/users">Рецепты</NavLink></li>
+            <NavLink className='navbar-item-name' to="/recipes">Рецепты</NavLink></li>
             <li className="navbar-item">
-            <img className="icons-navbar" src="/image/dumbbell-solid.svg" />
+            <img className="icons-navbar training-icon-padding" src="/image/dumbbell-solid.svg" />
             <NavLink className='navbar-item-name' to="/exercises">Упражнения</NavLink></li>
           <li className="dropdown ">
             <img className="icon-dropbtn" src="/image/user-solid.svg" />

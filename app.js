@@ -10,6 +10,9 @@ app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/biodata', require('./routes/biodata.routes'))
 app.use('/api/user', require('./routes/user.routes'))
 app.use('/api/exercise', require('./routes/exercise.routes'))
+app.use('/api/workout', require('./routes/workout.routes'))
+app.use('/api/food', require('./routes/food.routes'))
+app.use('/api/recipe', require('./routes/recipe.routes'))
 
 const PORT = config.get('port') || 5000
 

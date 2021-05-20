@@ -1,9 +1,9 @@
 import { useState, useCallback, useEffect } from 'react'
 
-const storageName= 'userdata'
+const storageName = 'userdata'
 export const useAuth = () => {
     const [token, setToken] = useState(null)
-    const [ready, setReady]= useState(false)
+    const [ready, setReady] = useState(false)
     const [userId, setUserId] = useState(null)
     const [role, setRole] = useState(null)
 
@@ -11,11 +11,11 @@ export const useAuth = () => {
         setToken(jwtToken)
         setUserId(id)
         setRole(roles)
-        
+
         localStorage.setItem(storageName, JSON.stringify({
-          userId:id, token:jwtToken, role:roles   
+            userId: id, token: jwtToken, role: roles
         }))
-   
+
     }, [])
     const logout = useCallback(() => {
         setToken(null)
@@ -25,13 +25,13 @@ export const useAuth = () => {
         localStorage.removeItem(storageName)
     }, [])
 
-    useEffect(()=>{
-        const data= JSON.parse(localStorage.getItem(storageName))
-        if(data&& data.token&& data.role){
+    useEffect(() => {
+        const data = JSON.parse(localStorage.getItem(storageName))
+        if (data && data.token && data.role) {
             login(data.token, data.userId, data.role)
-            setReady(true)
         }
-    },[login])
+        setReady(true)
+    }, [login])
 
-    return { login, logout, token, userId, role,ready }
+    return { login, logout, token, userId, role, ready }
 }

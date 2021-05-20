@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import { useHttp } from '../../hooks/http.hook'
-import { useMessage } from '../../hooks/message.hook'
-import { useHistory } from 'react-router-dom'
 import '../../styles/modalForm.css'
 import '../../styles/login.css'
 import { AddWorkoutDaysForm } from './AddWorkoutDaysForm'
 
-export const AddWorkoutForm = ({setModalFormActive, setWorkouts }) => {
+export const AddWorkoutForm = ({ setModalFormActive }) => {
 
     const [isClassNameForWorkoutName, setClassNameForWorkoutName] = useState(null)
     const [classNameForPurpose, setClassNameForPurpose] = useState(null)
@@ -16,15 +14,20 @@ export const AddWorkoutForm = ({setModalFormActive, setWorkouts }) => {
     const [isClassNameForCount, setClassNameForCount] = useState(null)
     const [isClassNameForDuration, setClassNameForDuration] = useState(null)
     const [isClassNameForGender, setClassNameForGender] = useState(null)
-    const { loading, request } = useHttp()
-    const message = useMessage()
-
-    const history = useHistory()
-    
+    const { loading } = useHttp()
 
     const [form, setForm] = useState({
-        name: '', purpose: '', level: '', place: '', inventory: '', count: '', gender: '', picture: '', background: '', duration: ''
+        name: '',
+        purpose: '',
+        level: '',
+        place: '',
+        inventory: '',
+        count: '',
+        gender: '',
+        picture: '',
+        duration: ''
     })
+
 
     const setClassForWorkoutName = () => {
         setClassNameForWorkoutName(isClassNameForWorkoutName == null ? "active-icon" : null)
@@ -57,27 +60,12 @@ export const AddWorkoutForm = ({setModalFormActive, setWorkouts }) => {
         setForm({ ...form, [event.target.name]: event.target.value })
     }
 
-
     const cancelHandler = () => {
         setModalFormActive(null)
     }
 
     const addWorkoutDaysHandler = async () => {
-        try {
-            /*         const data = await request('/api/exercise/create', 'POST', { ...form })
-                    message(data.message)
-                    setExercises(prev => {
-                        const exercises = [...prev];
-                        exercises.push(data.exercise);
-                        return exercises
-                    }) */
-/*             setActive(false)
-
- */
-setModalFormActive(<AddWorkoutDaysForm setActive={setModalFormActive} workout={form}/>)
- 
-        } catch (e) {
-        }
+        setModalFormActive(<AddWorkoutDaysForm setActive={setModalFormActive} form={form} />);
     }
 
     return (
@@ -89,13 +77,13 @@ setModalFormActive(<AddWorkoutDaysForm setActive={setModalFormActive} workout={f
                                 </span>
                     <div className="user-info-form">
                         <div className="wrapper">
-                            <div className="wrap-input100" >
+                            <div className="wrap-input100">
                                 <input type="file" name="picture" id="file" onChange={changeHandler} accept="image/*" />
-                                <label htmlFor="picture" className="file-label">
+                                <label htmlFor="picture" className="background-label">
                                     <i className="material-icons">
                                         add_photo_alternate
-                                </i>&nbsp;
-                              {document.getElementById("file") != null ? document.getElementById("file").value : "Загрузить обложку плана"}
+                                    </i>&nbsp;
+                                    {document.getElementById("file") != null ? document.getElementById("file").value : "Загрузить обложку плана"}
                                 </label>
                             </div>
                             <div className="wrap-input100">
@@ -110,14 +98,16 @@ setModalFormActive(<AddWorkoutDaysForm setActive={setModalFormActive} workout={f
                             <div className="wrap-input100">
                                 <img className={`icons ${isClassNameForInventory}`} src="/image/inventary.svg" />
                                 <input className="input-info-forms" type="text" name="inventory"
-                                    placeholder="Введите используемый инвентарь" id="inventory" value={form.inventory}
-                                    onChange={changeHandler} onFocus={setClassForInventory} onBlur={setClassForInventory} />
+                                    placeholder="Введите используемый инвентарь" id="inventory"
+                                    value={form.inventory}
+                                    onChange={changeHandler} onFocus={setClassForInventory}
+                                    onBlur={setClassForInventory} />
                             </div>
                             <div className="wrap-input100">
                                 <img className={`icons ${isClassNameForPlace}`} src="/image/cursor.svg" />
                                 <select className="place-list input-info-forms" type="text" name="place"
                                     placeholder="Введите место проведения" id="place" value={form.place}
-                                    onChange={changeHandler} onFocus={setClassForPlace} onBlur={setClassForPlace} >
+                                    onChange={changeHandler} onFocus={setClassForPlace} onBlur={setClassForPlace}>
                                     <option value="" disabled selected>Выберите место</option>
                                     <option value="Тренажерный зал">Тренажерный зал</option>
                                     <option value="Дом">Дом</option>
@@ -126,7 +116,9 @@ setModalFormActive(<AddWorkoutDaysForm setActive={setModalFormActive} workout={f
 
                             <div className="wrap-input100">
                                 <img className={`icons ${classNameForPurpose}`} src="image/flag.svg" />
-                                <select className="purpose-list input-into-forms" name="purpose" value={form.purpose} onChange={changeHandler} onFocus={setClassForPurpose} onBlur={setClassForPurpose}>
+                                <select className="purpose-list input-into-forms" name="purpose" value={form.purpose}
+                                    onChange={changeHandler} onFocus={setClassForPurpose}
+                                    onBlur={setClassForPurpose}>
                                     <option value="" disabled selected>Выберите цель</option>
                                     <option value="Похудение">Похудение</option>
                                     <option value="Поддержание формы">Поддержание формы</option>
@@ -137,15 +129,6 @@ setModalFormActive(<AddWorkoutDaysForm setActive={setModalFormActive} workout={f
                         </div>
 
                         <div className="wrapper">
-                            <div className="wrap-input100" >
-                                <input type="file" name="background" id="file2" onChange={changeHandler} accept="image/*" />
-                                <label htmlFor="background" className="background-label">
-                                    <i className="material-icons">
-                                        wallpaper
-                                </i>&nbsp;
-                              {document.getElementById("file2") != null ? document.getElementById("file2").value : "Выбрать фон плана"}
-                                </label>
-                            </div>
                             <div className="wrap-input100">
                                 <img className={`icons ${isClassNameForLevel}`} src="image/level.svg" />
                                 <select className="level-list input-into-forms" name="level" value={form.level}
@@ -165,12 +148,15 @@ setModalFormActive(<AddWorkoutDaysForm setActive={setModalFormActive} workout={f
                             <div className="wrap-input100">
                                 <img className={`icons ${isClassNameForDuration}`} src="/image/icon-clock.svg" />
                                 <input className="input-info-forms" type="text" name="duration"
-                                    placeholder="Введите длительность тренировок, мин" id="duration" value={form.duration}
-                                    onChange={changeHandler} onFocus={setClassForDuration} onBlur={setClassForDuration} />
+                                    placeholder="Введите длительность тренировок, мин" id="duration"
+                                    value={form.duration}
+                                    onChange={changeHandler} onFocus={setClassForDuration}
+                                    onBlur={setClassForDuration} />
                             </div>
                             <div className="wrap-input100">
                                 <img className={`icons ${isClassNameForGender}`} src="image/gender.svg" />
-                                <select className="gender-list input-into-forms" name="gender" value={form.gender} onChange={changeHandler} onFocus={setClassForGender} onBlur={setClassForGender}>
+                                <select className="gender-list input-into-forms" name="gender" value={form.gender}
+                                    onChange={changeHandler} onFocus={setClassForGender} onBlur={setClassForGender}>
                                     <option value="" disabled selected>Выберите для кого тренировка</option>
                                     <option value="Для женщин">Для женщин</option>
                                     <option value="Для мужчин">Для мужчин</option>
@@ -196,7 +182,6 @@ setModalFormActive(<AddWorkoutDaysForm setActive={setModalFormActive} workout={f
                     </div>
                 </div>
             </div>
-       
         </div>
 
     )

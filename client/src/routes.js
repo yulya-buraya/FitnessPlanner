@@ -7,89 +7,91 @@ import { WorkoutPage } from './components/TrainingPlanning/WorkoutPage'
 import { RegisterPage } from './pages/autorization/RegisterPage'
 import { UserInfoForm } from './pages/autorization/UserInfoForm'
 import { UserProfile } from './pages/UserProfile'
-import {UserPage} from './pages/UserPage'
+import { UserPage } from './pages/UserPage'
+import { FoodPage } from './components/MealPlanner/FoodPage'
 import { UserWorkoutsPage } from './components/TrainingPlanning/workoutComponents/UserWorkoutsPage'
-import { WorkoutTrainingPage } from './components/TrainingPlanning/WorkoutTrainingPage'
 import { ExercisesPage } from './components/TrainingPlanning/ExercisesPage'
+import { WorkoutTrainingPage } from './components/TrainingPlanning/WorkoutTrainingPage'
+import { RecipesPage } from './components/MealPlanner/RecipesPage'
+import { RecipeInfoPage } from './components/MealPlanner/RecipeInfoPage'
+
 export const useRoutes = (isAuthenticated, role) => {
-    if (isAuthenticated&&role) {
-        if(role.includes("admin")){
+
+    if (isAuthenticated && role) {
+        if (role.includes("admin")) {
             return (
                 <Switch>
-                   <Route path='/mealplanner' exact>
+                    <Route path='/mealplanner' exact>
                         <MealPlannerPage />
                     </Route>
                     <Route path='/index' exact>
-                    <UserPage />
-                    </Route>
-                    <Route path='/users' >
                         <UserPage />
                     </Route>
-                    <Route path='/workout'>
+                    <Route path='/food' exact>
+                        <FoodPage />
+                    </Route>
+                    <Route path='/users' exact>
+                        <UserPage />
+                    </Route>
+                    <Route path='/workouts' exact>
                         <WorkoutPage />
                     </Route>
-                    <Route path='/exercises'>
-                     <ExercisesPage/>
+                    <Route path='/recipes' exact>
+                        <RecipesPage />
+                    </Route>
+                    <Route path='/recipes/:id' exact>
+                        <RecipeInfoPage />
+                    </Route>
+                    <Route path='/workouts/:id' >
+                        <WorkoutTrainingPage />
+                    </Route>
+                    <Route path='/exercises' exact>
+                        <ExercisesPage />
                     </Route>
                     <Redirect to="/index" />
                 </Switch>
-            )  
+            )
         }
-        else if(role.includes("user")){
+        else if (role.includes("user")) {
             return (
                 <Switch>
-                   <Route path='/mealplanner' exact>
-              {/*           <MealPlannerPage /> */}
-              <WorkoutTrainingPage/>
+                    <Route path='/mealplanner' exact>
+                        <MealPlannerPage />
                     </Route>
                     <Route path='/index' exact>
                         <MainPage />
                     </Route>
-                    <Route path='/workout'>
+                    <Route path='/food' exact>
+                        <FoodPage />
+                    </Route>
+                    <Route path='/recipes' exact>
+                        <RecipesPage />
+                    </Route>
+                    <Route path='/workouts' exact>
                         <WorkoutPage />
+                    </Route>
+                    <Route path='/recipes/:id' exact>
+                        <RecipeInfoPage />
+                    </Route>
+                    <Route path='/workouts/:id'>
+                        <WorkoutTrainingPage />
                     </Route>
                     <Route path='/biodata/:id'>
                         <UserProfile />
                     </Route>
                     <Route path='/userWorkouts/:id'>
-                        <UserWorkoutsPage/>
+                        <UserWorkoutsPage />
                     </Route>
-                    <Route path='/exercises'>
-                     <ExercisesPage/>
+                    <Route path='/exercises' exact>
+                        <ExercisesPage />
                     </Route>
-      {/*               <Route path='/program'>
-  
-                    </Route> */}
-                    <Route path='/form'>
+                    <Route path='/form' exact>
                         <UserInfoForm />
                     </Route>
                     <Redirect to="/index" />
                 </Switch>
-            ) 
+            )
         }
-             return (
-            <Switch>
-               <Route path='/mealplanner' exact>
-                    <MealPlannerPage />
-                </Route>
-                <Route path='/index' exact>
-                    <MainPage />
-                </Route>
-                <Route path='/users' >
-                    <UserPage />
-                </Route>
-                <Route path='/workout'>
-                    <WorkoutPage />
-                </Route>
-                <Route path='/biodata/:id'>
-                    <UserProfile />
-                </Route>
-                <Route path='/form'>
-                    <UserInfoForm />
-                </Route>
-                <Redirect to="/index" />
-            </Switch>
-        )
     }
     return (
         <Switch>
