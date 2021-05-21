@@ -7,6 +7,10 @@ const config = require('config')
 
 
 router.post('/create', async (req, res) => {
+    const recipe= await Food.findOne({ name: req.body.name })
+    if (recipe){
+        return res.status(400).json({ message: 'Рецепт с таким именем уже существует!' })
+    }
     try {
 
         const newRecipe = new Recipe({
@@ -28,8 +32,17 @@ router.post('/create', async (req, res) => {
     } catch (e) {
         res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
     }
-
 }) 
+router.get('/:id', async (req, res) =>{
+    try{
+        const recipe = await Recipe.findById(req.params.id).populate('food')
+        res.json(recipe)
+    }
+    catch(e){
+        console.log("error", e)
+        res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+    }
+})
 /* router.get('/users', async (req, res) => {
     try {
         const biodatas = await UserInfo.find().populate('user', 'email')

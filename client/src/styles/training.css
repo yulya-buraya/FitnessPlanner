@@ -6,7 +6,7 @@
 .training-submenu {
     display: flex;
     width: 100%;
-    border-radius: 6px;
+    border-radius: 10px;
     box-shadow: 0px 1px 3px rgba(73, 73, 73, 0.673);
     height: 550px;
     opacity: 0.8;
@@ -22,7 +22,7 @@
     display: flex;
     width: 100%;
     box-shadow: 0px 1px 3px rgba(73, 73, 73, 0.456);
-    border-radius: 6px;
+    border-radius: 10px;
     height: 570px;
     opacity: 0.8;
     background-image: url(../image/slide1.jpg);
@@ -43,7 +43,7 @@
     border-radius: 10px;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .3), -23px 0 20px -27px rgba(0, 0, 0, .8), 23px 0 20px -27px rgba(0, 0, 0, .8), 0 0 40px rgba(0, 0, 0, .1) inset;
+    box-shadow: 0 1px 4px rgba(95, 93, 93, 0.3), -21px 0 20px -21px rgba(71, 70, 70, 0.4), 23px 0 20px -23px rgba(83, 82, 82, 0.4), 0 0 40px rgba(149, 146, 146, 0.15) inset;
 }
 
 .filter-form-training {
@@ -55,7 +55,7 @@
     margin-bottom: 50px;
     margin-right: 50px;
     background-color: white;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .3), -23px 0 20px -27px rgba(0, 0, 0, .8), 23px 0 20px -27px rgba(0, 0, 0, .8), 0 0 40px rgba(0, 0, 0, .1) inset;
+    box-shadow: 0 1px 4px rgba(95, 93, 93, 0.3), -21px 0 20px -21px rgba(71, 70, 70, 0.4), 23px 0 20px -23px rgba(83, 82, 82, 0.4), 0 0 40px rgba(149, 146, 146, 0.15) inset;
 }
 
 .submenu-btn {
@@ -491,8 +491,10 @@ label {
     align-items: center;
     width: 100%;
     border-radius: 6px;
-    box-shadow: 0px 1px 3px rgba(32, 75, 146, 0.15);
-    height: 125px;
+    box-shadow: 0 1px 4px rgba(95, 93, 93, 0.3), -21px 0 20px -21px rgba(71, 70, 70, 0.4), 23px 0 20px -23px rgba(83, 82, 82, 0.4), 0 0 40px rgba(149, 146, 146, 0.15) inset;
+
+/*     box-shadow: 0px 1px 3px rgba(32, 75, 146, 0.15);
+ */    height: 125px;
     background-color: #ffffff;
 }
 
@@ -508,6 +510,8 @@ label {
 
 .search-input-block input:focus {
     border: 2px solid #10c1c1 !important;
+    background: #c5fafad5;
+
 }
 
 .search-input-block input {
@@ -517,7 +521,7 @@ label {
     border: 2px solid #d0cdcd;
     border-radius: 5px 0 0 5px;
     outline: none;
-    background: #ebeff1;
+    background: #cce0e0d5;
     color: #5f5f5f;
     font-size: 13pt;
 }

@@ -87,7 +87,7 @@
 
 .recipe-item {
     display: inline-block;
-    min-height: 580px;
+    min-height: 600px;
     width: 545px;
     box-shadow: 0px 1px 3px rgba(32, 75, 146, 0.15);
     border-radius: 10px;
@@ -102,16 +102,16 @@
 .recipe-image {
     overflow: hidden;
     width: inherit;
-    height: 40  0px;
+    height: 400px;
     background-color: #818585;
     border-radius: 10px 10px 0px 0px;
     cursor: pointer;
 }
 
-.recipe-image img {
+.recipe-image {
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 545px;
+    height: 400px;
     -o-object-fit: cover;
     object-fit: cover;
 }
@@ -124,7 +124,7 @@
 .short-info-recipe {
     text-align: center;
     width: inherit;
-    min-height: 50%;
+    min-height: 100px;
     display: flex;
     justify-content: space-between;
     margin: 0 40px 40px;
@@ -136,24 +136,28 @@
     font-size: 22pt;
     text-align: left;
     padding: 0 40px;
+    height: 60px;
 }
+
 .icon-recipe {
     height: 60px;
     filter: invert(70%) sepia(0%) saturate(58%) hue-rotate(276deg) brightness(95%) contrast(89%);
 }
-.recipe-short-value{
+
+.recipe-short-value {
     width: max-content;
     display: flex;
     align-items: center;
-    font-size: 24px;
-    color: rgb(91, 94, 98);
+    font-size: 28px;
+    color: rgb(19, 169, 161);
     font-weight: 800;
-
 }
- .short-info-recipe-for-admin {
-     padding: 10px;
-     width: 800px;
-} 
+
+.short-info-recipe-for-admin {
+    padding: 10px;
+    width: 800px;
+}
+
 .recipe-item-for-admin {
     display: flex;
     height: 350px;
@@ -167,37 +171,310 @@
 
 .recipe-image-for-admin {
     overflow: hidden;
+    width: 540px;
     border-radius: 10px;
     box-shadow: 0px 1px 3px rgba(46, 48, 50, 0.701);
-    margin:15px;
+    margin: 15px;
 }
-.header-plan-recipe{
-    text-align: center;
-    color:rgb(104, 108, 110);
-    font-weight: 600;
 
+.header-plan-recipe {
+    text-align: center;
+    color: rgb(104, 108, 110);
+    font-weight: 600;
 }
-.table-info-recipe{
+
+.table-info-recipe {
     width: 100%;
     text-align: center;
 }
-.table-info-recipe th{
-   font-size: 16pt;
-   width: 150px;
+
+.table-info-recipe th {
+    font-size: 16pt;
+    width: 150px;
 }
-.info-recipe-block{
+
+.info-recipe-block {
     width: 85%;
     margin: 0 60px;
     display: flex;
     justify-content: space-between;
 }
-.value-recipe{
+
+.value-recipe {
     color: rgb(19, 169, 161);
     font-weight: 700;
     font-size: 18pt;
 }
+
 .text-subtitle-recipe {
     font-weight: 700;
     font-size: 16pt;
     color: rgb(98, 95, 95);
+}
+
+.recipe-content {
+    margin: 15px 292px 0;
+    height: max-content;
+}
+
+.recipe-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(38, 96, 96);
+    font-size: 28pt;
+    font-weight: 600;
+    width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(95, 93, 93, 0.3), -21px 0 20px -21px rgba(71, 70, 70, 0.4), 23px 0 20px -23px rgba(83, 82, 82, 0.4), 0 0 40px rgba(149, 146, 146, 0.15) inset;
+    height: 125px;
+    background-color: #ffffff;
+}
+
+.recipe-image-block {
+    overflow: hidden;
+    width: 550px;
+    height: 400px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 25px;
+    box-shadow: 0px 1px 3px rgba(98, 98, 98, 0.463);
+}
+
+.recipe-image-block img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.recipe-short-info-block {
+    margin-top: 25px;
+    width: 550px;
+    height: max-content;
+    padding: 15px 15px 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 1px 3px rgba(98, 98, 98, 0.463);
+}
+
+.calorie-energy {
+    text-align: center;
+    font-size: 16pt;
+    font-weight: 700;
+    color: #404444
+}
+
+.text-style-for-energy {
+    color: rgb(135, 135, 135);
+    font-weight: 900;
+    font-size: 12pt;
+    text-transform: uppercase;
+}
+
+.style-for-energy-value {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 80px;
+    font-size: 22pt;
+    border-radius: 50%;
+    background: rgb(255, 255, 255);
+    z-index: 2;
+}
+
+.style-for-energy-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    width: 90px;
+    background: linear-gradient(to bottom, rgb(9, 196, 115), cyan, blue, rgb(238, 36, 211));
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.ingredients-block {
+    margin-left: 25px;
+    margin-top: 25px;
+    width: 100%;
+    height: 683px;
+    background: white;
+    padding: 25px 50px;
+    border-radius: 15px;
+    box-shadow: 0px 1px 3px rgba(98, 98, 98, 0.463);
+}
+
+.image-and-ingredients {
+    display: flex;
+}
+
+.flex-horizontal-align {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.servings-block img {
+    width: 40px;
+}
+
+.servings-block {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 30px;
+    color: rgb(71, 207, 214);
+    padding-bottom: 5px;
+}
+
+.ingredient-header-block {
+    font-size: 22pt;
+    color: rgb(66, 139, 140);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+ul.oglavl {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+ul.oglavl li {
+    border-bottom: 1px dotted #313131;
+    /* Необязателен. Здесь задается толщина, тип и цвет точек */
+    position: relative;
+    padding: 0;
+    margin-bottom: 15px;
+    font-size: 18pt;
+}
+
+ul.oglavl li span {
+    background-color: #FFF;
+    margin: 0;
+}
+
+ul.oglavl li span.text, ul.oglavl li span.page {
+    bottom: -5px;
+}
+
+ul.oglavl span.text {
+    position: relative;
+    margin-right: 7em;
+    padding-right: 2px;
+}
+
+ul.oglavl span.page {
+    position: absolute;
+    right: 0;
+    padding-left: 2px;
+}
+
+.instructions-block {
+    width: inherit;
+    background: white;
+    border-radius: 10px;
+    padding: 25px 50px;
+    margin-top: 25px;
+    min-height: 200px;
+}
+
+.instructions-block-header {
+    font-size: 22pt;
+    color: rgb(38, 96, 96);
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.description {
+    font-size: 18pt;
+}
+
+.step {
+    color: rgb(44, 144, 139);
+    font-weight: 700;
+    font-size: 30pt;
+    font-style: italic;
+}
+
+.mealplans-submenu {
+    display: flex;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 1px 3px rgba(73, 73, 73, 0.673);
+    height: 600px;
+    opacity: 0.8;
+    background-image: url(../image/mealplan3.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.btn-submenu-mealplanning {
+    display: flex;
+    height: 130px;
+    background-color: rgba(253, 253, 253, 0.864);
+    width: 420px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 4px rgba(95, 93, 93, 0.3), -21px 0 20px -21px rgba(71, 70, 70, 0.4), 23px 0 20px -23px rgba(83, 82, 82, 0.4), 0 0 40px rgba(149, 146, 146, 0.15) inset;
+}
+
+.my-mealplans-btn {
+    height: 70px;
+    line-height: 22px;
+    background-color: rgb(61, 196, 187);
+    margin: 0 0 40px 40px;
+    width: 340px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 3px rgba(32, 75, 146, 0.15);
+    font-weight: 900;
+    font-size: 18pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0b4142;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.my-mealplans-btn:hover {
+    color: white;
+    background: rgb(56, 228, 228);
+}
+
+.mealplans-constructor-block {
+    width: 94%;
+    height: 100vh;
+    background-color: white;
+    padding: 50px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 1px 3px rgba(32, 75, 146, 0.15);
+    display: inline-block;
+}
+.constructor-mealplan{
+    background-color:lawngreen;
+    width: 50%;
+    height: 50%;
+}
+.products-list{
+    background-color:lightsalmon;
+    height: 50%;
+    width: 40%;
 }
