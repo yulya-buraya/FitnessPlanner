@@ -45,7 +45,9 @@ export const AddRecipeInfoForm = ({ recipe, setActive, setRecipes }) => {
         setActive(null)
     }
     const addRecipeInfoHandler = () => {
-          setActive(<AddRecipeIngredientsForm setRecipes={setRecipes} setModalActive={setActive} countIngredients={ingredients} countInstructions={instructions} recipe={form}/> )
+  
+            setActive(<AddRecipeIngredientsForm  setRecipes={setRecipes} setModalActive={setActive} countIngredients={ingredients} countInstructions={instructions} recipe={form}/> )
+        
       }
        return (
         <div className='background-modal active'>

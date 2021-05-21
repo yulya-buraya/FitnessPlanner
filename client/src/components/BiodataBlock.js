@@ -78,7 +78,7 @@ export const BiodataBlock = ({ biodata }) => {
             <hr className="hr-for-table" />
             <div className="biodata-block">
                 <div className="biodata-block-item">
-                    <span className='text-style-title'>Каллории, </span>
+                    <span className='text-style-title'>Калории, </span>
                     <br />
                     <span className='text-style-title'>ккал/сутки</span>
                 </div>

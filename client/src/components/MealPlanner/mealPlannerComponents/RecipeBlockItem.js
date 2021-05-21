@@ -11,21 +11,20 @@ export const RecipeBlockItem = ({ setRecipes, recipe }) => {
     }
     if (role == "user") {
         return (
-            <div className="recipe-item"  onClick={() => openRecipe()}>
-                <div className="recipe-image">
-                    <img src="/image/eda.jpg" />
-                </div>
-                <div >
-                    <p className="text-style-for-name-recipe">{recipe.food.name} </p>
+            <div className="recipe-item" onClick={() => openRecipe()}>
+          
+                    <img className="recipe-image" src={`/image/${recipe.picture}`} />
+                    <div  >
+                    <p className="text-style-for-name-recipe">{recipe&&recipe.food.name} </p>
                     <div className="short-info-recipe">
                         <div className="recipe-short-value">
                             <img className="icon-recipe" src='/image/icon-clock.svg' />
-                            <span>	&#8195; {recipe.duration}</span>
+                            <span>	&#8195; {recipe&&recipe.duration}</span>
                         </div>
                         <hr />
                         <div className="recipe-short-value">
                             <img className="icon-recipe" src='/image/serving.svg' />
-                            <span>	&#8195; {recipe.servings}</span>
+                            <span>	&#8195; {recipe&&recipe.servings}</span>
                         </div>
                     </div>
                 </div>
@@ -33,10 +32,11 @@ export const RecipeBlockItem = ({ setRecipes, recipe }) => {
         );
     }
     else {
-        return <div className="recipe-item-for-admin"  onClick={() => openRecipe()}>
-            <img className="recipe-image-for-admin" src="/image/eda.jpg" />
+        return <div className="recipe-item-for-admin" onClick={() => openRecipe()}>
+            <img className="recipe-image-for-admin" src={`/image/${recipe.picture}`} />
             <div className="short-info-recipe-for-admin ">
-                <h1 className="header-plan-recipe">{recipe.food.name} </h1>
+                <h1 className="header-plan-recipe">{recipe&&recipe.food.name} </h1>
+                <br/>
                 <table className="table-info-recipe">
                     <tbody>
                         <tr >
@@ -46,23 +46,21 @@ export const RecipeBlockItem = ({ setRecipes, recipe }) => {
                             <th>калории,<br />ккал:</th>
                         </tr>
                         <tr className="value-recipe">
-                            <td>{recipe.food.proteins}</td>
-                            <td>{recipe.food.fats}</td>
-                            <td>{recipe.food.carbhydrates}</td>
-                            <td>{recipe.food.calory}</td>
+                            <td>{recipe&&recipe.food.proteins}</td>
+                            <td>{recipe&&recipe.food.fats}</td>
+                            <td>{recipe&&recipe.food.carbhydrates}</td>
+                            <td>{recipe&&recipe.food.calory}</td>
                         </tr>
                     </tbody>
                 </table>
                 <br />
-                <br />  
                 <br />
-
                 <div className="info-recipe-block">
-                <p className="value-recipe"><span className="text-subtitle-recipe">Время готовки: </span> {recipe.duration} </p>
-                <p className="value-recipe"><span className="text-subtitle-recipe">Количество порций: </span>{recipe.servings}</p>
+                    <p className="value-recipe"><span className="text-subtitle-recipe">Время готовки: </span> {recipe&&recipe.duration} </p>
+                    <p className="value-recipe"><span className="text-subtitle-recipe">Количество порций: </span>{recipe&&recipe.servings}</p>
                 </div>
-             </div>
-            <ActionButtonBlock setRecipes={setRecipes} recipe={recipe} />
+            </div>
+           {recipe&&<ActionButtonBlock setRecipes={setRecipes} recipe={recipe} />} 
         </div>
     }
 }

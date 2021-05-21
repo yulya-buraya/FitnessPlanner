@@ -5,7 +5,7 @@ import '../../styles/modalForm.css'
 import '../../styles/login.css'
 import '../../styles/mealplanner.css'
 
-export const AddRecipeInstructionsForm = ({ recipe, setModalActive, countInstructions, setRecipes }) => {
+export const AddRecipeInstructionsForm = ({ food,recipe, setModalActive, countInstructions, setRecipes }) => {
     const instructions = useRef([]);
     const { loading, request } = useHttp()
     const message = useMessage()
@@ -19,11 +19,11 @@ export const AddRecipeInstructionsForm = ({ recipe, setModalActive, countInstruc
         try {
             const data = await request('/api/recipe/create', 'POST', { ...recipe, instructions: instructions.current} )
             message(data.message) 
-            setRecipes(prev => {
+         /*    setRecipes(prev => {
                 const recipes = [...prev];
-                recipes.push(data);
+                recipes.push({...data});
                 return recipes
-            })
+            }) */
          
     }
         catch (e) {

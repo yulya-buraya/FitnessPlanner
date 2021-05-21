@@ -14,6 +14,7 @@ import { ExercisesPage } from './components/TrainingPlanning/ExercisesPage'
 import { WorkoutTrainingPage } from './components/TrainingPlanning/WorkoutTrainingPage'
 import { RecipesPage } from './components/MealPlanner/RecipesPage'
 import { RecipeInfoPage } from './components/MealPlanner/RecipeInfoPage'
+import { UserMealPlansPage } from './components/MealPlanner/mealPlannerComponents/UserMealPlansPage'
 
 export const useRoutes = (isAuthenticated, role) => {
 
@@ -81,6 +82,9 @@ export const useRoutes = (isAuthenticated, role) => {
                     </Route>
                     <Route path='/userWorkouts/:id'>
                         <UserWorkoutsPage />
+                    </Route>
+                    <Route path='/mealplanner/:id' >
+                        <UserMealPlansPage />
                     </Route>
                     <Route path='/exercises' exact>
                         <ExercisesPage />

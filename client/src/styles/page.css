@@ -8,16 +8,13 @@
   padding: 30pt 0pt 20pt;
   margin-left: auto;
   margin-right: auto;
-  
 }
 
-.users-content-block,
-.food-content-block
- {
+.users-content-block, .food-content-block {
   height: max-content;
   min-height: 500pt;
   width: inherit;
-  padding: 0 ;
+  padding: 0;
   margin-left: auto;
   margin-right: auto;
   overflow: auto;
@@ -32,8 +29,7 @@
   border-radius: 5px;
 }
 
-#users td, #users th, 
-#food td, #food th{
+#users td, #users th, #food td, #food th {
   border: 1px solid #ddd;
   border-left: none;
   border-right: none;
@@ -42,44 +38,42 @@
   height: 100px;
 }
 
-#users tr:nth-child(even),
-#food tr:nth-child(even) {
+#users tr:nth-child(even), #food tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-#users tr:nth-child(odd),
-#food tr:nth-child(odd) {
+#users tr:nth-child(odd), #food tr:nth-child(odd) {
   background-color: #fff7f7;
 }
 
-#users tr:hover,
-#food tr:hover {
+#users tr:hover, #food tr:hover {
   background-color: #ddd;
 }
 
-#users th,
-#food th{
+#users th, #food th {
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: center;
   background-color: rgb(80, 91, 91);
   color: white;
-  word-wrap: break-word; 
-  border:none;
+  word-wrap: break-word;
+  border: none;
+}
 
+#users td:nth-last-child(), #food td:nth-last-child() {
+  border-radius: 0 0 10px 10px;
 }
-#users td:nth-last-child(),
-#food td:nth-last-child(){
-border-radius: 0 0 10px 10px;
-}
+
 .delete-icons {
   height: 27px;
   filter: invert(81%) sepia(50%) saturate(4171%) hue-rotate(1deg) brightness(106%) contrast(105%);
 }
+
 .edit-icons {
   height: 26px;
   filter: invert(24%) sepia(67%) saturate(1722%) hue-rotate(162deg) brightness(93%) contrast(101%);
 }
+
 .edit-icons:hover {
   filter: invert(30%) sepia(67%) saturate(1722%) hue-rotate(162deg) brightness(96%) contrast(110%);
 }
@@ -89,7 +83,7 @@ border-radius: 0 0 10px 10px;
 }
 
 .text-align-center {
-  top:11%;
+  top: 11%;
   color: rgb(162, 170, 172);
   position: relative;
   display: flex;
@@ -100,20 +94,22 @@ border-radius: 0 0 10px 10px;
 }
 
 .not-found-icons {
-  top:11%;
+  top: 11%;
   height: 40%;
   opacity: 0.8;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
 }
-.not-foung-block{
+
+.not-foung-block {
   width: inherit;
   height: 100vh;
   background-color: white;
   border-radius: 10px;
-  border:1px solid rgba(225, 222, 222, 0.714);
+  border: 1px solid rgba(225, 222, 222, 0.714);
 }
+
 .submenu-user {
   display: flex;
   align-items: center;
@@ -123,6 +119,7 @@ border-radius: 0 0 10px 10px;
   height: 125px;
   background-color: #ffffff;
 }
+
 .search-input-block-user {
   height: 45px;
   width: 30%;
@@ -171,21 +168,22 @@ border-radius: 0 0 10px 10px;
   margin: 0 auto;
   padding-bottom: 10px;
 }
-.food-content,
-.recipes-content {
+
+.food-content, .recipes-content, .mealplans-content {
   margin: 15px 292px 0;
   height: max-content;
 }
 
-.training-icon-padding{
+.training-icon-padding {
   padding-left: 10px;
 }
+
 .submenu-recipe {
   display: flex;
   align-items: center;
   width: 100%;
   border-radius: 6px;
-  box-shadow: 0px 1px 3px rgba(32, 75, 146, 0.15);
+  box-shadow: 0 1px 4px rgba(95, 93, 93, 0.3), -21px 0 20px -21px rgba(71, 70, 70, 0.4), 23px 0 20px -23px rgba(83, 82, 82, 0.4), 0 0 40px rgba(149, 146, 146, 0.15) inset;
   height: 125px;
   background-color: #ffffff;
 }
