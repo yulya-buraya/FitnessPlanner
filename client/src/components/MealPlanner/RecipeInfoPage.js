@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react"
 import "../../styles/training.css"
 import { useHttp } from '../../hooks/http.hook'
-import { Loader } from "../Loader"
+// import { Loader } from "../Loader"
 import { useParams } from 'react-router-dom'
 
 export const RecipeInfoPage = () => {
@@ -19,9 +19,9 @@ export const RecipeInfoPage = () => {
         getWorkout()
     }, [])
  */
-    if (loading) {
+    /*if (loading) {
         return <Loader />
-    }
+    }*/
     return (
         <div className="recipe-content">
          {/*        <div className="workout-submenu">

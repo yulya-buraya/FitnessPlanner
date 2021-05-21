@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react"
 import "../../styles/training.css"
 import { useHttp } from '../../hooks/http.hook'
-import { Loader } from "../Loader"
+// import { Loader } from "../Loader"
 import { ButtonBlockWorkout } from "./workoutComponents/ButtonBlockWorkout"
 import { ShortInfoWorkout } from "./workoutComponents/ShortInfoWorkout"
 import { TrainingCalendar } from "./workoutComponents/TrainingCalendar"
@@ -22,9 +22,9 @@ export const WorkoutTrainingPage = () => {
         getWorkout()
     }, [])
 
-    if (loading) {
+    /*if (loading) {
         return <Loader />
-    }
+    }*/
     return (
         <div className="training-content">
             <div className="workout-submenu">

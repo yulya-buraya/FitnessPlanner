@@ -1,13 +1,18 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import "../styles/page.css"
 
 export const SubmenuContentUser = ({ setUsers, users }) => {
     const [isModalFormActive, setModalFormActive] = useState(false)
+    const buffer = useRef({settled: false, data: null});
     const searchInput = useRef(null);
 
     const searchUser = (e) => {
         let value = searchInput.current.value;
         let findUsers = filterUsers(value, users);
+
+        if(value == '') {
+            return setUsers(buffer.current.data);
+        }
 
         setUsers(findUsers)
     }
@@ -21,6 +26,14 @@ export const SubmenuContentUser = ({ setUsers, users }) => {
         })
     }
 
+    useEffect(() => {
+        if(!buffer.current.settled) {
+            buffer.current = {
+                data: users,
+                settled: users.length ? true: false
+            };
+        }
+    }, [users]);
 
     return (
         <div className="submenu-user">
