@@ -3,7 +3,7 @@ const fs = require('fs');
 const multer = require('multer');
 const router = Router()
 const Workout = require('../models/Workout')
-const User = require('../models/User')
+const Exercise = require('../models/Exercise')
 const storageConfig = require('../config/multerConfig');
 const upload = multer({ storage: storageConfig }).single('image');
 
@@ -28,7 +28,7 @@ router.post('/create', upload, async (req, res) => {
             fs.renameSync(req.file.path, `data/workouts/${workout._id}.jpg`);
         }
 
-        res.status(201).json({ message: 'План тренировок успешно добавлен', workout })
+        res.status(201).json({ message: 'План тренировок успешно добавлен' })
     } catch (e) {
         res.status(500).json({ message: e.message })
     }
@@ -36,7 +36,7 @@ router.post('/create', upload, async (req, res) => {
 
 router.get('/workouts', async (req, res) => {
     try {
-        const workouts = await Workout.find();
+        const workouts = await Workout.find()
         const mappedWorkouts = workouts.map((workout) => {
             const _workout = workout.toObject();
             const imagePath = `data/workouts/${_workout._id}.jpg`;
@@ -57,7 +57,7 @@ router.get('/workouts', async (req, res) => {
 })
 router.get('/:id', async (req, res) => {
     try {
-        const workout = await Workout.findById(req.params.id).populate('exercise')
+        const workout = await Workout.findById(req.params.id).populate({path: 'days.exercises'})
         res.json(workout)
     } catch (e) {
         console.log("error", e)

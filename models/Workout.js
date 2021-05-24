@@ -64,11 +64,10 @@ const Workout = new Schema({
         },
         params: {
             type: String,
-            /*             required: true*/
         },
         exercises: [
             {
-                type: String,
+                type: Schema.Types.ObjectId,
                 ref: 'Exercise'
             }
         ]

@@ -1,7 +1,7 @@
 .background {
     width: 100vw;
     position: fixed;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -214,6 +214,7 @@ button:hover {
 .exercises-list-input {
     width: 99%;
     margin-bottom: 14px;
+    outline: none;
   
 }
 .exercises-list-input input{
@@ -326,6 +327,12 @@ input.input100 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+.container-biodata-form-btn {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .login100-form-btn {

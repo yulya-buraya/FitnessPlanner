@@ -4,6 +4,7 @@ import {TrainingBlockComponent} from "./TrainingBlockComponent"
 
 
 export const DayBlockComponent = ({day}) => {
+    
     return (
         <div className="dayline-item">
             <div className="short-description-day">
@@ -15,7 +16,7 @@ export const DayBlockComponent = ({day}) => {
             {day.exercises.length==0?<div className="training-item-relax">
                 <img src="/image/relax3.jpg"/>
              </div>:day.exercises.map((exercise) => {
-                        return <TrainingBlockComponent work={exercise}/>
+                        return <TrainingBlockComponent exercise={exercise}/>
                     })}
             </div>
         </div>

@@ -10,7 +10,7 @@ export const TrainingCalendar = ({ workout, setWorkout }) => {
                 <div className="dayline-body">
 
                     {workout.days.map((day) => {
-                        return <DayBlockComponent day={day} />
+                        return <DayBlockComponent  day={day} />
                     })}
 
                 </div>

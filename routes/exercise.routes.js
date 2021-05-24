@@ -37,6 +37,7 @@ router.get('/:name', async(req, res)=>{
         let { name } = req.body
         const exercise = await Exercise.findOne({ name: name })
         res.json(exercise)
+        console.log(exercise)
     }
     catch(e){
         console.log('error', e)

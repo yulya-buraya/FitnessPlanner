@@ -1,37 +1,49 @@
 import React, { useState, useEffect, useCallback } from "react"
 import "../../styles/training.css"
 import { useHttp } from '../../hooks/http.hook'
-// import { Loader } from "../Loader"
+import { Loader } from "../Loader"
 import { useParams } from 'react-router-dom'
+import {RecipeEnergyBlock} from "./mealPlannerComponents/RecipeEnergyBlock"
+import {InstructionsBlock} from "./mealPlannerComponents/InstructionsBlock"
+import { IngregientsBlock } from "./mealPlannerComponents/IngredientsBlock"
 
 export const RecipeInfoPage = () => {
     const { request, loading } = useHttp()
-/*     const [workout, setWorkout] = useState(null)
-    const workoutId = useParams().id
-    const getWorkout = useCallback(async () => {
+    const [recipe, setRecipe] = useState(null)
+    const recipeId = useParams().id
+
+    const getRecipe = useCallback(async () => {
         try {
-            const data = await request(`/api/workout/${workoutId}`, "GET", null)
-            setWorkout(data)
+            const data = await request(`/api/recipe/${recipeId}`, "GET", null)
+            setRecipe(data)
         } catch (e) { }
-    }, [workoutId, request])
+    }, [recipeId, request])
 
     useEffect(() => {
-        getWorkout()
+        getRecipe()
     }, [])
- */
-    /*if (loading) {
+
+    if (loading) {
         return <Loader />
-    }*/
+    }
     return (
         <div className="recipe-content">
-         {/*        <div className="workout-submenu">
-            {!loading && workout &&  console.log(workout)}
-            {!loading && workout &&  <ButtonBlockWorkout />}
-            {!loading && workout &&  <ShortInfoWorkout  workout={workout} setWorkout={setWorkout}/>}
+            <div className="recipe-name">
+                {!loading && recipe && recipe.food.name}
             </div>
-            <div className="header-for-table">ОНЛАЙН КАЛЕНДАРЬ </div>
-            <br />
-            {!loading && workout &&  <TrainingCalendar workout={workout} setWorkout={setWorkout} />} */}
+            <div className="image-and-ingredients">
+                <div>
+                <div className="recipe-image-block">
+               { recipe && <img src={`/image/${recipe.picture}`}/>}
+                </div>
+                {!loading && recipe && <RecipeEnergyBlock recipe={recipe}/>}
+                </div>
+                {!loading && recipe && <IngregientsBlock servings={recipe.servings} ingredients={recipe.ingredients}/>}
+            </div>
+            <div className="instructions-block">
+            <div className="instructions-block-header" >Инструкция по приготовлению блюда:</div>
+           {!loading && recipe &&<InstructionsBlock instructions={recipe.instructions} />}
+            </div>
         </div>
     );
 }

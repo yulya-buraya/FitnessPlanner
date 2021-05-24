@@ -3,7 +3,7 @@ import "../../styles/training.css"
 import { useHttp } from '../../hooks/http.hook'
 import { ExerciseListBlock } from "./workoutComponents/ExerciseListBlock"
 import { SubmenuContentExercise } from "./workoutComponents/SubmenuContentExercise"
-// import { Loader } from "../Loader"
+ import { Loader } from "../Loader"
 
 
 export const ExercisesPage = () => {
@@ -22,9 +22,9 @@ export const ExercisesPage = () => {
         await fetchExercises()
     }, [])
 
-    /*if (loading) {
+if (loading) {
         return <Loader />
-    }*/
+    }
 
     return (
         <div className="submenu-content">

@@ -1,6 +1,6 @@
 import React from "react"
 import "../../../styles/training.css"
-import { ActionButtonBlock } from "./ActionButtonBlockExercise";
+import { ActionButtonBlock } from "./ActionButtonBlock";
 import { useHistory } from 'react-router-dom'
 
 
@@ -43,9 +43,9 @@ export const WorkoutItemBlock = ({ workout, setWorkouts }) => {
 
         );
     } else {
-        return <div className="workout-item-for-admin" onClick={() => openWorkout()}>
+        return <div className="workout-item-for-admin" >
             <img className="workout-image-for-admin" src={workout.image ? workout.image : '/image/loseWeight.jpg'}/>
-            <div className="short-info-workout-for-admin">
+            <div className="short-info-workout-for-admin" onClick={() => openWorkout()}>
                 <h1 className="header-plan-workout">{workout.name}</h1>
                 <hr className=".hr-exercise"/>
                 <table className="table-info-about-workout">

@@ -4,7 +4,6 @@ import { useMessage } from '../../hooks/message.hook'
 import { useHistory } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext.js'
 
-
 import '../../styles/login.css'
 
 export const UserInfoForm = () => {
@@ -58,7 +57,6 @@ export const UserInfoForm = () => {
 
     const userInfoHandler = async () => {
         try {
-            console.log(form);
             const data = await request('/api/biodata/createBiodata', 'POST', { ...form },
                 {
                     Authorization: `Bearer ${auth.token}`
@@ -71,8 +69,8 @@ export const UserInfoForm = () => {
     }
 
     return (
-        <div className="background">
-            <div className="container-for-form">
+        <div className="background-modal active">
+            <div className="container-for-form" onClick={e => e.stopPropagation()}>
                 <span className="login100-form-title"> Ваши учётные данные</span>
                 <div className="user-info-form">
                     <div className="wrapper">
@@ -136,7 +134,7 @@ export const UserInfoForm = () => {
                         <option value="Занятия спортом 2 раза в день+силовые нагрузки, очень высокая нагрузка">Занятия спортом 2 раза в день+силовые нагрузки, очень высокая нагрузка</option>
                     </select>
                 </div>
-                <div className="container-form-btn">
+                <div className="container-biodata-form-btn">
                     <button className="container-btn"
                         id="sendButton"
                         onClick={userInfoHandler}

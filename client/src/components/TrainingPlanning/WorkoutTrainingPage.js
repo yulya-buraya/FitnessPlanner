@@ -15,7 +15,9 @@ export const WorkoutTrainingPage = () => {
         try {
             const data = await request(`/api/workout/${workoutId}`, "GET", null)
             setWorkout(data)
-        } catch (e) { }
+        } catch (e) {
+            console.log(e)
+         }
     }, [workoutId, request])
 
     useEffect(() => {
@@ -35,6 +37,7 @@ export const WorkoutTrainingPage = () => {
             <div className="header-for-table">ОНЛАЙН КАЛЕНДАРЬ </div>
             <br />
             {!loading && workout &&  <TrainingCalendar workout={workout} setWorkout={setWorkout} />}
+            {!loading && console.log(workout)}
         </div>
     );
 }
