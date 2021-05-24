@@ -1,15 +1,20 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import "../../../styles/training.css"
 import { AddFoodForm } from "../../forms/AddFoodForm";
 
 
 export const SubmenuContentFood = ({ setFood, food }) => {
     const [isModalFormActive, setModalFormActive] = useState(false)
+    const buffer = useRef({settled: false, data: null});
     const searchInput = useRef(null);
 
     const searchProduct = (e) => {
         let value = searchInput.current.value;
         let findProducts = filterProducts(value, food);
+
+        if(value == '') {
+            return setFood(buffer.current.data);
+        }
 
         setFood(findProducts)
     }
@@ -23,6 +28,16 @@ export const SubmenuContentFood = ({ setFood, food }) => {
         })
 
     }
+
+    useEffect(() => {
+        if(!buffer.current.settled) {
+            buffer.current = {
+                data: food,
+                settled: food.length ? true: false
+            };
+        }
+    }, [food]);
+
     return (
         <div className="submenu-food">
             <button className="btn-create"

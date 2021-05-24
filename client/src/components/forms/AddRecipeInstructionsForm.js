@@ -19,12 +19,7 @@ export const AddRecipeInstructionsForm = ({ food,recipe, setModalActive, countIn
         try {
             const data = await request('/api/recipe/create', 'POST', { ...recipe, instructions: instructions.current} )
             message(data.message) 
-         /*    setRecipes(prev => {
-                const recipes = [...prev];
-                recipes.push({...data});
-                return recipes
-            }) */
-         
+        
     }
         catch (e) {
             console.log(e)

@@ -1,10 +1,11 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import "../../../styles/training.css"
 import { AddExerciseForm } from "../../forms/AddExerciseForm";
 
 export const SubmenuContentExercise = ({ setExercises, exercises }) => {
     const role=JSON.parse(localStorage.getItem("userdata")).role[0]
     const [isModalFormActive, setModalFormActive] = useState(false)
+    const buffer = useRef({settled: false, data: null});
     const searchInput = useRef(null);
 
     function filterExercises(value, exercises) {
@@ -15,13 +16,25 @@ export const SubmenuContentExercise = ({ setExercises, exercises }) => {
             return false;
         })
     }
-    const searchExercise = (e) => {
+    const searchExercise = () => {
         let value = searchInput.current.value;
-        let findExercises = filterExercises(value, exercises);
 
+        if(value == '') {
+            return setExercises(buffer.current.data);
+        }
+
+        let findExercises = filterExercises(value, exercises);
         setExercises(findExercises)
     }
 
+    useEffect(() => {
+        if(!buffer.current.settled) {
+            buffer.current = {
+                data: exercises,
+                settled: exercises.length ? true: false
+            };
+        }
+    }, [exercises]);
 
     return (
         <div className="submenu-exercise">

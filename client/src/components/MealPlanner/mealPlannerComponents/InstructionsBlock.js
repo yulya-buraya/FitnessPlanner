@@ -1,7 +1,7 @@
 import React from "react"
 import "../../../styles/mealplanner.css"
 
-export const InstructionsBlock = ({ instructions, servings }) => {
+export const InstructionsBlock = ({ instructions }) => {
     return (
         <div className="instructions-block">
         <div className="instructions-block-header" >Инструкция по приготовлению блюда</div>

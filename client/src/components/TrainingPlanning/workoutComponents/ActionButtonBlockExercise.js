@@ -4,7 +4,7 @@ import { DeleteExerciseForm } from "../../../components/forms/DeleteExerciseForm
 import { EditExerciseForm } from "../../../components/forms/EditExerciseForm"
 
 
-export const ActionButtonBlock = ({exercise, setExercises}) => {
+export const ActionButtonBlockExercise = ({exercise, setExercises}) => {
     const [form, setForm] = useState(null)
 
         const showDeleteForm = (exercise) => {

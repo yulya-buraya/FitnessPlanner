@@ -1,15 +1,16 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import "../../../styles/training.css"
 import { AddRecipeForm } from "../../forms/AddRecipeForm";
  
 export const SubmenuContentRecipes = ({ setRecipes, recipes }) => {
     const role=JSON.parse(localStorage.getItem("userdata")).role[0]
     const [modalFormActive, setModalFormActive] = useState(null)
+    const buffer = useRef({settled: false, data: null});
     const searchInput = useRef(null);
 
     function filterRecipes(value, recipes) {
         return recipes.filter(recipe => {
-            if (recipe.name.includes(value)) {
+            if (recipe.food.name.includes(value)) {
                 return true;
             }
             return false;
@@ -17,11 +18,24 @@ export const SubmenuContentRecipes = ({ setRecipes, recipes }) => {
     }
     const searchRecipe = (e) => {
         let value = searchInput.current.value;
+        console.log(recipes);
         let findRecipe = filterRecipes(value, recipes);
+
+        if(value == '') {
+            return setRecipes(buffer.current.data);
+        }
 
         setRecipes(findRecipe)
     }
 
+    useEffect(() => {
+        if(!buffer.current.settled) {
+            buffer.current = {
+                data: recipes,
+                settled: recipes.length ? true: false
+            };
+        }
+    }, [recipes]);
 
     return (
         <div className="submenu-recipe">

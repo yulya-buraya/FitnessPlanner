@@ -11,6 +11,7 @@ export const TrainingBlockComponent = ({exercise}) => {
                 title="YouTube video player">
             </iframe>
             <p className="video-name">{exercise}</p>
+        
         </div>
     );
 }

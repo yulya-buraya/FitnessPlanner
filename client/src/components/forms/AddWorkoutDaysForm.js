@@ -17,13 +17,29 @@ export const AddWorkoutDaysForm = ({ setActive, form }) => {
 
     const addWorkoutDaysHandler = async () => {
         try {
-            const data = await request('/api/workout/create', 'POST', { ...form, days: days.current })
-            message(data.message)
-            console.log("добавлено")
+            const body = { ...form, days: days.current };
+            const formData = new FormData();
+
+            for (let key in body) {
+                if (Array.isArray(body[key])) {
+                    formData.append(key, JSON.stringify(body[key]));
+                    continue;
+                }
+
+                formData.append(key, body[key]);
+            }
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/api/workout/create', false);
+            xhr.send(formData);
+
+            if(xhr.status <= 299) {
+                message(xhr.responseText);
+            }
         } catch (e) {
             console.log(e)
         }
-     
+
         setActive(null)
     }
 
@@ -36,7 +52,7 @@ export const AddWorkoutDaysForm = ({ setActive, form }) => {
                                 </span>
                     <div className="days-form">
                         {[...Array(parseInt(form.count))].map((n, i) => {
-                            days.current.push({number:i+1, params: "", exercises: [] });
+                            days.current.push({ number: i + 1, params: "", exercises: [] });
                             return (
                                 <div className="day-content">
                                     <DaysExercise i={i} days={days}/>
@@ -57,7 +73,7 @@ export const AddWorkoutDaysForm = ({ setActive, form }) => {
                                 disabled={loading}>
                             Добавить
                         </button>
-                    </div>     
+                    </div>
                 </div>
             </div>
         </div>

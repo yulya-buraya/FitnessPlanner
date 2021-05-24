@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { useHttp } from '../hooks/http.hook'
 import { AuthContext } from '../context/AuthContext.js'
-import {Loader} from '../components/Loader'
+ import {Loader} from '../components/Loader'
 import { BiodataBlock } from "../components/BiodataBlock"
 import { FullInfoBlock } from "../components/FullInfoBlock"
 import { ShortInfoBlock } from "../components/ShortInfoBlock"
@@ -26,9 +26,9 @@ export const UserProfile = () => {
     useEffect(() => {
         getBiodata()
     }, [])
-if (loading) {
+ if (loading) {
     return <Loader/>
-}
+    }
 
     return (
         <div className="profile-block">

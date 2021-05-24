@@ -5,7 +5,7 @@ import { FilterWorkoutBlock } from "./workoutComponents/FilterWorkoutBlock"
 import { SubmenuContentWorkout } from "./workoutComponents/SubmenuContentWorkout"
 import { WorkoutListBlock } from "./workoutComponents/WorkoutListBlock"
 import { useHttp } from '../../hooks/http.hook'
-import { Loader } from "../Loader"
+ import { Loader } from "../Loader"
 
 export const WorkoutPage = () => {
     const role=JSON.parse(localStorage.getItem("userdata")).role[0]

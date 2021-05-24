@@ -1,6 +1,6 @@
 import React from "react"
 import "../../../styles/training.css"
-import { ActionButtonBlock } from "./ActionButtonBlockExercise"
+import { ActionButtonBlockExercise } from "./ActionButtonBlockExercise"
 export const ExerciseItemBlock = ({exercise, setExercises, role}) => {
     return (
         <div className="exercise-item" key={exercise._id}>
@@ -19,7 +19,7 @@ export const ExerciseItemBlock = ({exercise, setExercises, role}) => {
                 <p className="exercise-description"><span className="important-text-exercise"> Сложность выполнения: </span><span className="value-exercise-field">{exercise.level}</span></p>
                 </div>
                 {role=="admin"?
-                      <ActionButtonBlock exercise={exercise} setExercises={setExercises}/>:null}
+                      <ActionButtonBlockExercise exercise={exercise} setExercises={setExercises}/>:null}
      
         </div>
     );
