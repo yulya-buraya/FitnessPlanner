@@ -24,11 +24,16 @@ router.post('/create', upload, async (req, res) => {
         );
         await workout.save()
 
+        let file = null
+        const _workout = workout.toObject();
         if (req.file) {
-            fs.renameSync(req.file.path, `data/workouts/${workout._id}.jpg`);
+            const path = `data/workouts/${workout._id}.jpg`;
+            fs.renameSync(req.file.path, path);
+            file = fs.readFileSync(path);
+            _workout.image = 'data:image/jpeg;base64,' + new Buffer(file).toString('base64');
         }
 
-        res.status(201).json({ message: 'План тренировок успешно добавлен' })
+        res.status(201).json({ message: 'План тренировок успешно добавлен', workout: _workout })
     } catch (e) {
         res.status(500).json({ message: e.message })
     }
@@ -57,7 +62,7 @@ router.get('/workouts', async (req, res) => {
 })
 router.get('/:id', async (req, res) => {
     try {
-        const workout = await Workout.findById(req.params.id).populate({path: 'days.exercises'})
+        const workout = await Workout.findById(req.params.id).populate({ path: 'days.exercises' })
         res.json(workout)
     } catch (e) {
         console.log("error", e)

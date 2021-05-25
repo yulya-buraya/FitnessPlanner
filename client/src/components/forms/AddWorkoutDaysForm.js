@@ -33,13 +33,20 @@ export const AddWorkoutDaysForm = ({ setActive, form, setWorkouts }) => {
             xhr.open('POST', '/api/workout/create', false);
             xhr.send(formData);
 
-            if(xhr.status <= 299) {
-                message(xhr.responseText);
+            if (xhr.status <= 299) {
+                const response = JSON.parse(xhr.responseText);
+                console.log('response', response);
+                setWorkouts((prev) => {
+                    console.log('setWorkouts', prev);
+                    prev.push(response.workout)
+                    return [...prev];
+                });
+                message(response.message);
             }
         } catch (e) {
             console.log(e)
         }
-        
+
 
         setActive(null)
     }
