@@ -144,6 +144,7 @@ button:hover {
 }
 
 .count-exercise {
+    outline: none;
     width: 50px;
     height: 25px;
     border-radius: 10px;
@@ -153,6 +154,7 @@ button:hover {
     box-shadow: 0 0 1px rgba(87, 86, 86, 0.823);
 }
 .parameters-exercise {
+    outline: none;
     width: 120px;
     height: 25px;
     border-radius: 10px;
@@ -212,17 +214,11 @@ button:hover {
 }
 
 .exercises-list-input {
-    width: 99%;
-    margin-bottom: 14px;
+    width: 100%;
     outline: none;
-  
-}
-.exercises-list-input input{
-    width: 95%;
-    outline: none;
-    height: 20px;
+    height: 25px;
     border:none;
-    margin:0 auto;
+    margin:0 auto 20px;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.823);
     border-radius: 10px;
     padding:0 10px;    

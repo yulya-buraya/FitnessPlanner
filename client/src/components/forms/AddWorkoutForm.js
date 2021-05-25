@@ -4,7 +4,7 @@ import '../../styles/modalForm.css'
 import '../../styles/login.css'
 import { AddWorkoutDaysForm } from './AddWorkoutDaysForm'
 
-export const AddWorkoutForm = ({ setModalFormActive }) => {
+export const AddWorkoutForm = ({ setModalFormActive, setWorkouts }) => {
 
     const [isClassNameForWorkoutName, setClassNameForWorkoutName] = useState(null)
     const [classNameForPurpose, setClassNameForPurpose] = useState(null)
@@ -69,7 +69,7 @@ export const AddWorkoutForm = ({ setModalFormActive }) => {
     }
 
     const addWorkoutDaysHandler = async () => {
-        setModalFormActive(<AddWorkoutDaysForm setActive={setModalFormActive} form={form}/>);
+        setModalFormActive(<AddWorkoutDaysForm setActive={setModalFormActive} setWorkouts={setWorkouts} form={form}/>);
     }
 
     return (
