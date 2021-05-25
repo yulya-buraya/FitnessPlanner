@@ -37,7 +37,6 @@ export const WorkoutTrainingPage = () => {
             <div className="header-for-table">ОНЛАЙН КАЛЕНДАРЬ </div>
             <br />
             {!loading && workout &&  <TrainingCalendar workout={workout} setWorkout={setWorkout} />}
-            {!loading && console.log(workout)}
         </div>
     );
 }

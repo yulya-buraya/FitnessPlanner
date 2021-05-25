@@ -50,18 +50,11 @@ export const DaysExercise = ({ i, days }) => {
             <div>
                 {[...Array(count)].map((n, index) => {
                     return (
-                        <div className="exercises-list-input" key={index}>
-                            {/*               <input type="text"
-                                   name={i}
-                                   placeholder="Выберите упражнение"
-                                   onChange={(e) => {
-                                       days.current[i].exercises[index] = e.target.value;
-                                   }}
-                                   list="exercisesList"
-                            /> */}
-                            <select placeholder="Выберите упражнение" className="exercises-list-input" id="exercisesList" onChange={(e)=>{days.current[i].exercises[index] = e.target.value;}} /* className="exercises-list" */>
+                        <div className="exercises-list" key={index}>
+          
+                            <select placeholder="Выберите упражнение" className="exercises-list-input" id="exercisesList" onChange={(e)=>{days.current[i].exercises[index] = e.target.value;}} >
                                 {exercises.map((exercise, _index) => {
-                                    return <option className="exercises-list" index={_index} value={exercise._id}>{exercise.name}</option>
+                                    return <option  index={_index} value={exercise._id}>{exercise.name}</option>
                                 })}
                             </select>
                         </div>

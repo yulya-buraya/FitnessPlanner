@@ -88,7 +88,7 @@
 .recipe-item {
     display: inline-block;
     min-height: 600px;
-    width: 545px;
+    width: 555px;
     box-shadow: 0px 1px 3px rgba(32, 75, 146, 0.15);
     border-radius: 10px;
     background-color: white;
@@ -108,9 +108,9 @@
     cursor: pointer;
 }
 
-.recipe-image {
+.recipe-image  img{
     position: relative;
-    width: 545px;
+    width: 555px;
     height: 400px;
     -o-object-fit: cover;
     object-fit: cover;
@@ -160,7 +160,7 @@
 
 .recipe-item-for-admin {
     display: flex;
-    height: 350px;
+    height: 370px;
     width: 100%;
     box-shadow: 0px 1px 3px rgba(32, 75, 146, 0.15);
     border-radius: 10px;

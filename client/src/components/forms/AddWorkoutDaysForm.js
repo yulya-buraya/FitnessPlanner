@@ -5,7 +5,7 @@ import '../../styles/modalForm.css'
 import '../../styles/login.css'
 import { DaysExercise } from '../TrainingPlanning/DaysExercise'
 
-export const AddWorkoutDaysForm = ({ setActive, form }) => {
+export const AddWorkoutDaysForm = ({ setActive, form, setWorkouts }) => {
 
     const { loading, request } = useHttp()
     const days = useRef([]);
@@ -39,6 +39,7 @@ export const AddWorkoutDaysForm = ({ setActive, form }) => {
         } catch (e) {
             console.log(e)
         }
+        
 
         setActive(null)
     }

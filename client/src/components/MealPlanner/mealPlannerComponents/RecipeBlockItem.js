@@ -1,6 +1,6 @@
 import React from "react"
 import "../../../styles/mealplanner.css"
-import { ActionButtonBlock } from "../../TrainingPlanning/workoutComponents/ActionButtonBlock"
+import { ActionButtonBlockRecipe } from "../mealPlannerComponents/ActionButtonBlockRecipe"
 import { useHistory } from 'react-router-dom'
 
 export const RecipeBlockItem = ({ setRecipes, recipe }) => {
@@ -32,9 +32,9 @@ export const RecipeBlockItem = ({ setRecipes, recipe }) => {
         );
     }
     else {
-        return <div className="recipe-item-for-admin" onClick={() => openRecipe()}>
+        return <div className="recipe-item-for-admin" >
             <img className="recipe-image-for-admin" src={`/image/${recipe.picture}`} />
-            <div className="short-info-recipe-for-admin ">
+            <div className="short-info-recipe-for-admin " onClick={() => openRecipe()}>
                 <h1 className="header-plan-recipe">{recipe&&recipe.food.name} </h1>
                 <br/>
                 <table className="table-info-recipe">
@@ -60,7 +60,7 @@ export const RecipeBlockItem = ({ setRecipes, recipe }) => {
                     <p className="value-recipe"><span className="text-subtitle-recipe">Количество порций: </span>{recipe&&recipe.servings}</p>
                 </div>
             </div>
-           {recipe&&<ActionButtonBlock setRecipes={setRecipes} recipe={recipe} />} 
+           {recipe&&<ActionButtonBlockRecipe setRecipes={setRecipes} recipe={recipe} />} 
         </div>
     }
 }
