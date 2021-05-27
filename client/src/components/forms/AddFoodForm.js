@@ -99,7 +99,7 @@ export const AddFoodForm = ({ setActive, active, setFood }) => {
                             <option value="Сладости">Сладости</option>
                             <option value="Грибы">Грибы</option>
                             <option value="Фастфуд">Фастфуд</option>
-                            <option value="Спортивное питание">Спортивное питние</option>
+                            <option value="Спортивное питание">Спортивное питание</option>
                             <option value="Выпечка и десерты">Выпечка и десерты</option>
                             <option value="Основные блюда">Основные блюда</option>
                             <option value="Завтраки">Завтраки</option>

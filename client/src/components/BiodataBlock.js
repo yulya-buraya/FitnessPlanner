@@ -1,7 +1,21 @@
-import React from "react"
+import React, { useEffect } from "react"
 import '../styles/profile.css'
+import { useDispatch } from 'react-redux';
+import { biodataAction } from '../store/Biodata/action'
 
 export const BiodataBlock = ({ biodata }) => {
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        const userBiodata = {
+            fats: amountOfFats(),
+            proteins: amountOfProteins(),
+            carbohydrates: amountOfCarbohydrates(),
+            calories: AMR()
+        }
+        console.log(userBiodata)
+        dispatch(biodataAction.setBiodata(userBiodata))
+    }, [ biodata])
 
     const amountOfFats = () => {
         let fats = biodata.weight * 0.9

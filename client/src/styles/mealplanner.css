@@ -108,7 +108,7 @@
     cursor: pointer;
 }
 
-.recipe-image  img{
+.recipe-image img {
     position: relative;
     width: 555px;
     height: 400px;
@@ -459,22 +459,213 @@ ul.oglavl span.page {
 }
 
 .mealplans-constructor-block {
-    width: 94%;
-    height: 100vh;
-    background-color: white;
-    padding: 50px;
+    width: 97.5%;
+    background-color: rgb(201, 220, 201);
     border-radius: 10px;
     margin-bottom: 20px;
     box-shadow: 0px 1px 3px rgba(32, 75, 146, 0.15);
     display: inline-block;
+    padding: 20px 20px;
+    font-size: 16pt;
 }
-.constructor-mealplan{
-    background-color:lawngreen;
-    width: 50%;
-    height: 50%;
+
+.count-meal {
+    width: 59px;
+    height: 30px;
+    outline: none;
+    border-radius: 5px;
+    border: rgb(51, 171, 167);
+    font-size: 16pt;
+    padding-left: 10px;
 }
-.products-list{
-    background-color:lightsalmon;
-    height: 50%;
-    width: 40%;
+
+.count-input {
+    text-align: center;
+    color: gray;
+    background-color: inherit;
+    width: 60px;
+    height: 27px;
+    outline: none;
+    font-size: 14pt;
+    border: none;
+    border-bottom: 2px solid rgb(57, 76, 79);
+    padding-left: 10px;
+}
+
+.content-constructor-mealplans {
+    display: flex;
+    height: 97.5%;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.constructor-mealplan {
+    width: 55%;
+    height: 97.5%;
+}
+
+.products-list {
+    height: 97.5%;
+    width: 45%;
+}
+
+fieldset {
+    font-size: 1em;
+    font-weight: 600;
+    color: gray;
+    border: solid 3px rgb(34, 191, 199);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+fieldset legend {
+    padding: 0 1em;
+    font-weight: 700;
+    color: rgb(27, 108, 117)
+}
+
+.product-buttons-category {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product-button {
+    color: white;
+    font-weight: 500;
+    background-color: rgb(2, 137, 137);
+    height: 65px;
+    width: 200px;
+    font-size: 14pt;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+.product-button:hover {
+    background-color: rgb(41, 152, 152);
+}
+
+.label-count-meal {
+    font-weight: 600;
+    color: rgb(58, 90, 90);
+    font-size: 16pt;
+}
+
+.list-products {
+    width: 200px;
+    height: max-content;
+    margin: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product-name-btn {
+    padding: 10px;
+    background-color: rgb(109, 174, 34);
+    border-radius: 5px;
+    color: white;
+    width: 90px;
+    margin: 5px;
+    font-size: 13pt;
+    text-align: center;
+}
+
+.product-name-btn:hover, .product-name-btn:active {
+    background-color: rgb(177, 71, 22);
+}
+
+.mealplans-table {
+    width: 875px;
+    font-size: 16pt;
+    color: rgb(27, 108, 117);
+    margin-right: 20px;
+}
+
+.meals-item {
+    background-color: white;
+    width: 875px;
+    font-size: 16pt;
+    border-radius: 7px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+.active-meals {
+    background-color: rgb(57, 204, 187);
+    color: white;
+    width: 875px;
+    font-size: 16pt;
+    border-radius: 7px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+.active-meals input {
+    background-color: rgb(57, 204, 187);
+    color: white;
+}
+
+.meals-item th {
+    height: 60px;
+}
+
+.mealname-cell th, .mealname-cell {
+    padding-left: 10px;
+    text-align: left;
+    min-width: 400px;
+}
+
+.count-cell {
+    text-align: center;
+    min-width: 90px;
+}
+
+.amount-cell {
+    text-align: center;
+    min-width: 30px;
+}
+
+.proteins-cell {
+    text-align: center;
+    min-width: 70px;
+}
+
+.fats-cell {
+    text-align: center;
+    min-width: 70px;
+}
+
+.carbohydrates-cell {
+    text-align: center;
+    min-width: 70px;
+}
+
+.calories-cell {
+    text-align: center;
+    min-width: 80px;
+}
+
+.mealname-input {
+    outline: none;
+    font-size: 16pt;
+    border: none;
+    color: gray;
+    font-weight: 600;
+    background-color: inherit;
+}
+.cancel-food-icon{
+    height: 13px;
+    padding:0px 7px;
+    filter: invert(14%) sepia(99%) saturate(4729%) hue-rotate(342deg) brightness(89%) contrast(93%);
+   
+}
+.remove-cell{
+    min-width: 40px;
+    text-align: center;
 }

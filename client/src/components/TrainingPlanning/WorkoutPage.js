@@ -5,7 +5,7 @@ import { FilterWorkoutBlock } from "./workoutComponents/FilterWorkoutBlock"
 import { SubmenuContentWorkout } from "./workoutComponents/SubmenuContentWorkout"
 import { WorkoutListBlock } from "./workoutComponents/WorkoutListBlock"
 import { useHttp } from '../../hooks/http.hook'
- import { Loader } from "../Loader"
+import { Loader } from "../Loader"
 
 export const WorkoutPage = () => {
     const role=JSON.parse(localStorage.getItem("userdata")).role[0]
@@ -14,19 +14,25 @@ export const WorkoutPage = () => {
     const fetchWorkouts = useCallback(async () => {
         try {
             const data = await request('/api/workout/workouts', 'GET', null)
+            console.log(data);
             setWorkouts(data)
         } catch (e) {
 
         }
     }, [request])
 
-    useEffect(async () => {
-        await fetchWorkouts()
+    useEffect(() => {
+        fetchWorkouts()
     }, [])
 
-    if (loading) {
-        return <Loader />
-    }
+    useEffect(() => {
+        console.log('workouts changing', workouts);
+    }, [workouts])
+
+   if (loading) {
+      return <Loader />
+     }
+
     return (
         <div className="training-content">
             {
@@ -35,7 +41,7 @@ export const WorkoutPage = () => {
                         <ButtonSubmenuBlock />
                         <FilterWorkoutBlock />
                     </div> :
-                    <SubmenuContentWorkout />
+                    <SubmenuContentWorkout setWorkouts={setWorkouts}/>
             }
 
             <div className="header-for-table">ПРОГРАММЫ ТРЕНИРОВОК</div>
