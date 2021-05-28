@@ -3,7 +3,7 @@ import "../../styles/mealplanner.css"
 import { useHttp } from '../../hooks/http.hook'
 import { RecipesListBlock } from "./mealPlannerComponents/RecipeslListBlock"
 import { SubmenuContentRecipes } from "./mealPlannerComponents/SubmenuContentRecipes"
-// import { Loader } from "../Loader"
+import { Loader } from "../Loader"
 
 
 export const RecipesPage = () => {
@@ -22,9 +22,9 @@ export const RecipesPage = () => {
         await fetchRecipes()
     }, [])
 
-    // if (loading) {
-    //     return <Loader/>
-    // }
+     if (loading) {
+         return <Loader/>
+     }
 
     return (
         <div className="recipes-content">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react"
 import "../../styles/training.css"
 import { useHttp } from '../../hooks/http.hook'
-// import { Loader } from "../Loader"
+import { Loader } from "../Loader"
 import { useParams } from 'react-router-dom'
 import {RecipeEnergyBlock} from "./mealPlannerComponents/RecipeEnergyBlock"
 import {InstructionsBlock} from "./mealPlannerComponents/InstructionsBlock"
@@ -23,9 +23,9 @@ export const RecipeInfoPage = () => {
         getRecipe()
     }, [])
 
-    // if (loading) {
-    //     return <Loader />
-    // }
+     if (loading) {
+         return <Loader />
+     }
 
     return (
         <div className="recipe-content">

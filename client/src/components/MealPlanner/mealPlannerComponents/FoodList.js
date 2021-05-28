@@ -1,13 +1,11 @@
 import React, { useState } from "react"
-/* import { DeleteUserForm } from "../components/forms/DeleteUserForm"
- */
 import { useHttp } from "../../../hooks/http.hook";
 import { DeleteFoodForm } from "../../forms/DeleteFoodForm";
 import { EditFoodForm } from "../../forms/EditFoodForm";
 
 
 export const FoodList = ({ foods, setFood }) => {
-
+    const role = JSON.parse(localStorage.getItem("userdata")).role[0]
     const { request } = useHttp()
     const [form, setForm] = useState(null)
 
@@ -45,8 +43,12 @@ export const FoodList = ({ foods, setFood }) => {
                     <th>Жиры,<br/>  грамм</th>
                     <th>Углеводы,<br/>  грамм</th>
                     <th>Калорийность,<br/>  ккал</th>
+                    {role=="admin"?
+                            <>
                     <th>Изменить<br/></th>
                     <th>Удалить<br/></th>
+                    </>:
+                    null}
                 </tr>
                 {foods.map((food, index) => {
                     return (
@@ -58,7 +60,9 @@ export const FoodList = ({ foods, setFood }) => {
                             <td>{food.fats}</td>
                             <td>{food.carbhydrates}</td>
                             <td>{food.calory}</td>
-                            <td>
+                            {role=="admin"?
+                            <>
+                              <td>
                                 <img
                                     className="edit-icons"
                                     src="image/draw.svg"
@@ -72,6 +76,8 @@ export const FoodList = ({ foods, setFood }) => {
                                     onClick={() => showDeleteForm(food)}
                                 />
                             </td>
+                            </>:null}
+                          
                         </tr>
                     )
                 })}
