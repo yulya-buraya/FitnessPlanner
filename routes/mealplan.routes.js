@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
 })
 router.get('/mealplans/:user', async (req, res) => {
     try {
-        const mealPlans = await MealPlan.find({user:req.params.user})
+        const mealPlans = await MealPlan.find({ user: req.params.user })
         res.json(mealPlans)
     } catch (e) {
         console.log(e.message);
@@ -37,12 +37,12 @@ router.get('/mealplans/:user', async (req, res) => {
 })
 router.get('/:id', async (req, res) => {
     try {
-        const mealPlan = await MealPlan.findById(req.params.id )
+        const mealPlan = await MealPlan.findById(req.params.id)
         res.json(mealPlan)
-        } catch (e) {
-        res.status(400).json({error: e.message})
+    } catch (e) {
+        res.status(400).json({ error: e.message })
         console.log('error', e)
-     }
+    }
 })
 
 
@@ -59,10 +59,7 @@ router.delete('/delete', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     try {
-        console.log(req.body)
-        const mealplan = await MealPlan.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
-        console.log(mealplan)
-        await mealPlan.save()
+        await MealPlan.findOneAndUpdate({ _id: req.params.id }, { $set: req.body });
         res.status(200).json({ message: 'План питания успешно изменен' })
     } catch (e) {
         console.log('error', e)

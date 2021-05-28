@@ -81,9 +81,7 @@ router.delete('/delete', async (req, res) => {
 })
 router.put('/:id', async (req, res) => {
     try {
-        console.log(req.body)
-        const workout = await Workout.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
-        await workout.save()
+        await Workout.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
         res.status(200).json({ message: 'План тренировок успешно изменен' })
     } catch (e) {
         console.log('error', e)

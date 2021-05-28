@@ -4,7 +4,10 @@ export const ACTION_TYPES = {
     SET_MEAL_NAME: 'CONSTRUCTOR.SET_MEAL_NAME',
     ADD_MEAL_PRODUCT: 'ADD_MEAL_PRODUCT',
     DELETE_MEAL_PRODUCT: 'DELETE_MEAL_PRODUCT',
-    UPDATE_PRODUCT_AMOUNT: 'UPDATE_PRODUCT_AMOUNT'
+    UPDATE_PRODUCT_AMOUNT: 'UPDATE_PRODUCT_AMOUNT',
+    EDIT_MEAL_PLAN: 'EDIT_MEAL_PLAN',
+    SET_NAME: 'SET_NAME',
+    CLEAR_CONSTRUCTOR: 'CLEAR_CONSTRUCTOR'
 };
 
 export const constructorActions = {
@@ -34,5 +37,16 @@ export const constructorActions = {
         mealId,
         productId,
         amount
+    }),
+    editMealPlan: (mealPlan) => ({
+        type: ACTION_TYPES.EDIT_MEAL_PLAN,
+        mealPlan
+    }),
+    setName: (name) => ({
+        type: ACTION_TYPES.SET_NAME,
+        name
+    }),
+    clearConstruct: () => ({
+        type: ACTION_TYPES.CLEAR_CONSTRUCTOR
     })
 };
