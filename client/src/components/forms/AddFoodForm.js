@@ -153,6 +153,7 @@ export const AddFoodForm = ({ setActive, active, setFood }) => {
                             Добавить
                         </button>
                     </div>
+                
                 </div>
             </div>
         </div>

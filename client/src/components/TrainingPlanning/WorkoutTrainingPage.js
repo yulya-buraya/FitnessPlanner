@@ -24,7 +24,7 @@ export const WorkoutTrainingPage = () => {
         getWorkout()
     }, [])
 
-    if (loading) {
+   if (loading) {
         return <Loader />
     }
     return (

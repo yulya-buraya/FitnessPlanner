@@ -1,6 +1,6 @@
 export const ACTION_TYPES = {
     ADD_FOOD: 'FOOD.ADD_FOOD'
-   }
+}
 
 export const foodAction = {
    addFood: (value) => ({
@@ -11,5 +11,4 @@ export const foodAction = {
         type: ACTION_TYPES.DELETE_FOOD,
         value
     })
-
 }

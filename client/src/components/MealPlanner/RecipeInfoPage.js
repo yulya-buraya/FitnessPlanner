@@ -23,9 +23,10 @@ export const RecipeInfoPage = () => {
         getRecipe()
     }, [])
 
-    if (loading) {
-        return <Loader />
-    }
+     if (loading) {
+         return <Loader />
+     }
+
     return (
         <div className="recipe-content">
             <div className="recipe-name">

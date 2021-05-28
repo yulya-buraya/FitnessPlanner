@@ -79,7 +79,7 @@
     font-weight: 900;
 }
 
-.list-recipes {
+.list-recipes, .list-mealplans {
     position: relative;
     width: 100%;
     height: max-content;
@@ -116,7 +116,7 @@
     object-fit: cover;
 }
 
-.recipe-item:hover {
+.recipe-item:hover, .mealplan-item:hover {
     outline: none;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .3), -23px 0 20px -23px rgba(0, 0, 0, .8), 23px 0 20px -23px rgba(0, 0, 0, .8), 0 0 40px rgba(0, 0, 0, .1) inset;
 }
@@ -158,11 +158,11 @@
     width: 800px;
 }
 
-.recipe-item-for-admin {
+.recipe-item-for-admin, .mealplan-item {
     display: flex;
     height: 370px;
     width: 100%;
-    box-shadow: 0px 1px 3px rgba(32, 75, 146, 0.15);
+    box-shadow: 0px 1px 3px rgba(98, 98, 99, 0.15);
     border-radius: 10px;
     background-color: rgb(255, 255, 255);
     margin-bottom: 20px;
@@ -177,19 +177,35 @@
     margin: 15px;
 }
 
+.mealplans-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 360px;
+}
+
+.mealplans-image img {
+    border-radius: 50%;
+    border: 6px solid rgb(114, 201, 199);
+    margin: 15px;
+    height: 270px;
+    padding: 15px;
+    background-color: rgba(38, 73, 73, 0.695);
+}
+
 .header-plan-recipe {
     text-align: center;
     color: rgb(104, 108, 110);
     font-weight: 600;
 }
 
-.table-info-recipe {
+.table-info-recipe, .table-info-mealplan {
     width: 100%;
     text-align: center;
 }
 
-.table-info-recipe th {
-    font-size: 16pt;
+.table-info-recipe th, .table-info-mealplan th {
+    font-size: 18pt;
     width: 150px;
 }
 
@@ -260,6 +276,39 @@
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0px 1px 3px rgba(98, 98, 98, 0.463);
+}
+
+.mealplan-short-info-block {
+    width: 800px;
+    height: max-content;
+    padding: 0 15px 20px;
+    background-color: #e9e8e8;
+    border-radius: 10px;
+   box-shadow: 0px 1px 3px rgba(206, 201, 201, 0.463);
+   margin-right: 50px;
+   margin-bottom: 50px;
+}
+.energy-value {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+    font-size: 22pt;
+    border-radius: 50%;
+    background-color: #e9e8e8;
+    z-index: 2;
+}
+.energy-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+    width: 110px;
+    background: linear-gradient(to bottom, rgb(9, 196, 46),rgb(154, 230, 62), rgb(238, 238, 36), rgb(255, 196, 0), rgb(197, 31, 31));
+    border-radius: 50%;
+    z-index: 1;
 }
 
 .calorie-energy {
@@ -421,7 +470,20 @@ ul.oglavl span.page {
     justify-content: space-between;
     align-items: flex-end;
 }
-
+.mealplan-submenu {
+    display: flex;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 1px 3px rgba(73, 73, 73, 0.673);
+    height: 670px;
+    opacity: 0.8;
+    background-image: url(../image/plate.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    justify-content:flex-end;
+    align-items: flex-end;
+}
 .btn-submenu-mealplanning {
     display: flex;
     height: 130px;
@@ -517,11 +579,22 @@ fieldset {
     border-radius: 10px;
     margin-bottom: 10px;
 }
-
+.mealplan-fieldset {
+ 
+    border: solid 4px rgb(23, 202, 211);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
 fieldset legend {
     padding: 0 1em;
     font-weight: 700;
-    color: rgb(27, 108, 117)
+    color: rgb(61, 144, 153)
+}
+fieldset .text-header-mealplan {
+    padding: 0 1em;
+    font-weight: 700;
+    color: rgb(46, 166, 179);
+    font-size: 23pt;
 }
 
 .product-buttons-category {
@@ -578,8 +651,8 @@ fieldset legend {
     background-color: rgb(177, 71, 22);
 }
 
-.mealplans-table {
-    width: 875px;
+.mealplans-table, .mealplans-results {
+    min-width: 98%;
     font-size: 16pt;
     color: rgb(27, 108, 117);
     margin-right: 20px;
@@ -587,7 +660,7 @@ fieldset legend {
 
 .meals-item {
     background-color: white;
-    width: 875px;
+    min-width: 98%;
     font-size: 16pt;
     border-radius: 7px;
     margin-bottom: 5px;
@@ -598,7 +671,7 @@ fieldset legend {
 .active-meals {
     background-color: rgb(57, 204, 187);
     color: white;
-    width: 875px;
+    min-width: 98%;
     font-size: 16pt;
     border-radius: 7px;
     margin-bottom: 5px;
@@ -618,7 +691,7 @@ fieldset legend {
 .mealname-cell th, .mealname-cell {
     padding-left: 10px;
     text-align: left;
-    min-width: 400px;
+    min-width: 415px;
 }
 
 .count-cell {
@@ -628,22 +701,22 @@ fieldset legend {
 
 .amount-cell {
     text-align: center;
-    min-width: 30px;
+    min-width: 25px;
 }
 
 .proteins-cell {
     text-align: center;
-    min-width: 70px;
+    min-width: 65px;
 }
 
 .fats-cell {
     text-align: center;
-    min-width: 70px;
+    min-width: 65px;
 }
 
 .carbohydrates-cell {
     text-align: center;
-    min-width: 70px;
+    min-width: 65px;
 }
 
 .calories-cell {
@@ -659,13 +732,76 @@ fieldset legend {
     font-weight: 600;
     background-color: inherit;
 }
-.cancel-food-icon{
+
+.cancel-food-icon {
     height: 13px;
-    padding:0px 7px;
+    padding: 0px 7px;
     filter: invert(14%) sepia(99%) saturate(4729%) hue-rotate(342deg) brightness(89%) contrast(93%);
-   
 }
-.remove-cell{
+
+.remove-cell {
     min-width: 40px;
     text-align: center;
+}
+
+.mealplans-results {
+    min-height: 40px;
+}
+
+.addMealPlan {
+    text-align: center;
+    margin: 50px auto;
+    padding: 20px 40px;
+    color: white;
+    background: rgb(38, 158, 25);
+    width: max-content;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14pt;
+}
+
+.addMealPlan:hover {
+    background: rgba(23, 196, 4, 0.701);
+}
+
+.value-count-meals {
+    color:lightseagreen;
+    font-style:italic;
+    font-size: 22pt;
+    font-weight: 800;
+    margin: 20px auto;
+}
+
+.text-subtitle-meals{
+    font-style:normal;
+    font-size: 20pt;
+    font-weight: 700;
+    color: rgb(100, 97, 97);
+}
+.title-mealplan{
+font-size: 32pt;
+font-weight: 900;
+position: absolute;
+margin-bottom: 400px;
+margin-right: 50px;
+text-align: center;
+color:rgb(214, 212, 212);
+width: 830px;
+
+}
+.mealplan-block {
+    min-height: max-content;
+    width:inherit;
+    border-radius: 10px;
+    background-color: white;
+    margin: 15px 0px;
+    padding:20px;
+}
+.meal-name-title{
+font-size:24pt;
+font-weight: 700;
+color:black;
+}
+.mealplan-products{
+    margin:0 20px 30px;
 }

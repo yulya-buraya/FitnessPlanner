@@ -3,7 +3,7 @@ import "../../styles/training.css"
 import { useHttp } from '../../hooks/http.hook'
 import { ExerciseListBlock } from "./workoutComponents/ExerciseListBlock"
 import { SubmenuContentExercise } from "./workoutComponents/SubmenuContentExercise"
- import { Loader } from "../Loader"
+import { Loader } from "../Loader"
 
 
 export const ExercisesPage = () => {
@@ -22,16 +22,16 @@ export const ExercisesPage = () => {
         await fetchExercises()
     }, [])
 
-if (loading) {
-        return <Loader />
-    }
+     if (loading) {
+         return <Loader/>
+     }
 
     return (
         <div className="submenu-content">
-            <SubmenuContentExercise setExercises={setExercises} exercises={exercises} />
+            <SubmenuContentExercise setExercises={setExercises} exercises={exercises}/>
             <div className="header-for-table">Упражнения</div>
-            <br />
-            {!loading && exercises && <ExerciseListBlock exercises={exercises} setExercises={setExercises} />}
+            <br/>
+            {!loading && exercises && <ExerciseListBlock exercises={exercises} setExercises={setExercises}/>}
 
         </div>
 
