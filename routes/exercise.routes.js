@@ -3,7 +3,6 @@ const router = Router()
 const Exercise = require('../models/Exercise')
 
 
-
 router.post('/create', async (req, res) => {
     try {
         const newExercise = await Exercise.findOne({ name: req.body.name })
@@ -32,14 +31,13 @@ router.get('/exercises', async (req, res) => {
     }
 
 })
-router.get('/:name', async(req, res)=>{
-    try{
+router.get('/:name', async (req, res) => {
+    try {
         let { name } = req.body
         const exercise = await Exercise.findOne({ name: name })
         res.json(exercise)
         console.log(exercise)
-    }
-    catch(e){
+    } catch (e) {
         console.log('error', e)
         res.status(500).json({ message: 'Что-то пошло не так' })
     }
@@ -56,11 +54,8 @@ router.delete('/delete', async (req, res) => {
 })
 router.put('/:id', async (req, res) => {
     try {
-        console.log(req.body)
-        const exercise = await Exercise.findOneAndUpdate({_id:req.params.id},{ $set: req.body })
-        console.log(exercise)
-        await exercise.save()
-    res.status(200).json({ message: 'Упражнение успешно изменено' }) 
+        await Exercise.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
+        res.status(200).json({ message: 'Упражнение успешно изменено' })
     } catch (e) {
         console.log('error', e)
         res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })

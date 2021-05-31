@@ -32,7 +32,7 @@ export const UserMealPlansPage = () => {
     return (
         
         <div className="mealplans-content">
-            <SubmenuContentMealPlans />
+            <SubmenuContentMealPlans mealPlans={mealPlans} setMealPlans={setMealPlans}/>
             <div className="text-like-header">Мои планы питания</div>
             {!loading && mealPlans && <MealPlansListBlock mealPlans={mealPlans} setMealPlans={setMealPlans}/>}
          </div>

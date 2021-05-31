@@ -2,7 +2,8 @@ const { Router } = require('express')
 const fs = require('fs');
 const multer = require('multer');
 const router = Router()
-const Workout = require('../models/Workout')
+const User = require('../models/User')
+const UserWorkout = require('../models/UserWorkout')
 const Exercise = require('../models/Exercise')
 const storageConfig = require('../config/multerConfig');
 const upload = multer({ storage: storageConfig }).single('image');
@@ -13,13 +14,13 @@ router.post('/create', upload, async (req, res) => {
         let body = req.body;
         body.days = JSON.parse(body.days);
 
-        const newWorkout = await Workout.findOne({ name: req.body.name })
+        const newWorkout = await UserWorkout.findOne({ name: req.body.name })
 
         if (newWorkout) {
             return res.status(400).json({ message: 'Программма с таким названием уже существует!' })
         }
 
-        const workout = new Workout(
+        const workout = new UserWorkout(
             { ...req.body }
         );
         await workout.save()
@@ -39,9 +40,9 @@ router.post('/create', upload, async (req, res) => {
     }
 })
 
-router.get('/workouts', async (req, res) => {
+router.get('/userWorkouts', async (req, res) => {
     try {
-        const workouts = await Workout.find()
+        const workouts = await UserWorkout.find()
         const mappedWorkouts = workouts.map((workout) => {
             const _workout = workout.toObject();
             const imagePath = `data/workouts/${_workout._id}.jpg`;
@@ -62,7 +63,7 @@ router.get('/workouts', async (req, res) => {
 })
 router.get('/:id', async (req, res) => {
     try {
-        const workout = await Workout.findById(req.params.id).populate({ path: 'days.exercises' })
+        const workout = await UserWorkout.findById(req.params.id).populate({ path: 'days.exercises' })
         res.json(workout)
     } catch (e) {
         console.log("error", e)
@@ -72,7 +73,7 @@ router.get('/:id', async (req, res) => {
 router.delete('/delete', async (req, res) => {
     try {
         let { id } = req.body
-        await Workout.deleteOne({ _id: id })
+        await UserWorkout.deleteOne({ _id: id })
         res.status(200).json({ message: 'Программа тренировок успешно удалена' })
     } catch (e) {
         console.log(e.message);
@@ -81,7 +82,7 @@ router.delete('/delete', async (req, res) => {
 })
 router.put('/:id', async (req, res) => {
     try {
-        await Workout.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
+        await UserWorkout.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
         res.status(200).json({ message: 'План тренировок успешно изменен' })
     } catch (e) {
         console.log('error', e)

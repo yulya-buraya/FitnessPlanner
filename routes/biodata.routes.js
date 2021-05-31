@@ -56,10 +56,7 @@ router.get('/:id', async (req, res) => {
 })
 router.put('/:id', async (req, res) => {
     try {
-        const biodata = await UserInfo.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
-        console.log('body', req.body)
-
-        await biodata.save()
+        await UserInfo.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
         res.json(biodata)
     } catch (e) {
         console.log('error', e)

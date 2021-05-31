@@ -11,23 +11,18 @@ export const WorkoutPage = () => {
     const role = JSON.parse(localStorage.getItem("userdata")).role[0]
     const [workouts, setWorkouts] = useState([])
     const { request, loading } = useHttp()
-    const fetchWorkouts = useCallback(async () => {
-        try {
-            const data = await request('/api/workout/workouts', 'GET', null)
-            console.log(data);
-            setWorkouts(data)
-        } catch (e) {
 
-        }
-    }, [request])
+    useEffect(async () => {
+        const fetchWorkouts = async () => {
+            try {
+                const data = await request('/api/workout/workouts', 'GET', null)
+                setWorkouts(data)
+            } catch (e) {
+            }
+        };
 
-    useEffect(() => {
-        fetchWorkouts()
+        await fetchWorkouts()
     }, [])
-
-    useEffect(() => {
-        console.log('workouts changing', workouts);
-    }, [workouts])
 
     if (loading) {
         return <Loader/>
@@ -39,7 +34,7 @@ export const WorkoutPage = () => {
                 role == "user" ?
                     <div className="training-submenu">
                         <ButtonSubmenuBlock/>
-                        <FilterWorkoutBlock/>
+                        <FilterWorkoutBlock workouts={workouts} setWorkouts={setWorkouts}/>
                     </div> :
                     <SubmenuContentWorkout setWorkouts={setWorkouts}/>
             }

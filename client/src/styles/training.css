@@ -51,11 +51,19 @@
     z-index: 1;
     height: 460px;
     width: 460px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border-radius: 10px;
     margin-bottom: 50px;
     margin-right: 50px;
     background-color: white;
     box-shadow: 0 1px 4px rgba(95, 93, 93, 0.3), -21px 0 20px -21px rgba(71, 70, 70, 0.4), 23px 0 20px -23px rgba(83, 82, 82, 0.4), 0 0 40px rgba(149, 146, 146, 0.15) inset;
+}
+
+.filter-form-training-container {
+    display: flex;
+    flex-direction: column;
 }
 
 .submenu-btn {
@@ -78,10 +86,28 @@
     color: #ffffff;
 }
 
+.filter-btn {
+    outline: none;
+    padding: 10pt 60pt;
+    margin-top: 10pt;
+    background-color: rgb(3, 175, 163);
+    width: max-content;
+    border-radius: 5px;
+    box-shadow: 0px 1px 3px rgba(32, 75, 146, 0.15);
+    font-weight: 700;
+    font-size: 15px;
+    color: #ffffff;
+    box-shadow: 0px 1px 3px rgba(32, 75, 146, 0.15);
+}
+
+.filter-btn:hover {
+    background-color: rgb(22, 213, 200);
+}
+
 .select-btn {
     background-color: rgb(3, 175, 163);
     width: max-content;
-    padding: 15px 65px;
+    padding: 20px 65px 20px;
     margin-left: 3px;
     position: relative;
     left: 50%;
@@ -102,56 +128,54 @@
     color: rgb(91, 102, 103);
     font-weight: 700;
     font-size: 16pt;
-    height: 40pt;
+    height: 30pt;
     width: max-content;
-    margin-top: 30pt;
+    margin-top: 20pt;
     margin-left: auto;
     margin-right: auto;
     text-transform: uppercase;
 }
 
 .text-for-form {
+    margin: 5pt 0;
     font-weight: 600;
     font-size: 15pt;
     color: black;
-    margin-top: 0px;
-    text-align: center;
-    margin-bottom: 10px;
 }
 
 .equipment-block, .purpose-block {
-    margin-left: auto;
-    margin-right: auto;
-    width: inherit;
+    display: flex;
+    flex-direction: column;
 }
 
 .radio-equipment-button {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 25px;
+    text-align: center;
+    margin-top:5px;
     display: flex;
-    justify-content: space-between;
-    width: 45%;
+    flex-direction: column;
     font-size: 15pt;
-    color: #666666;
     font-weight: 600;
     outline: none;
     color: #7d8689;
 }
 
+.radio-equipment-button span {
+    margin-left: 5pt;
+    line-height: 1.6;
+}
+
 .radio-purpose-button {
-    margin-bottom: 17px;
     display: flex;
     flex-direction: column;
-    padding: 6px 0;
-    width: inherit;
     font-size: 15pt;
-    color: #666666;
     font-weight: 600;
     outline: none;
     color: #7d8689;
     text-align: left;
-    margin-left: 130px;
+}
+
+.radio-purpose-button span {
+    margin-left: 5pt;
 }
 
 label {
@@ -169,6 +193,7 @@ label {
     position: relative;
     width: inherit;
     height: max-content;
+    
 }
 
 .workout-item {
