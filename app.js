@@ -14,6 +14,7 @@ app.use('/api/workout', require('./routes/workout.routes'))
 app.use('/api/food', require('./routes/food.routes'))
 app.use('/api/recipe', require('./routes/recipe.routes'))
 app.use('/api/mealplan', require('./routes/mealplan.routes'))
+app.use('/api/userworkout', require('./routes/userworkout.routes'))
 
 
 const PORT = config.get('port') || 5000

@@ -4,15 +4,27 @@ import "../../../styles/training.css"
 export const FilterWorkoutBlock = ({ workouts, setWorkouts }) => {
     const buffer = useRef({});
 
+    const changeHandler = (e) => {
+        const { props } = buffer.current;
+        props[e.target.name] = e.target.value;
+    };
+
     const filterWorkout = (e) => {
         const { props, data } = buffer.current;
         props[e.target.name] = e.target.value;
-        console.log(buffer.current);
+        let _workouts = data;
 
-        let _workouts = data.filter((workout) => (
-            workout.purpose === props.purpose
-            && workout.gender === props.gender
-        ));
+        if(props.purpose) {
+            _workouts = _workouts.filter((workout) => (
+                workout.purpose === props.purpose
+            ));
+        }
+
+        if(props.gender) {
+            _workouts = _workouts.filter((workout) => (
+                workout.gender === props.gender
+            ));
+        }
 
         return setWorkouts(_workouts);
     };
@@ -23,7 +35,7 @@ export const FilterWorkoutBlock = ({ workouts, setWorkouts }) => {
             buffer.current = {
                 data: workouts,
                 settled: workouts?.length ? true : false,
-                props: { purpose: 'Похудение', gender: 'Универсальная' }
+                props: { purpose: null, gender: null }
             };
         }
     }, [workouts]);
@@ -40,7 +52,7 @@ export const FilterWorkoutBlock = ({ workouts, setWorkouts }) => {
                                 name="purpose"
                                 value='Похудение'
                                 type="radio"
-                                onChange={filterWorkout}
+                                onChange={changeHandler}
                             />
                             <span>Похудение</span>
                         </label>
@@ -49,7 +61,7 @@ export const FilterWorkoutBlock = ({ workouts, setWorkouts }) => {
                                 name="purpose"
                                 value='Набор мышечной массы'
                                 type="radio"
-                                onChange={filterWorkout}
+                                onChange={changeHandler}
                             />
                             <span>Набрать вес</span>
                         </label>
@@ -58,7 +70,7 @@ export const FilterWorkoutBlock = ({ workouts, setWorkouts }) => {
                                 name="purpose"
                                 value='Поддержание формы'
                                 type="radio"
-                                onChange={filterWorkout}
+                                onChange={changeHandler}
                             />
                             <span>Выглядеть спортивно</span>
                         </label>
@@ -72,7 +84,7 @@ export const FilterWorkoutBlock = ({ workouts, setWorkouts }) => {
                                 name="gender"
                                 value="Для женщин"
                                 type="radio"
-                                onChange={filterWorkout}
+                                onChange={changeHandler}
                             />
                             <span>Для женщин</span>
                         </label>
@@ -81,7 +93,7 @@ export const FilterWorkoutBlock = ({ workouts, setWorkouts }) => {
                                 name="gender"
                                 value="Для мужчин"
                                 type="radio"
-                                onChange={filterWorkout}
+                                onChange={changeHandler}
                             />
                             <span>Для мужчин</span>
                         </label>
@@ -90,7 +102,7 @@ export const FilterWorkoutBlock = ({ workouts, setWorkouts }) => {
                                 name="gender"
                                 value="Универсальная"
                                 type="radio"
-                                onChange={filterWorkout}
+                                onChange={changeHandler}
                             />
                             <span>Универсальная</span>
                         </label>
@@ -100,6 +112,7 @@ export const FilterWorkoutBlock = ({ workouts, setWorkouts }) => {
             <button
                 className="filter-btn"
                 id="selectTraining"
+                onClick={filterWorkout}
             >
                 ПОДОБРАТЬ
             </button>

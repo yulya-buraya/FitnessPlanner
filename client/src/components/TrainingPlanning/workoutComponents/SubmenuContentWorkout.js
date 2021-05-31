@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import "../../../styles/training.css"
-import { AddWorkoutDaysForm } from "../../forms/AddWorkoutDaysForm";
 import { AddWorkoutForm } from "../../forms/AddWorkoutForm";
 
 export const SubmenuContentWorkout = ({setWorkouts}) => {
