@@ -1,26 +1,22 @@
 const { Schema, model } = require('mongoose')
 
 const UserWorkout = new Schema({
-    name:
-    {
+    name: {
         type: String,
         required: true
     },
 
-    purpose:
-    {
+    purpose: {
         type: String,
         required: true
     },
 
-    level:
-    {
+    level: {
         type: String,
         required: true
     },
 
-    inventory:
-    {
+    inventory: {
         type: String
     },
 
@@ -30,9 +26,8 @@ const UserWorkout = new Schema({
     },
 
     picture: {
-        type: String,
-/*         required: true
- */    },
+        type: String
+    },
 
     gender: {
         type: String,
@@ -41,38 +36,34 @@ const UserWorkout = new Schema({
 
     count: {
         type: Number,
-/*         required: true
- */    },
+    },
 
     duration: {
-        type: String,
-/*         required: true
- */    },
+        type: String
+    },
 
-         user:
-            [
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+
+    days: [
+        {
+            number: {
+                type: Number
+            },
+            params: {
+                type: String,
+            },
+            exercises: [
                 {
                     type: Schema.Types.ObjectId,
-                    ref: 'User',
-                    unique: true
+                    ref: 'Exercise'
                 }
-            ], 
-
-    days: [{
-        number: {
-            type: Number
-        },
-        params: {
-            type: String,
-        },
-        exercises: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Exercise'
-            }
-        ]
-    }]
+            ]
+        }
+    ]
 
 })
 
-module.exports = model('UserWorkout ', UserWorkout )
+module.exports = model('UserWorkout', UserWorkout)

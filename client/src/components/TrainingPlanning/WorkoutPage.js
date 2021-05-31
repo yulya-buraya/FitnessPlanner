@@ -9,6 +9,7 @@ import { Loader } from "../Loader";
 
 export const WorkoutPage = () => {
     const role = JSON.parse(localStorage.getItem("userdata")).role[0]
+    const [modalForm, setModalForm] = useState(null)
     const [workouts, setWorkouts] = useState([])
     const { request, loading } = useHttp()
 
@@ -33,7 +34,7 @@ export const WorkoutPage = () => {
             {
                 role == "user" ?
                     <div className="training-submenu">
-                        <ButtonSubmenuBlock/>
+                        <ButtonSubmenuBlock setModalForm={setModalForm}/>
                         <FilterWorkoutBlock workouts={workouts} setWorkouts={setWorkouts}/>
                     </div> :
                     <SubmenuContentWorkout setWorkouts={setWorkouts}/>
@@ -42,7 +43,7 @@ export const WorkoutPage = () => {
             <div className="header-for-table">ПРОГРАММЫ ТРЕНИРОВОК</div>
             <br/>
             {!loading && workouts && <WorkoutListBlock workouts={workouts} setWorkouts={setWorkouts}/>}
-
+            {modalForm}
         </div>
     );
 }

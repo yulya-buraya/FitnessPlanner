@@ -4,12 +4,14 @@ import { ActionButtonBlock } from "./ActionButtonBlock";
 import { useHistory } from 'react-router-dom'
 
 
-export const WorkoutItemBlock = ({ workout, setWorkouts }) => {
+export const WorkoutItemBlock = ({ workout, setWorkouts, type = 'workouts' }) => {
     const history = useHistory()
     const role = JSON.parse(localStorage.getItem("userdata")).role[0]
+
     const openWorkout = () => {
         history.push(`/workouts/${workout._id}`)
     }
+
     if (role == "user") {
         return (
             <div className="workout-item" onClick={() => openWorkout()}>

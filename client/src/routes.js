@@ -81,7 +81,7 @@ export const useRoutes = (isAuthenticated, role) => {
                     <Route path='/biodata/:id'>
                         <UserProfile />
                     </Route>
-                    <Route path='/userWorkouts/:id'>
+                    <Route path='/custom_workouts'>
                         <UserWorkoutsPage />
                     </Route>
                     <Route path='/mealplanner/:id' >
