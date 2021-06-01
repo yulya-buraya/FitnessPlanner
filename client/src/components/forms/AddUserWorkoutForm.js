@@ -2,8 +2,8 @@ import React, { useRef, useState, useContext } from 'react'
 import { useHttp } from '../../hooks/http.hook'
 import '../../styles/modalForm.css'
 import '../../styles/login.css'
-import { AddWorkoutDaysForm } from './AddWorkoutDaysForm'
 import { AuthContext } from '../../context/AuthContext'
+import { AddUserWorkoutDaysForm } from "./AddUserWorkoutDaysForm";
 
 
 export const AddUserWorkoutForm = ({ setModalFormActive }) => {
@@ -31,7 +31,6 @@ export const AddUserWorkoutForm = ({ setModalFormActive }) => {
         image: '',
         duration: '',
         user: auth.userId
-
     })
 
     const setClassForWorkoutName = () => {
@@ -74,11 +73,11 @@ export const AddUserWorkoutForm = ({ setModalFormActive }) => {
     }
 
     const addWorkoutDaysHandler = async () => {
-        setModalFormActive(<AddWorkoutDaysForm setActive={setModalFormActive} form={form}/>);
+        setModalFormActive(<AddUserWorkoutDaysForm setActive={setModalFormActive} form={form}/>);
     }
 
     return (
-        <div className='background-modal active'>
+        <div className='background-modal active'onClick={cancelHandler}>
             <div className="container-for-form " onClick={e => e.stopPropagation()}>
                 <div className="login100-form">
                     <span className="login100-form-title">

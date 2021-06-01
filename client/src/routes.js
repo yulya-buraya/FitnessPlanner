@@ -72,8 +72,14 @@ export const useRoutes = (isAuthenticated, role) => {
                     <Route path='/workouts' exact>
                         <WorkoutPage />
                     </Route>
+                    <Route path='/custom_workouts' exact>
+                        <UserWorkoutsPage />
+                    </Route>
                     <Route path='/recipes/:id' exact>
                         <RecipeInfoPage />
+                    </Route>
+                    <Route path='/custom_workouts/:id' >
+                        <WorkoutTrainingPage />
                     </Route>
                     <Route path='/workouts/:id'>
                         <WorkoutTrainingPage />
@@ -81,9 +87,7 @@ export const useRoutes = (isAuthenticated, role) => {
                     <Route path='/biodata/:id'>
                         <UserProfile />
                     </Route>
-                    <Route path='/userWorkouts/:id'>
-                        <UserWorkoutsPage />
-                    </Route>
+       
                     <Route path='/mealplanner/:id' >
                         <UserMealPlansPage />
                     </Route>

@@ -14,7 +14,10 @@ export const WorkoutListBlock = ({setWorkouts, workouts}) => {
     return (
         <div className="list-workout">
             {workouts.map((workout) => {
-                return <WorkoutItemBlock workout={workout} setWorkouts={setWorkouts} />
+                return <WorkoutItemBlock key={workout._id}
+                workout={workout}
+                 setWorkouts={setWorkouts} 
+                 type={"workout"} />
             })}
         </div>
     );

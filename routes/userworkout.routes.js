@@ -25,27 +25,24 @@ router.post('/create', upload, async (req, res) => {
         );
         await workout.save()
 
-        let file = null
-        const _workout = workout.toObject();
         if (req.file) {
-            const path = `data/workouts/${workout._id}.jpg`;
+            const path = `data/userworkouts/${workout._id}.jpg`;
             fs.renameSync(req.file.path, path);
-            file = fs.readFileSync(path);
-            _workout.image = 'data:image/jpeg;base64,' + new Buffer(file).toString('base64');
         }
 
-        res.status(201).json({ message: 'План тренировок успешно добавлен', workout: _workout })
+        res.status(201).json({ message: 'План тренировок успешно добавлен' })
     } catch (e) {
         res.status(500).json({ message: e.message })
     }
 })
 
-router.get('/userWorkouts', async (req, res) => {
+router.get('/workouts/:id', async (req, res) => {
     try {
-        const workouts = await UserWorkout.find()
+        const { id } = req.params;
+        const workouts = await UserWorkout.find({ user: id });
         const mappedWorkouts = workouts.map((workout) => {
             const _workout = workout.toObject();
-            const imagePath = `data/workouts/${_workout._id}.jpg`;
+            const imagePath = `data/userworkouts/${_workout._id}.jpg`;
 
             if (fs.existsSync(imagePath)) {
                 const image = fs.readFileSync(imagePath);
@@ -61,6 +58,7 @@ router.get('/userWorkouts', async (req, res) => {
     }
 
 })
+
 router.get('/:id', async (req, res) => {
     try {
         const workout = await UserWorkout.findById(req.params.id).populate({ path: 'days.exercises' })
@@ -70,6 +68,7 @@ router.get('/:id', async (req, res) => {
         res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
     }
 })
+
 router.delete('/delete', async (req, res) => {
     try {
         let { id } = req.body
@@ -77,9 +76,10 @@ router.delete('/delete', async (req, res) => {
         res.status(200).json({ message: 'Программа тренировок успешно удалена' })
     } catch (e) {
         console.log(e.message);
-        res.status(400).json({ message: 'Что-то пошло не так' })
+        res.status(400).json({ message: e.message })
     }
 })
+
 router.put('/:id', async (req, res) => {
     try {
         await UserWorkout.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })

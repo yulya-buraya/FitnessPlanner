@@ -31,8 +31,7 @@ const Workout = new Schema({
 
     picture: {
         type: String,
-/*         required: true
- */    },
+    },
 
     gender: {
         type: String,
@@ -41,22 +40,11 @@ const Workout = new Schema({
 
     count: {
         type: Number,
-/*         required: true
- */    },
+    },
 
     duration: {
         type: String,
-/*         required: true
- */    },
-
-    /*     user:
-            [
-                {
-                    type: Schema.Types.ObjectId,
-                    ref: 'User',
-                    unique: true
-                }
-            ], */
+    },
 
     days: [{
         number: {
