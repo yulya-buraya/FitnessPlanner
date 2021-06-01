@@ -170,6 +170,7 @@
 }
 
 .recipe-image-for-admin {
+    object-fit: cover;
     overflow: hidden;
     width: 540px;
     border-radius: 10px;

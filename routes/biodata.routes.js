@@ -1,3 +1,4 @@
+const fs = require('fs');
 const { Router } = require('express')
 const UserInfo = require('../models/UserInfo')
 const User = require('../models/User')
@@ -29,13 +30,24 @@ router.post('/createBiodata', auth, async (req, res) => {
 
 router.get('/', auth, async (req, res) => {
     try {
-        const biodatas = await UserInfo.find({ user: req.user.userId })
-        res.json(biodatas)
+        let biodata = await UserInfo.findOne({ user: req.user.userId })
+        if (biodata) {
+            biodata = biodata.toObject();
+            const imagePath = `data/users/${biodata.user[0]}.jpg`;
+
+            if (fs.existsSync(imagePath)) {
+                const image = fs.readFileSync(imagePath);
+                biodata.image = 'data:image/jpeg;base64,' + new Buffer(image).toString('base64');
+            }
+        }
+
+        res.json([biodata]);
     } catch (e) {
-        res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+        res.status(500).json({ message: e.message })
     }
 
 })
+
 router.get('/users', async (req, res) => {
     try {
         const biodatas = await UserInfo.find().populate('user', 'email')
@@ -45,19 +57,21 @@ router.get('/users', async (req, res) => {
         res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
     }
 })
+
 router.get('/:id', async (req, res) => {
     try {
         const biodata = await UserInfo.findById(req.params.id)
-        res.json(biodata)
+        res.json(biodata);
     } catch (e) {
         res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова123dsasaddas' })
     }
 
 })
+
 router.put('/:id', async (req, res) => {
     try {
         await UserInfo.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
-        res.json(biodata)
+        res.json()
     } catch (e) {
         console.log('error', e)
         res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })

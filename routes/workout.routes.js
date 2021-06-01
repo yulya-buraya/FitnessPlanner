@@ -1,11 +1,9 @@
 const { Router } = require('express')
 const fs = require('fs');
-const multer = require('multer');
 const router = Router()
 const Workout = require('../models/Workout')
 const Exercise = require('../models/Exercise')
-const storageConfig = require('../config/multerConfig');
-const upload = multer({ storage: storageConfig }).single('image');
+const { upload } = require('../config/multerConfig');
 
 
 router.post('/create', upload, async (req, res) => {
@@ -60,15 +58,24 @@ router.get('/workouts', async (req, res) => {
     }
 
 })
+
 router.get('/:id', async (req, res) => {
     try {
         const workout = await Workout.findById(req.params.id).populate({ path: 'days.exercises' })
-        res.json(workout)
+        const _workout = workout.toObject();
+        const imagePath = `data/workouts/${_workout._id}.jpg`;
+        if (fs.existsSync(imagePath)) {
+            const image = fs.readFileSync(imagePath);
+            _workout.image = 'data:image/jpeg;base64,' + new Buffer(image).toString('base64');
+        }
+
+        res.json(_workout);
     } catch (e) {
         console.log("error", e)
         res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
     }
 })
+
 router.delete('/delete', async (req, res) => {
     try {
         let { id } = req.body
@@ -79,13 +86,20 @@ router.delete('/delete', async (req, res) => {
         res.status(400).json({ message: 'Что-то пошло не так' })
     }
 })
-router.put('/:id', async (req, res) => {
+
+router.put('/:id', upload, async (req, res) => {
     try {
-        await Workout.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
+        const { id } = req.params;
+        await Workout.findByIdAndUpdate(id, { ...req.body, days: JSON.parse(req.body.days) });
+
+        if (req.file) {
+            const path = `data/workouts/${id}.jpg`;
+            fs.renameSync(req.file.path, path);
+        }
+
         res.status(200).json({ message: 'План тренировок успешно изменен' })
     } catch (e) {
-        console.log('error', e)
-        res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+        res.status(500).json({ message: e.message })
     }
 })
 

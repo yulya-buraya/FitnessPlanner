@@ -15,6 +15,8 @@ export const ButtonSubmenuBlock = ({ setModalForm }) => {
                     МОИ ПРОГРАММЫ ТРЕНИРОВОК
                 </button>
             </NavLink>
+            <NavLink className="submenu-btn"
+                     to={`#`}>
             <button className="submenu-btn"
                     id="addTraining"
                     onClick={() => {
@@ -22,6 +24,7 @@ export const ButtonSubmenuBlock = ({ setModalForm }) => {
                     }}>
                 СОЗДАТЬ ПЛАН ТРЕНИРОВОК
             </button>
+            </NavLink>
         </div>
 
     );

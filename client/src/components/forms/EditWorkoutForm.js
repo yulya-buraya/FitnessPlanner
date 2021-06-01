@@ -1,12 +1,11 @@
-import React, { useRef, useState, useContext } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useHttp } from '../../hooks/http.hook'
 import '../../styles/modalForm.css'
 import '../../styles/login.css'
-import { AuthContext } from '../../context/AuthContext'
-import { AddUserWorkoutDaysForm } from "./AddUserWorkoutDaysForm";
+import { AddWorkoutDaysForm } from './AddWorkoutDaysForm'
+import { EditWorkoutDaysForm } from "./EditWorkoutDaysForm";
 
-
-export const AddUserWorkoutForm = ({ setModalFormActive }) => {
+export const EditWorkoutForm = ({ setModalFormActive, workout, setWorkouts }) => {
 
     const [isClassNameForWorkoutName, setClassNameForWorkoutName] = useState(null)
     const [classNameForPurpose, setClassNameForPurpose] = useState(null)
@@ -16,7 +15,6 @@ export const AddUserWorkoutForm = ({ setModalFormActive }) => {
     const [isClassNameForCount, setClassNameForCount] = useState(null)
     const [isClassNameForDuration, setClassNameForDuration] = useState(null)
     const [isClassNameForGender, setClassNameForGender] = useState(null)
-    const auth = useContext(AuthContext)
     const { loading } = useHttp()
     const fileInput = useRef();
 
@@ -29,8 +27,7 @@ export const AddUserWorkoutForm = ({ setModalFormActive }) => {
         count: '',
         gender: '',
         image: '',
-        duration: '',
-        user: auth.userId
+        duration: ''
     })
 
     const setClassForWorkoutName = () => {
@@ -73,15 +70,19 @@ export const AddUserWorkoutForm = ({ setModalFormActive }) => {
     }
 
     const addWorkoutDaysHandler = async () => {
-        setModalFormActive(<AddUserWorkoutDaysForm setActive={setModalFormActive} form={form}/>);
+        setModalFormActive(<EditWorkoutDaysForm setActive={setModalFormActive} setWorkouts={setWorkouts} form={form}/>);
     }
 
+    useEffect(() => {
+        setForm({ ...workout });
+    }, []);
+
     return (
-        <div className='background-modal active'onClick={cancelHandler}>
+        <div className='background-modal active'>
             <div className="container-for-form " onClick={e => e.stopPropagation()}>
                 <div className="login100-form">
                     <span className="login100-form-title">
-                        Добавить новый план тренировки
+                        Изменение плана тренировки
                     </span>
                     <div className="user-info-form">
                         <div className="wrapper">
@@ -186,7 +187,7 @@ export const AddUserWorkoutForm = ({ setModalFormActive }) => {
                                 id="sendButton"
                                 onClick={addWorkoutDaysHandler}
                                 disabled={loading}>
-                            Добавить
+                            Далее
                         </button>
                     </div>
                 </div>

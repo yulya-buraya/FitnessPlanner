@@ -4,6 +4,8 @@ import { Loader } from "../../Loader";
 import { useHttp } from "../../../hooks/http.hook";
 import { WorkoutItemBlock } from "./WorkoutItemBlock";
 import { AuthContext } from "../../../context/AuthContext";
+import { SubmenuContentUserWorkout } from "./SubmenuContentUserWorkout"
+
 
 export const UserWorkoutsPage = () => {
     const { request, loading } = useHttp()
@@ -20,25 +22,27 @@ export const UserWorkoutsPage = () => {
     }, []);
 
     if (loading) {
-        return <Loader/>
+        return <Loader />
     }
 
     return (
-        <div className="content">
-            <div className="text-like-header">Мои программы тренировок</div>
-            <hr className="hr-for-table"/>
-            {!loading && workouts ? (
+        <div className="training-content">
+            <SubmenuContentUserWorkout setWorkouts={setWorkouts} />
+            <div className="header-for-table">Мои программы тренировок</div>
+            <br />
+            {!loading && workouts&& (!workouts.length ? ( 
+             <div className="not-foung-block">
+            <img className="not-found-icons" src="/image/not-found.jpg" />
+            <p className="text-align-center">В базе данных нет упражнений!</p> 
+            </div>
+             ) :(
+                 
                 <div className="list-workout">
-                    {workouts.map((workout) => {
-                        return <WorkoutItemBlock type={'userworkouts'} workout={workout} setWorkouts={setWorkouts}/>
-                    })}
-                </div>
-            ) : (
-                <>
-                    <img className="not-found-icons" src="/image/not-found.jpg"/>
-                    <p className="text-align-center">В базе данных нет упражнений!</p>
-                </>
-            )}
+                {workouts.map((workout) => {
+                    return <WorkoutItemBlock key={workouts._id} type={'userworkouts'} workout={workout} setWorkouts={setWorkouts} />
+                })}
+            </div>)
+             )}
         </div>
     );
 }

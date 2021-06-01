@@ -37,12 +37,12 @@ export const WorkoutPage = () => {
                         <ButtonSubmenuBlock setModalForm={setModalForm}/>
                         <FilterWorkoutBlock workouts={workouts} setWorkouts={setWorkouts}/>
                     </div> :
-                    <SubmenuContentWorkout setWorkouts={setWorkouts}/>
+                    <SubmenuContentWorkout workouts={workouts} setWorkouts={setWorkouts}/>
             }
 
             <div className="header-for-table">ПРОГРАММЫ ТРЕНИРОВОК</div>
             <br/>
-            {!loading && workouts && <WorkoutListBlock workouts={workouts} setWorkouts={setWorkouts}/>}
+            {!loading && workouts && <WorkoutListBlock workouts={workouts} setWorkouts={setWorkouts} />}
             {modalForm}
         </div>
     );

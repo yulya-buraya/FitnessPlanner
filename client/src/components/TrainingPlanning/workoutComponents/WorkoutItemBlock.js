@@ -4,18 +4,21 @@ import { ActionButtonBlock } from "./ActionButtonBlock";
 import { useHistory } from 'react-router-dom'
 
 
-export const WorkoutItemBlock = ({ workout, setWorkouts, type = 'workouts' }) => {
+export const WorkoutItemBlock = ({ workout, setWorkouts, type }) => {
     const history = useHistory()
     const role = JSON.parse(localStorage.getItem("userdata")).role[0]
-
     const openWorkout = () => {
         history.push(`/workouts/${workout._id}`)
+    }
+    const openUserWorkout = () => {
+        history.push(`custom_workouts/${workout._id}`)
     }
 
     if (role == "user") {
         return (
-            <div className="workout-item" onClick={() => openWorkout()}>
+                <div className="workout-item" onClick={() =>{(window.location.pathname=="/custom_workouts")?openUserWorkout():openWorkout()}}>
                 <div className="workout-image">
+
                     <img src={workout.image}/>
                 </div>
                 <div className="short-info-workout">
@@ -42,7 +45,6 @@ export const WorkoutItemBlock = ({ workout, setWorkouts, type = 'workouts' }) =>
                     </p>
                 </div>
             </div>
-
         );
     } else {
         return <div className="workout-item-for-admin" >

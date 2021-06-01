@@ -1,35 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHttp } from '../../hooks/http.hook'
 
 import '../../styles/modalForm.css'
 import '../../styles/login.css'
 
 import { AddRecipeIngredientsForm } from './AddRecipeIngredientsForm'
+import { EditRecipeIngredientsForm } from "./EditRecipeIngredientsForm";
 
-export const AddRecipeInfoForm = ({ recipe, setActive, setRecipes }) => {
+export const EditRecipeInfoForm = ({ _recipe, setActive, setRecipes }) => {
 
     const [isClassNameForDuration, setClassNameForDuration] = useState(null)
     const [isClassNameForServings, setClassNameForServings] = useState(null)
     const [isClassNameForIngredients, setClassNameForIngredients] = useState(null)
     const [isClassNameForInstructions, setClassNameForInstructions] = useState(null)
-
-    const [form, setForm] = useState({
-        duration: '',
-        servings: '',
-        image: null,
-        food: recipe._id
-    })
-    const [instructions, setCountInstructions] = useState("")
-    const [ingredients, setCountIngredients] = useState("")
+    const [instructions, setCountInstructions] = useState(0)
+    const [ingredients, setCountIngredients] = useState(0)
+    const [recipe, setRecipe] = useState({});
 
     const { loading } = useHttp()
 
     const changeHandler = event => {
-        setForm({ ...form, [event.target.name]: event.target.value })
+        setRecipe({ ...recipe, [event.target.name]: event.target.value })
     }
 
     const setImage = (event) => {
-        setForm({ ...form, image: event.target.files[0] });
+        setRecipe({ ...recipe, image: event.target.files[0] });
     };
 
     const setClassForDuration = () => {
@@ -48,13 +43,25 @@ export const AddRecipeInfoForm = ({ recipe, setActive, setRecipes }) => {
     const cancelHandler = () => {
         setActive(null)
     }
+
     const addRecipeInfoHandler = () => {
+        setActive(
+            <EditRecipeIngredientsForm
+                setRecipes={setRecipes}
+                setModalActive={setActive}
+                countIngredients={ingredients}
+                countInstructions={instructions}
+                _recipe={recipe}
+            />
+        )
+    };
 
-        setActive(<AddRecipeIngredientsForm setRecipes={setRecipes} setModalActive={setActive}
-                                            countIngredients={ingredients} countInstructions={instructions}
-                                            recipe={form}/>)
+    useEffect(() => {
+        setCountInstructions(_recipe.instructions.length);
+        setCountIngredients(_recipe.ingredients.length);
+        setRecipe(_recipe);
+    }, []);
 
-    }
     return (
         <div className='background-modal active'>
             <div className="container-for-form" onClick={e => e.stopPropagation()}>
@@ -77,7 +84,7 @@ export const AddRecipeInfoForm = ({ recipe, setActive, setRecipes }) => {
                                 <img className={`icons ${isClassNameForDuration}`}
                                      src="/image/icon-clock.svg"/>
                                 <input className="input-info-forms" type="text" name="duration"
-                                       placeholder="Введите время приготовления" id="duration" value={form.duration}
+                                       placeholder="Введите время приготовления" id="duration" value={recipe?.duration}
                                        onChange={changeHandler} onFocus={setClassForDuration}
                                        onBlur={setClassForDuration}/>
                             </div>
@@ -85,7 +92,7 @@ export const AddRecipeInfoForm = ({ recipe, setActive, setRecipes }) => {
                                 <img className={`icons ${isClassNameForServings}`}
                                      src="/image/serving1.svg"/>
                                 <input className="input-info-forms" type="text" name="servings"
-                                       placeholder="Введите количество порций" id="servings" value={form.servings}
+                                       placeholder="Введите количество порций" id="servings" value={recipe?.servings}
                                        onChange={changeHandler} onFocus={setClassForServings}
                                        onBlur={setClassForServings}/>
                             </div>
@@ -100,7 +107,8 @@ export const AddRecipeInfoForm = ({ recipe, setActive, setRecipes }) => {
                                        value={ingredients}
                                        onChange={(e) => {
                                            setCountIngredients(e.target.value)
-                                       }} onFocus={setClassForIngredients}
+                                       }}
+                                       onFocus={setClassForIngredients}
                                        onBlur={setClassForIngredients}/>
                             </div>
                             <div className="wrap-input100">
@@ -127,7 +135,7 @@ export const AddRecipeInfoForm = ({ recipe, setActive, setRecipes }) => {
                                 id="sendButton"
                                 onClick={addRecipeInfoHandler}
                                 disabled={loading}>
-                            Добавить
+                            Далее
                         </button>
                     </div>
                 </div>

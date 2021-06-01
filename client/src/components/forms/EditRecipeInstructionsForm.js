@@ -1,15 +1,22 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useHttp } from '../../hooks/http.hook'
 import { useMessage } from '../../hooks/message.hook'
 import '../../styles/modalForm.css'
 import '../../styles/login.css'
 import '../../styles/mealplanner.css'
 
-export const AddRecipeInstructionsForm = ({ food, recipe, setModalActive, countInstructions, setRecipes }) => {
-    const instructions = useRef([]);
+export const EditRecipeInstructionsForm = ({ _recipe, setModalActive, setRecipes }) => {
+    const [recipe, setRecipe] = useState({});
     const { loading, request } = useHttp()
     const message = useMessage()
 
+    const changeHandler = (e, index) => {
+        const { value, name } = e.target;
+        setRecipe((prev) => {
+            prev.instructions[index][name] = value;
+            return { ...prev };
+        });
+    };
 
     const cancelHandler = () => {
         setModalActive(null)
@@ -17,23 +24,28 @@ export const AddRecipeInstructionsForm = ({ food, recipe, setModalActive, countI
 
     const addRecipeInstructionsHandler = async () => {
         try {
-            const body = { ...recipe, instructions: instructions.current };
+            console.log(recipe);
             const formData = new FormData();
+            formData.append('id', recipe._id);
+            formData.append('duration', recipe.duration);
+            formData.append('food', JSON.stringify(recipe.food));
+            formData.append('ingredients', JSON.stringify(recipe.ingredients));
+            formData.append('instructions', JSON.stringify(recipe.instructions));
+            formData.append('image', recipe.image);
+            formData.append('servings', recipe.servings);
 
-            for (let key in body) {
-                if (Array.isArray(body[key])) {
-                    formData.append(key, JSON.stringify(body[key]));
-                    continue;
-                }
-                formData.append(key, body[key]);
-            }
 
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', '/api/recipe/create', false);
+            xhr.open('PUT', '/api/recipe/edit', false);
             xhr.send(formData);
 
             if (xhr.status <= 299) {
                 const response = JSON.parse(xhr.responseText);
+                setRecipes((prev) => {
+                    const index = prev.findIndex((recipe) => recipe._id == recipe._id);
+                    prev[index] = recipe;
+                    return [...prev];
+                });
                 message(response.message);
             }
         } catch (e) {
@@ -42,6 +54,11 @@ export const AddRecipeInstructionsForm = ({ food, recipe, setModalActive, countI
 
         setModalActive(null)
     }
+
+    useEffect(() => {
+        console.log('inst', _recipe);
+        setRecipe(_recipe);
+    }, []);
 
     return (
         <div className='background-modal active'>
@@ -52,17 +69,17 @@ export const AddRecipeInstructionsForm = ({ food, recipe, setModalActive, countI
                                 </span>
 
                     <div className="instructions-form">
-                        {[...Array(parseInt(countInstructions))].map((n, i) => {
-                            instructions.current.push({ step: i + 1, description: "" });
+                        {recipe?.instructions?.map((instruction, i) => {
                             return (
                                 <div className="instructions-content" key={i}>
-                                    <p className="step-text">Шаг {i + 1}</p>
+                                    <p className="step-text">Шаг {instruction.step}</p>
                                     <textarea className="instructions-input"
                                               placeholder="Писать здесь..."
+                                              name="description"
                                               type="text"
-                                              onChange={(e) => {
-                                                  instructions.current[i].description = e.target.value;
-                                              }}/>
+                                              value={instruction.description}
+                                              onChange={(e) => (changeHandler(e, i))}
+                                    />
                                 </div>
                             );
                         })}

@@ -76,7 +76,7 @@ router.delete('/delete', async (req, res) => {
         res.status(200).json({ message: 'Программа тренировок успешно удалена' })
     } catch (e) {
         console.log(e.message);
-        res.status(400).json({ message: 'Что-то пошло не так' })
+        res.status(400).json({ message: e.message })
     }
 })
 
