@@ -27,7 +27,7 @@ export const UserWorkoutsPage = () => {
 
     return (
         <div className="training-content">
-            <SubmenuContentUserWorkout setWorkouts={setWorkouts} />
+            <SubmenuContentUserWorkout workouts={workouts} setWorkouts={setWorkouts} />
             <div className="header-for-table">Мои программы тренировок</div>
             <br />
             {!loading && workouts&& (!workouts.length ? ( 
