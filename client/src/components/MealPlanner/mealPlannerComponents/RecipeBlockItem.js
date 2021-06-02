@@ -13,7 +13,7 @@ export const RecipeBlockItem = ({ setRecipes, recipe }) => {
         return (
             <div className="recipe-item" onClick={() => openRecipe()}>
 
-                <img className="recipe-image" src={`/image/${recipe.image}`}/>
+                <img className="recipe-image" src={recipe.image}/>
                 <div>
                     <p className="text-style-for-name-recipe">{recipe && recipe.food.name} </p>
                     <div className="short-info-recipe">

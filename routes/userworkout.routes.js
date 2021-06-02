@@ -5,12 +5,11 @@ const router = Router()
 const User = require('../models/User')
 const UserWorkout = require('../models/UserWorkout')
 const Exercise = require('../models/Exercise')
-const storageConfig = require('../config/multerConfig');
-const upload = multer({ storage: storageConfig }).single('image');
-
+const { upload } = require('../config/multerConfig');
 
 router.post('/create', upload, async (req, res) => {
     try {
+        console.log('body', req.body)
         let body = req.body;
         body.days = JSON.parse(body.days);
 

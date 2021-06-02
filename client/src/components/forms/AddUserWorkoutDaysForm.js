@@ -19,7 +19,7 @@ export const AddUserWorkoutDaysForm = ({ setActive, form }) => {
         setActive(null)
     }
 
-    const addWorkoutDaysHandler = async () => {
+    const addWorkoutDaysHandler = async name => {
         try {
             const body = { ...form, days: days.current };
             const formData = new FormData();
@@ -32,6 +32,7 @@ export const AddUserWorkoutDaysForm = ({ setActive, form }) => {
 
                 formData.append(key, body[key]);
             }
+            console.log('formData', body)
 
             const xhr = new XMLHttpRequest();
             xhr.open('POST', '/api/userworkout/create', false);

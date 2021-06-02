@@ -3,8 +3,8 @@ import "../../styles/training.css"
 import { useHttp } from '../../hooks/http.hook'
 import { Loader } from "../Loader"
 import { useParams } from 'react-router-dom'
-import {RecipeEnergyBlock} from "./mealPlannerComponents/RecipeEnergyBlock"
-import {InstructionsBlock} from "./mealPlannerComponents/InstructionsBlock"
+import { RecipeEnergyBlock } from "./mealPlannerComponents/RecipeEnergyBlock"
+import { InstructionsBlock } from "./mealPlannerComponents/InstructionsBlock"
 import { IngregientsBlock } from "./mealPlannerComponents/IngredientsBlock"
 
 export const RecipeInfoPage = () => {
@@ -16,16 +16,17 @@ export const RecipeInfoPage = () => {
         try {
             const data = await request(`/api/recipe/${recipeId}`, "GET", null)
             setRecipe(data)
-        } catch (e) { }
+        } catch (e) {
+        }
     }, [recipeId, request])
 
     useEffect(() => {
         getRecipe()
     }, [])
 
-     if (loading) {
-         return <Loader />
-     }
+    if (loading) {
+        return <Loader/>
+    }
 
     return (
         <div className="recipe-content">
@@ -34,16 +35,16 @@ export const RecipeInfoPage = () => {
             </div>
             <div className="image-and-ingredients">
                 <div>
-                <div className="recipe-image-block">
-               { recipe && <img src={`/image/${recipe.picture}`}/>}
-                </div>
-                {!loading && recipe && <RecipeEnergyBlock recipe={recipe}/>}
+                    <div className="recipe-image-block">
+                        {recipe && <img src={recipe.image}/>}
+                    </div>
+                    {!loading && recipe && <RecipeEnergyBlock recipe={recipe}/>}
                 </div>
                 {!loading && recipe && <IngregientsBlock servings={recipe.servings} ingredients={recipe.ingredients}/>}
             </div>
             <div className="instructions-block">
-            <div className="instructions-block-header" >Инструкция по приготовлению блюда:</div>
-           {!loading && recipe &&<InstructionsBlock instructions={recipe.instructions} />}
+                <div className="instructions-block-header">Инструкция по приготовлению блюда:</div>
+                {!loading && recipe && <InstructionsBlock instructions={recipe.instructions}/>}
             </div>
         </div>
     );

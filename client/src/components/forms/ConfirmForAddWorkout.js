@@ -35,6 +35,10 @@ export const ConfirmForAddWorkout = ({ setForm, workout }) => {
         try {
             const body = { ...workout, user: userId };
             body.image = getFile(body.image, Math.floor(Math.random() * (10 ** 15)));
+            console.log(body.image);
+            // delete body.image;
+            delete body._id;
+            delete body.__v;
             const formData = new FormData();
 
             for (let key in body) {

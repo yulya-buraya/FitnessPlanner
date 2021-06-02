@@ -12,7 +12,7 @@ export const RecipesListBlock = ({setRecipes, recipes}) => {
         )
     }
     return (
-        <div className="list-recipe">
+        <div className="list-recipes">
             {recipes.map((recipe) => {
                 return <RecipeBlockItem  key={recipe._id} recipe={recipe} setRecipes={setRecipes} />
             })}

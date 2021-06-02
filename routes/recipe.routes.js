@@ -57,7 +57,14 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const recipe = await Recipe.findById(req.params.id).populate('food')
+        let recipe = (await Recipe.findById(req.params.id).populate('food')).toObject();
+        const imagePath = `data/recipes/${recipe._id}.jpg`;
+
+        if (fs.existsSync(imagePath)) {
+            const image = fs.readFileSync(imagePath);
+            recipe.image = 'data:image/jpeg;base64,' + new Buffer.from(image).toString('base64');
+        }
+
         res.json(recipe)
     } catch (e) {
         console.log("error", e)

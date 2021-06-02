@@ -19,7 +19,6 @@ router.delete('/delete', async (req, res) => {
 
 router.put('/editphoto', upload, async (req, res) => {
     try {
-        console.log(req.body);
         const { id } = req.body;
         const path = `data/users/${id}.jpg`;
         fs.renameSync(req?.file.path, path);

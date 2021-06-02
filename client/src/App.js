@@ -21,9 +21,11 @@ function App() {
     }}>
 
       <Router>
-        {isAuthenticated && <Navbar role={role} />}
-        <div className="container">
-          {routes}
+        <div className="main">
+          {isAuthenticated && <Navbar role={role} />}
+          <div className="container">
+            {routes}
+          </div>
         </div>
       </Router>
     </AuthContext.Provider>
