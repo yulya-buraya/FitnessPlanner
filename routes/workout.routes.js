@@ -28,7 +28,7 @@ router.post('/create', upload, async (req, res) => {
             const path = `data/workouts/${workout._id}.jpg`;
             fs.renameSync(req.file.path, path);
             file = fs.readFileSync(path);
-            _workout.image = 'data:image/jpeg;base64,' + new Buffer(file).toString('base64');
+            _workout.image = 'data:image/jpeg;base64,' + new Buffer.from(file).toString('base64');
         }
 
         res.status(201).json({ message: 'План тренировок успешно добавлен', workout: _workout })
@@ -46,7 +46,7 @@ router.get('/workouts', async (req, res) => {
 
             if (fs.existsSync(imagePath)) {
                 const image = fs.readFileSync(imagePath);
-                _workout.image = 'data:image/jpeg;base64,' + new Buffer(image).toString('base64');
+                _workout.image = 'data:image/jpeg;base64,' + new Buffer.from(image).toString('base64');
             }
 
             return _workout;
@@ -66,13 +66,13 @@ router.get('/:id', async (req, res) => {
         const imagePath = `data/workouts/${_workout._id}.jpg`;
         if (fs.existsSync(imagePath)) {
             const image = fs.readFileSync(imagePath);
-            _workout.image = 'data:image/jpeg;base64,' + new Buffer(image).toString('base64');
+            _workout.image = 'data:image/jpeg;base64,' + new Buffer.from(image).toString('base64');
         }
 
         res.json(_workout);
     } catch (e) {
         console.log("error", e)
-        res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+        res.status(500).json({ message: e.message })
     }
 })
 

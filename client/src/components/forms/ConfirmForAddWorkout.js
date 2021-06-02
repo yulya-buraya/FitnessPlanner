@@ -57,8 +57,6 @@ export const ConfirmForAddWorkout = ({ setForm, workout }) => {
         } catch (e) {
             console.log(e)
         }
-
-
     }
     return (
         <div className='background-modal active' onClick={cancelHandler}>

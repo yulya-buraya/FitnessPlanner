@@ -37,7 +37,7 @@ router.get('/', auth, async (req, res) => {
 
             if (fs.existsSync(imagePath)) {
                 const image = fs.readFileSync(imagePath);
-                biodata.image = 'data:image/jpeg;base64,' + new Buffer(image).toString('base64');
+                biodata.image = 'data:image/jpeg;base64,' + new Buffer.from(image).toString('base64');
             }
         }
 
@@ -70,7 +70,7 @@ router.get('/:id', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     try {
-        await UserInfo.findOneAndUpdate({ _id: req.params.id }, { $set: req.body })
+        await UserInfo.updateOne({ _id: req.params.id }, { $set: req.body })
         res.json()
     } catch (e) {
         console.log('error', e)

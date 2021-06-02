@@ -285,10 +285,11 @@
     padding: 0 15px 20px;
     background-color: #e9e8e8;
     border-radius: 10px;
-   box-shadow: 0px 1px 3px rgba(206, 201, 201, 0.463);
-   margin-right: 50px;
-   margin-bottom: 50px;
+    box-shadow: 0px 1px 3px rgba(206, 201, 201, 0.463);
+    margin-right: 50px;
+    margin-bottom: 50px;
 }
+
 .energy-value {
     position: relative;
     display: flex;
@@ -301,13 +302,14 @@
     background-color: #e9e8e8;
     z-index: 2;
 }
+
 .energy-background {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 110px;
     width: 110px;
-    background: linear-gradient(to bottom, rgb(9, 196, 46),rgb(154, 230, 62), rgb(238, 238, 36), rgb(255, 196, 0), rgb(197, 31, 31));
+    background: linear-gradient(to bottom, rgb(9, 196, 46), rgb(154, 230, 62), rgb(238, 238, 36), rgb(255, 196, 0), rgb(197, 31, 31));
     border-radius: 50%;
     z-index: 1;
 }
@@ -471,6 +473,7 @@ ul.oglavl span.page {
     justify-content: space-between;
     align-items: flex-end;
 }
+
 .mealplan-submenu {
     display: flex;
     width: 100%;
@@ -482,9 +485,10 @@ ul.oglavl span.page {
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
-    justify-content:flex-end;
+    justify-content: flex-end;
     align-items: flex-end;
 }
+
 .btn-submenu-mealplanning {
     display: flex;
     height: 130px;
@@ -580,17 +584,19 @@ fieldset {
     border-radius: 10px;
     margin-bottom: 10px;
 }
+
 .mealplan-fieldset {
- 
     border: solid 4px rgb(23, 202, 211);
     border-radius: 10px;
     margin-bottom: 10px;
 }
+
 fieldset legend {
     padding: 0 1em;
     font-weight: 700;
     color: rgb(61, 144, 153)
 }
+
 fieldset .text-header-mealplan {
     padding: 0 1em;
     font-weight: 700;
@@ -638,14 +644,15 @@ fieldset .text-header-mealplan {
 }
 
 .product-name-btn {
-    padding: 10px;
+    padding: 10px 5px;
     background-color: rgb(109, 174, 34);
     border-radius: 5px;
     color: white;
     width: 90px;
     margin: 5px;
-    font-size: 13pt;
+    font-size: 11pt;
     text-align: center;
+    word-wrap: break-word;
 }
 
 .product-name-btn:hover, .product-name-btn:active {
@@ -766,43 +773,46 @@ fieldset .text-header-mealplan {
 }
 
 .value-count-meals {
-    color:lightseagreen;
-    font-style:italic;
+    color: lightseagreen;
+    font-style: italic;
     font-size: 22pt;
     font-weight: 800;
     margin: 20px auto;
 }
 
-.text-subtitle-meals{
-    font-style:normal;
+.text-subtitle-meals {
+    font-style: normal;
     font-size: 20pt;
     font-weight: 700;
     color: rgb(100, 97, 97);
 }
-.title-mealplan{
-font-size: 32pt;
-font-weight: 900;
-position: absolute;
-margin-bottom: 400px;
-margin-right: 50px;
-text-align: center;
-color:rgb(214, 212, 212);
-width: 830px;
 
+.title-mealplan {
+    font-size: 32pt;
+    font-weight: 900;
+    position: absolute;
+    margin-bottom: 400px;
+    margin-right: 50px;
+    text-align: center;
+    color: rgb(214, 212, 212);
+    width: 830px;
 }
+
 .mealplan-block {
     min-height: max-content;
-    width:inherit;
+    width: inherit;
     border-radius: 10px;
     background-color: white;
     margin: 15px 0px;
-    padding:20px;
+    padding: 20px;
 }
-.meal-name-title{
-font-size:24pt;
-font-weight: 700;
-color:black;
+
+.meal-name-title {
+    font-size: 24pt;
+    font-weight: 700;
+    color: black;
 }
-.mealplan-products{
-    margin:0 20px 30px;
+
+.mealplan-products {
+    margin: 0 20px 30px;
 }

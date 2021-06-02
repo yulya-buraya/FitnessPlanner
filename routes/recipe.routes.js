@@ -43,7 +43,7 @@ router.get('/', async (req, res) => {
 
             if (fs.existsSync(imagePath)) {
                 const image = fs.readFileSync(imagePath);
-                _recipe.image = 'data:image/jpeg;base64,' + new Buffer(image).toString('base64');
+                _recipe.image = 'data:image/jpeg;base64,' + new Buffer.from(image).toString('base64');
             }
 
             return _recipe;

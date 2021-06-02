@@ -1,10 +1,10 @@
 const multer = require('multer');
 
 const storageConfig = multer.diskStorage({
-   destination: (req, file, cb) => {
+   destination: function(req, file, cb) {
         cb(null, 'data/tmp');
    },
-   filename: (req, file, cb) => {
+   filename: function(req, file, cb) {
        cb(null, file.originalname)
    }
 });
