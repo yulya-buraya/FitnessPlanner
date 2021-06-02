@@ -100,7 +100,7 @@ export const AddFoodForm = ({ setActive, active, setFood }) => {
                             <option value="Грибы">Грибы</option>
                             <option value="Фастфуд">Фастфуд</option>
                             <option value="Спортивное питание">Спортивное питание</option>
-                            <option value="Выпечка и десерты">Выпечка и десерты</option>
+                           <option value="Выпечка и десерты">Выпечка и десерты</option>
                             <option value="Основные блюда">Основные блюда</option>
                             <option value="Завтраки">Завтраки</option>
                             <option value="Супы">Супы</option>
@@ -109,6 +109,7 @@ export const AddFoodForm = ({ setActive, active, setFood }) => {
                             <option value="Закуски">Закуски</option>
                             <option value="Горячие блюда">Горячие блюда</option>
                             <option value="Холодные блюда">Холодные блюда</option>
+                            <option value="Напитки">Напитки</option>
                             <option value="Другое">Другое</option>
                         </select>
                     </div>

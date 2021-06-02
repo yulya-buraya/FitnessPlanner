@@ -46,7 +46,7 @@ router.get('/workouts/:id', async (req, res) => {
 
             if (fs.existsSync(imagePath)) {
                 const image = fs.readFileSync(imagePath);
-                _workout.image = 'data:image/jpeg;base64,' + new Buffer(image).toString('base64');
+                _workout.image = 'data:image/jpeg;base64,' + new Buffer.from(image).toString('base64');
             }
 
             return _workout;

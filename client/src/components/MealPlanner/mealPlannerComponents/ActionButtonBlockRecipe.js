@@ -1,29 +1,44 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 import "../../../styles/training.css"
 import { DeleteRecipeForm } from "../../forms/DeleteRecipeForm"
+import { EditRecipeForm } from "../../forms/EditRecipeForm";
 
 
-export const ActionButtonBlockRecipe = ({setRecipes, recipe} ) => {
+export const ActionButtonBlockRecipe = ({ setRecipes, recipe }) => {
     const [form, setForm] = useState(null)
 
-        const showDeleteForm = (recipe) => {
-        setForm(<DeleteRecipeForm  setForm={setForm} setRecipes={setRecipes} recipe={recipe} />)
-    }
-/*     const showEditForm = (exercise) => {
-        setForm(<EditExerciseForm  setActive={setForm} exercise={exercise} setExercises={setExercises} />)
-    } */
+    const showDeleteForm = () => {
+        setForm(<DeleteRecipeForm setForm={setForm} setRecipes={setRecipes} recipe={recipe}/>)
+    };
+
+    const showEditForm = () => {
+        setForm(<EditRecipeForm setModalFormActive={setForm} _recipe={recipe} setRecipes={setRecipes}/>)
+    };
+
     return (
         <div className="action-block">
-        <table className="table-action">
-            <tbody>
+            <table className="table-action">
+                <tbody>
                 <tr>
-                    <td ><img className="icon-exercise-row edit" src='/image/draw.svg' /></td>
-                    <td ><img className="icon-exercise-row delete" src="/image/trash-bin.svg" onClick={()=>showDeleteForm(recipe)} /></td>
+                    <td>
+                        <img
+                            className="icon-exercise-row edit"
+                            src='/image/draw.svg'
+                            onClick={() => showEditForm()}
+                        />
+                    </td>
+                    <td>
+                        <img
+                            className="icon-exercise-row delete"
+                            src="/image/trash-bin.svg"
+                            onClick={() => showDeleteForm()}
+                        />
+                    </td>
                 </tr>
-            </tbody>
-        </table>
-        {form}
-    </div>
+                </tbody>
+            </table>
+            {form}
+        </div>
 
     );
 }

@@ -2,28 +2,23 @@ const { Schema, model } = require('mongoose')
 
 const Recipe = new Schema({
     duration:
-    {
-        type: String,
-        required: true
-    },
+        {
+            type: String,
+            required: true
+        },
 
     servings:
-    {
-        type: String,
-        required: true
-    },
+        {
+            type: String,
+            required: true
+        },
 
-    picture:
-    {
-        type: String,
-        required: true
-    },
     food:
-        
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Food'
-            },
+
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Food'
+        },
 
     ingredients: [{
         name: {
@@ -33,9 +28,9 @@ const Recipe = new Schema({
             type: Number
         },
         metric:
-        {
-            type: String
-        }
+            {
+                type: String
+            }
 
     }],
     instructions: [{
@@ -43,7 +38,7 @@ const Recipe = new Schema({
             type: Number
         },
         description: {
-            type: String         
+            type: String
         },
     }]
 })

@@ -29,6 +29,7 @@ export const WorkoutTrainingPage = () => {
     }, [workoutId, request])
 
     useEffect(() => {
+        console.log('WorkoutTrainingPage.workout', workout);
         getWorkout()
     }, [])
 

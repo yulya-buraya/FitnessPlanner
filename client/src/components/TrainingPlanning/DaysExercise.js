@@ -29,6 +29,7 @@ export const DaysExercise = ({ i, days }) => {
         };
 
         await fetchExercises()
+        setCount(days.current[i].exercises.length);
     }, [])
 
     return (
@@ -51,7 +52,6 @@ export const DaysExercise = ({ i, days }) => {
                 {[...Array(count)].map((n, index) => {
                     return (
                         <div className="exercises-list" key={index}>
-          
                             <select placeholder="Выберите упражнение" className="exercises-list-input" id="exercisesList" onChange={(e)=>{days.current[i].exercises[index] = e.target.value;}} >
                                 {exercises.map((exercise, _index) => {
                                     return <option  index={_index} value={exercise._id}>{exercise.name}</option>

@@ -26,6 +26,8 @@
 }
 
 .avatar-profile img {
+    object-fit: cover;
+    cursor: pointer;
     height: 170pt;
     width: 170pt;
     border-radius: 50%;

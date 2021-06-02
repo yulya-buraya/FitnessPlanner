@@ -1,10 +1,23 @@
-import React, { useContext} from 'react'
+import React, { useContext } from 'react'
 import '../../styles/modalForm.css'
 import '../../styles/login.css'
 import { useMessage } from '../../hooks/message.hook'
 import { useHistory } from 'react-router'
-import {AuthContext} from "../../context/AuthContext"
-{}
+import { AuthContext } from "../../context/AuthContext"
+
+function getFile(url, filename) {
+    const arr = url.split(',');
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    return new File([u8arr], filename, { type: mime });
+}
 
 
 export const ConfirmForAddWorkout = ({ setForm, workout }) => {
@@ -20,7 +33,8 @@ export const ConfirmForAddWorkout = ({ setForm, workout }) => {
     }
     const AddWorkout = async (workout) => {
         try {
-            const body = {...workout,  user:userId };
+            const body = { ...workout, user: userId };
+            body.image = getFile(body.image, Math.floor(Math.random() * (10 ** 15)));
             const formData = new FormData();
 
             for (let key in body) {
@@ -43,9 +57,6 @@ export const ConfirmForAddWorkout = ({ setForm, workout }) => {
         } catch (e) {
             console.log(e)
         }
-
-
-
     }
     return (
         <div className='background-modal active' onClick={cancelHandler}>
@@ -58,15 +69,15 @@ export const ConfirmForAddWorkout = ({ setForm, workout }) => {
                 </div>
                 <div className="container-form-btn">
                     <button className="container-btn"
-                        id="cancelButton"
-                        onClick={cancelHandler}
+                            id="cancelButton"
+                            onClick={cancelHandler}
                     >
                         Отменить
                     </button>
 
                     <button className="container-btn"
-                        id="deleteButton"
-                        onClick={() => AddWorkout(workout)}>
+                            id="deleteButton"
+                            onClick={() => AddWorkout(workout)}>
                         Добавить
                     </button>
                 </div>
